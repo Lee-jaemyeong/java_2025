@@ -15,7 +15,7 @@ public class OperatorEx006 {
 		ch = scanner.next().charAt(0);
 		System.out.println("q2: " + (ch=='a' || ch=='A'));
 		System.out.println("q3: " + (ch>='0' && ch<='9'));
-		// System.out.println("q4: " + (ch>=(char)65));
+		// System.out.println("q4: " + (ch>=(char)65) && (ch<=(char)90) || (ch>=(char)97) && (ch<=(char)122));
 		System.out.println("q4: " + (ch>='A' && ch<='Z' || ch>='a' && ch<='z'));
 	}
 }
