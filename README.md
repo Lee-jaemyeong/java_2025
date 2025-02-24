@@ -28,3 +28,9 @@
  2. mini project - Bank
 
 ---
+#### 6. 2025-02-24
+ 1. 반복문(for) 복습
+ 2. 제어문(4) - 반복문(while,do while)
+ 3. html+css -  bootstrap 사용법,html 요소정리
+
+---
