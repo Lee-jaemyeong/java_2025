@@ -41,3 +41,7 @@
  4. html+css - img삽입, click 이벤트
 
 ---
+#### 8. 2025-02-26
+ 1. 배열(Array) 복습
+ 2. 메서드(Method)
+ 3. html+css - click 이벤트
