@@ -25,7 +25,7 @@
 ---
 #### 5. 2025-02-21
  1. 제어문(3) - 반복문(for)
- 2. mini project - Bank
+ 2. mini project - Bank(https://youtu.be/RloOIEwHmbk)
 
 ---
 #### 6. 2025-02-24
