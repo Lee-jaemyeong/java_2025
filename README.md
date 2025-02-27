@@ -25,7 +25,7 @@
 ---
 #### 5. 2025-02-21
  1. 제어문(3) - 반복문(for)
- 2. mini project - Bank
+ 2. mini project - Bank(https://youtu.be/RloOIEwHmbk)
 
 ---
 #### 6. 2025-02-24
@@ -39,5 +39,11 @@
  2. 배열 (1차원 배열)
  3. 배열 (다차원 배열)
  4. html+css - img삽입, click 이벤트
+
+---
+#### 8. 2025-02-26
+ 1. 배열(Array) 복습
+ 2. 메서드(Method)
+ 3. html+css - click 이벤트
 
 ---
