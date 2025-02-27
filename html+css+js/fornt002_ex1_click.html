@@ -31,11 +31,25 @@
     </div>
     <button  class="btn btn-warning my-3" onclick="alert('이재명');"> TWO </button>
     <button  class="btn btn-warning my-3" onclick="alert('dog'); alert('cat');"> animal 1 </button>
-    <button  class="btn btn-warning my-3" id="a"> animal 2 </button> 
+    <button  class="btn btn-warning my-3" id="a"> animal 2 </button>
+    <button  class="btn btn-warning my-3" id="b"> animal 3 </button>  
+    <button  class="btn btn-warning my-3 c"> animal 4 </button> 
     <script>
       // !Doctype  document
       //                 이벤트대상.이벤트  =  이벤트핸들러(처리)
-      document.getElementById("a").onclick = function() { alert('dog'); alert('cat'); };
+      document.getElementById("a").onclick = function() {
+         alert('dog'); alert('cat'); 
+        };
+      // #b - css 표현법 - 아이디가 b
+      document.querySelector("#b").onclick = function() {
+        document.querySelector("#b").style.background="black";
+        document.querySelector("#b").style.color="white";
+      }
+      // .c - css 표현법 - 클래스가 c
+      document.querySelector(".c").onclick=function() {
+        document.querySelector(".c").style.background="coral";
+        document.querySelector(".c").style.color="blue";
+      }
     </script>
   </div>
   <!-- ex -->
