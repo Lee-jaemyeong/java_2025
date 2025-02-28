@@ -53,3 +53,8 @@
  3. html+css - click 이벤트(querySelector)
 
 ---
+#### 10. 2025-02-28
+ 1. OOP(생성자) - 생성자형식(기본생성자[디폴트생성자], 파라미터[알규먼트]가 있는 생성자)
+ 2. OOP(static) - runtime data area(method, heap, stack), static
+
+---
