@@ -96,3 +96,8 @@
    > 5) 실체화관계( 인터페이스 )
       - (implements , Can do this , 빈삼각형과 점선)
       - 객체가 해야할 일, 할 수 있는 일 - 책임
+ 4. html-css (복습)
+   1) click event
+   2) 기본문법
+
+---
