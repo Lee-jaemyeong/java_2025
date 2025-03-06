@@ -2,7 +2,7 @@ package mini_project;
 
 import java.util.Scanner;
 
-public class Bank_JM2 {
+public class Bank_JM_Arr {
 	public static void main(String[] args) {
 		//변수
 		String[] ids = new String[5];
@@ -31,6 +31,13 @@ public class Bank_JM2 {
 			age = scanner.nextInt();
 			System.out.print("잔액 입력 : ");
 			cash = scanner.nextInt();
+			
+			for(int i=0;i<ids.length;i++) {
+				ids[i]=id;
+				passes[i]=pass;
+				ages[i]=age;
+				cashes[i]=cash;
+				}
 			continue;
 		}
 		
