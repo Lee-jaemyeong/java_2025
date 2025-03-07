@@ -1668,3 +1668,20 @@ class Cat extends Animal{
    
    class interSon2 extends 클래스명 implements 인터페이스명1, 인터페이스명2{  }
    // 구현력이 없어서 다중상속가능
+   
+ ● 10.익명클래스
+ 1. 익명클래스
+   - 이름이 없는 객체,
+   - 한번만 사용하고 버려지는 객체를 사용할 때
+   - 인터페이스 테스트, ui이벤트 처리객체
+   
+ 연습문제1)  익명클래스
+패키지명 : com.company.java014_ex
+클래스명 : NoNameClassEx001
+다음과 같이 코드를 작성하시오.
+    interface Calc{ public double exec(double num1, double num2); }
+
+   사용하는부분)  익명클래스 Calc 인터페이스 테스트하기
+   - 구현객체안만들고 exec를 이용해서 더하기 기능이 가능한지 확인
+   System.out.println(calc.exec(10,3));  //13  더하기기능
+ 
