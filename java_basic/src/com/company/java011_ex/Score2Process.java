@@ -14,6 +14,6 @@ public class Score2Process {
 		//       std[0].pass = std[0].avg >=60? "합격" : "불합격";
 		//ver-2. not visible → private - getters/setters
 		// std[0].setPass( std[0].getAvg()>=60? "합격" : "불합격" );
-		for(int i=0;i<std.length;i++)std[i].setPass( std[i].getAvg()>=60? "합격" : "불합격" );
+		for(int i=0;i<std.length;i++) {std[i].setPass( std[i].getAvg()>=60? "합격" : "불합격" );}
 	}
 }

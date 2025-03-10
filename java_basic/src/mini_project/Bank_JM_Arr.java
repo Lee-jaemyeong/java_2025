@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class Bank_JM_Arr {
 	public static void main(String[] args) {
 		// 변수
-		String[] ids = new String[5];
-		String[] passes = new String[5];
-		int[] ages = new int[5];
-		int[] cashes = new int[5];
+		String[] ids = new String[3];
+		String[] passes = new String[3];
+		int[] ages = new int[3];
+		int[] cashes = new int[3];
 
 		int bank;
 		String id = "", temp_id = "", temp_pass = "", pass = "";
@@ -105,8 +105,8 @@ public class Bank_JM_Arr {
 					switch (del) {
 					case 'Y':
 					case 'y':
-						ids[cnt] = " ";
-						passes[cnt] = " ";
+						ids[cnt] = null;
+						passes[cnt] = null;
 						System.out.println("삭제되었습니다.");
 					case 'N':
 					case 'n':

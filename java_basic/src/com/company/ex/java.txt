@@ -16,9 +16,6 @@
 - object oriented programming
 - 부품객체(class)를 조립해서 만들어가는 프로그래밍 기법
 
-part3) oop 활용
-  - collection ( ArrayList ) , Thread , lambda + Stream( method 연관) / io / network
-
 ■3. 설치 (1) java
 1) java.sun.com 다운로드 받아서 설치
  - JDK 17.0.14
@@ -1685,3 +1682,117 @@ class Cat extends Animal{
    - 구현객체안만들고 exec를 이용해서 더하기 기능이 가능한지 확인
    System.out.println(calc.exec(10,3));  //13  더하기기능
  
+ --------------------------------------------------------------------------------
+>> part3) oop 활용
+  - collection ( ArrayList ) , Thread , lambda + Stream( method 연관) / io / network
+--------------------------------------------------------------------------------
+ 
+ ◆ 1. Collection Framework
+ 1. 저장단위
+ 변수 < 배열 < 클래스 < 콜렉션 프레임워크 < 파일 < db
+ 
+ 2. 콜렉션 프레임워크
+ - [배열]의 단점을 개선한 클래스 , 객체(클래스)만 저장가능
+ - 동적배열
+ 
+ - 배열
+ 1) 같은 타입만 묶어서 저장가능
+ 2) 배열생성시 크기를 지정해서 사용, 
+    추후 변경이 불가능             String[] arr = new String[3];
+    
+ 3. 핵심 인터페이스
+ 1) List  : 순서가 있음 O,중복허용 O  기차
+            add, get, size, remove, contains
+ 2) Set   : 순서가 없음 X,중복허용 X  주머니
+ 		    add, get(X) 향상된 for/Iterator, size, remove, contains
+ 3) Map   : key,value 쌍         사전
+  			add(X) put
+  			, get(key) 향상된 for/Iterator, size, remove, contains
+  			
+연습문제1)  Collection  Framework
+패키지명 : com.company.java015_ex
+클래스명 : ListEx001
+다음과 같이 코드를 작성하시오.
+ 1.  ArrayList이용해서 colors 만들기
+ 2. red, green, blue 데이터 추가
+ 3. 출력
+
+
+연습문제2)  Collection  Framework
+패키지명 : com.company.java015_ex
+클래스명 : ListEx002
+1.  numbers ArrayList 만들기
+2.  one, two, three 데이터 추가
+3.  사용자에게 1,2,3 입력받기
+4. 1을 입력받으면 one 출력
+    2를입력받으면 two 출력
+    3을입력받으면 three 출력
+    
+연습문제3)  Collection  Framework
+패키지명 : com.company.java015_ex
+클래스명 : ListEx003
+1. UserInfo    Dto 클래스만들기    - 속성 :  private  String name; private  int age;
+2. users ArrayList 만들기
+3. 다음의 데이터 넣기
+   new UserInfo("아이언맨" , 50) , new UserInfo("헐크" , 40) , new UserInfo("캡틴" , 120)
+4. for+size / 향상된 for 이용해서 데이터 출력
+5. 사용자들의 이름 입력받기 - 이름을 입력받으면 해당하는  유저의 자료출력
+
+> 원하는 유저의 이름을 입력하세요    _예) 아이언맨
+"아이언맨" , 50
+
+연습문제4)  Collection  Framework
+패키지명 : com.company.java015_ex
+클래스명 : ListEx004
+1. Fruits  Dto 클래스만들기    
+    속성 :  private int no;   private  String name; private  int price;
+2. fruits     ArrayList 만들기
+3. 다음의 데이터 넣기
+   new Fruits(1, "apple" , 2000) ,  new Fruits(2, "banana" , 2500) ,  new Fruits(3, "coconut" , 4500)
+4. for+size / 향상된 for 이용해서 데이터 출력
+5. 1,2,3 과일정보를 입력하시오. - 번호을 입력받으면 해당하는  과일정보의 자료출력
+   String [] fruitinfo = {"사과는 빨갛다" , "바나나는 노랗다" , "코코넛은 코코하다"};
+
+> 1,2,3 과일정보를 입력하시오.   _예) 2
+번호: 2,   이름 : banana, 가격:2500
+바나나는 노랗다
+
+연습문제1)  Collection  Framework
+패키지명 : com.company.java015_ex
+클래스명 : SetEx001
+다음과 같이 코드를 작성하시오.
+ 1.  Hash이용해서 colors 만들기
+ 2. red, green, blue ,green 데이터 추가
+ 3. 출력
+ 4. 갯수출력  
+ 
+연습문제2)  Collection  Framework
+패키지명 : com.company.java015_ex
+클래스명 : SetEx002
+1. UserInfo2    Dto 클래스만들기  - 속성 : private int no; private  String name; private  int age;
+2. users   HashSet만들기
+3. 다음의 데이터 넣기
+   new UserInfo(1, "아이언맨" , 50) , new UserInfo(2, "헐크" , 40) , new UserInfo(3, "캡틴" , 120)
+4. 향상된 for / Interator 이용해서 데이터 출력
+5. 사용자들의 이름 입력받기 - 이름을 입력받으면 해당하는  유저의 자료출력
+
+연습문제3)  Collection  Framework
+패키지명 : com.company.java015_ex
+클래스명 : SetEx003
+- 중복되는 숫자없이  랜덤으로 숫자6개를 받는 로또를 만들려고 한다.
+1. 알맞은 콜렉션프레임워크는?
+2. 프로그램을 작성하시오.
+
+연습문제4)  Collection  Framework
+패키지명 : com.company.java015_ex
+클래스명 : SetEx004
+1. HashSet 만들기  
+2. 아래데이터 넣기
+scores.add(new  Score("아이언맨",30,40,50)); 
+scores.add(new  Score("아이언맨",30,40,50)); 
+scores.add(new  Score("아이언맨",30,40,50)); 
+scores.add(new Score("헐크"   ,40,60,70)); 
+scores.add(new  Score("캡틴",80,90,100));
+> 갯수는 3개로 나오게 만들기   ( hashCode, equals)
+
+3. Iterator로 출력하기 - 사용자정보,총점, 평균
