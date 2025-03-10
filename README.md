@@ -94,8 +94,8 @@
    3) 집합관계
    4) 의존관계
    5) 실체화관계( 인터페이스 )
-     5-1 (implements , Can do this , 빈삼각형과 점선)
-     5-2 객체가 해야할 일, 할 수 있는 일 - 책임
+     5-1) (implements , Can do this , 빈삼각형과 점선)
+     5-2) 객체가 해야할 일, 할 수 있는 일 - 책임
  4. html-css (복습)
    1) click event
    2) 기본문법
@@ -107,3 +107,11 @@
  3. OOP(Exception) - try catch finally, throws
 
 ---
+#### 15. 2025-03-10
+ 1. OOP 복습 - OOP part 1
+ 2. OOP 활용(Collection Framework) - 동적배열(배열의 단점을 개선한 클래스)
+   2-1) 핵심 인터페이스
+    - List (index O, 중복허용 O, add/get(번호)/size/remove/contains)
+    - Set (index X, 중복허용 X, add/향상된 for, Iterator/size/remove/contains)
+    - Map
+ 3. html + css (BootStrap) - 디바이스 사이즈
