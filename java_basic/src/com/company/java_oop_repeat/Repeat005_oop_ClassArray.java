@@ -20,22 +20,28 @@ class Score {
 class ScoreProcess {
 	public void process_avg(Score[] std) {
 		for(int i=0;i<std.length;i++) {
-			std[i].setAvg((std[i].getKor()+std[i].getEng()+std[i].getMath())/3);
+			std[i].setAvg((std[i].getKor()+std[i].getEng()+std[i].getMath())/3.0);
 		}
 	}
 	public void process_pass(Score[] std) {
 		for(int i=0;i<std.length;i++) {
 			std[i].setPass(
-					(std[i].getAvg()>=60 ? "합격" :
-						std[i].getKor()<40 && std[i].getEng()<40 && std[i].getMath()<40? "과락" : "불합격")
+					(std[i].getAvg()<=60 ? "불합격" :
+						std[i].getKor()<40 && std[i].getEng()<40 && std[i].getMath()<40? "과락" : "합격")
 					);
 		}
 	}
 }
 class ScorePrint {
 	public void show_title() {System.out.println("이름\t국어\t영어\t수학\t평균\t합격여부");}
-	public void show(Score std) {show_title();}
-	public void show(Score[] std) {}
+	public void show(Score std) {}
+	public void show(Score[] std) {
+		show_title();
+		for(int i=0;i<std.length;i++) {
+			System.out.println(
+				std[i].getName()+"\t"+std[i].getKor()+"\t"+std[i].getEng()+"\t"+std[i].getMath()+"\t"+String.format("%.2f", std[i].getAvg())+"\t"+std[i].getPass());
+		}
+	}
 }
 public class Repeat005_oop_ClassArray {
 	public static void main(String[] args) {
