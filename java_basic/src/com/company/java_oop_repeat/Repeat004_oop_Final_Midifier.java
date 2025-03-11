@@ -1,10 +1,12 @@
 package com.company.java_oop_repeat;
-// Q.접근자의 범위를 넓은 범위에서 좁은 범위로 적으시오.
-// public > protected > default(package) > private
+//1. 바뀌면 안되게 설정 final(하지마) 클래스(상속받지마) 멤버변수(수정못해!: 상수) 멤버함수(오버라이딩하지마)
+//2. 멤버변수 초기화 : 기본값 - 명시적초기화 - 초기화블록 - 생성자
+//3. Q.접근자의 범위를 넓은 범위에서 좁은 범위로 적으시오.
+//	 public > protected > default(package) > private
 class User004 {
-	char division='A'; // A,B,C,D 4가지 타입으로 분류할 수 있다.
-	String jumin="123456-1234567";
-	public User004() { }
+	final char division; // A,B,C,D 4가지 타입으로 분류할 수 있다.
+	final String jumin;
+	public User004() {division='A'; jumin="123456-1234567";}
 	public User004(char division, String jumin) { this.division = division; this.jumin = jumin; }
 	@Override public String toString() { return "User004 [division=" + division + ", jumin=" + jumin + "]"; }
 }

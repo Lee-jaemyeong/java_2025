@@ -1684,7 +1684,8 @@ class Cat extends Animal{
  
  --------------------------------------------------------------------------------
 >> part3) oop 활용
-  - collection ( ArrayList ) , Thread , lambda + Stream( method 연관) / io / network
+  - collection ( ArrayList ) ,  lambda + Stream( method 연관) , 
+    Thread / network , io
 --------------------------------------------------------------------------------
  
  ◆ 1. Collection Framework
@@ -1796,3 +1797,75 @@ scores.add(new  Score("캡틴",80,90,100));
 > 갯수는 3개로 나오게 만들기   ( hashCode, equals)
 
 3. Iterator로 출력하기 - 사용자정보,총점, 평균
+
+연습문제1)  Collection  Framework
+패키지명 : com.company.java016_ex
+클래스명 : MapEx001
+1. MAP 만들기
+KEY   VALUE
+피구왕   통키
+---------------------
+제빵왕   김탁구
+---------------------
+요리왕   비룡
+
+Map<String, String> map = new HashMap<>();
+
+2 다음과 같이 문제풀기
+==============================
+KING   NAME
+==============================
+피구왕   통키
+---------------------
+제빵왕   김탁구
+---------------------
+요리왕   비룡
+---------------------
+KING의 정보를 제공중입니다
+이름을 입력하세요> 제빵왕
+
+ㅁ제빵왕 : 김탁구
+
+연습문제2)  Collection  Framework
+패키지명 : com.company.java016_ex
+클래스명 : MapEx002
+Q1. HashMap만들기
+Q2. 아래데이터 넣기
+map.put(  1,  new UserInfo("아이언맨"    , 50) );  // 1 넣어도 Integer( 클래스, 객체 )
+map.put(  2,  new UserInfo("헐크"       , 40) );  // wrapper 클래스
+map.put(  3,  new UserInfo("캡틴"       , 120) ); // boxing
+map.put(  1,  new UserInfo("아이언맨-new", 50) ); 
+
+Q3. Iterator로 출력하기 - 사용자정보 
+
+연습문제3)  Collection  Framework
+패키지명 : com.company.java016_ex
+클래스명 : MapEx003
+1. HashMap만들고 필요한 속성을 추가하시오.
+2. 갯수가 2개가 나오게 하시오
+class Fruit{
+   private int no;
+   private String name;    
+}
+
+public class MapEx003 {
+   public static void main(String[] args) {
+      Map< Fruit, Integer > map = new HashMap<>();
+      
+      map.put( new Fruit(1, "Apple")  , 1);
+      map.put( new Fruit(1, "Apple")  , 1);
+      map.put( new Fruit(2, "Banana") , 2);
+                           
+                             System.out.println("Total : " + map.size());
+             }
+}
+
+◆ 2. Lambda + Stream
+1. Lambda?
+- 자바에서 함수적 프로그래밍 지원기법 
+- 코드 간결하게
+
+- 함수형인터페이스
+  : 1개의 추상메서드를 갖는 인터페이스
+  
+  
