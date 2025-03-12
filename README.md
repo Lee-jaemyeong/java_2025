@@ -117,4 +117,27 @@
  3. html + css (BootStrap) - 디바이스 사이즈
 
 ---
-#### 15. 2025-03-11
+#### 16. 2025-03-11
+ 1. OOP 활용 복습 - ArrayList,HashSet
+ 2. OOP 활용 (Collection Framework) - HashMap
+ 3. OOP 활용 (Collection Framework) - Iterator
+ 4. OOP 활용 (Lambda + Stream) - Lambda (함수적 프로그래밍 지원기법 )
+
+---
+#### 17. 2025-03-12
+ 1. OOP 활용 복습 - Lambda
+ 2. OOP 활용 (Lambda + Stream) - Lambda(자바 api - 함수 인터페이스)
+  2-1) 함수 인터페이스
+   1. Consumer - 받는용도 - accept
+   2. Supplier - 제공용도 - get
+   3. Predicate - 판단용도 - test
+   4. Function - 처리용도 - apply
+   5. Operator - 연산용도 - apply
+ 3. OOP 활용 (Lambda + Stream) - Stream( 데이터 종류에 상관없이( Stream ) 같은 방식으로 처리 ( lambda ) )
+ 4. OOP 활용 (JAVA I/O) - 입력(input)과 출력(output)
+   4-1) 분류
+    1. byte 단위(InputStream / OutputStream) - 모든종류( 그림, 멀티미디어, 문자 )
+    2. char 단위(Reader / Writer ) - 문자
+ 5. OOP 활용 (JAVA I/O) - 보조스트림 ( 스트림? 사용연결통로 )
+
+---
