@@ -1868,4 +1868,41 @@ public class MapEx003 {
 - 함수형인터페이스
   : 1개의 추상메서드를 갖는 인터페이스
   
+ 2. 자바 api의 함수형 인터페이스
+  1. Consumer - 받는용도 - accept
+  2. Supplier - 제공용도 - get
+  3. Predicate - 판단용도 - test
+  4. Function - 처리용도 - apply
+  5. Operator - 연산용도 - apply
+  
+ 3. Stream
+  - 데이터 종류에 상관없이( Stream ) 같은 방식으로 처리 ( lambda )
+  
+ ◆ 3. JAVA IO
+ 1. JAVA I/O?
+  - 입력(input)과 출력(output)
+  - 두 대상간의 데이터를 주고 받는 것
+  - 스트림이란? 사용연결통로
+  
+  	입력스트림         →         [프로그램]         →         출력스트림
+  	          InputStream                OutputStream
+  	             Reader                     Writer
+  	
+ 2. JAVA I/O 분류
+  - byte 단위 / char 단위
+  - byte 단위(InputStream / OutputStream) - 모든종류( 그림, 멀티미디어, 문자 )
+  - char 단위(Reader / Writer ) - 문자
+  
+ 3. 보조스트림
+  - 스트림이란? 사용연결통로
+  - new BufferedReader( new InputStreamReader(new FileInputStream(file)) )
+  - 1) new FileInputStream(file) [byte#]/char  
+  - 2) new InputStreamReader     바이트를 문자스트림으로 - 텍스트처리가능
+  - 3) new BufferedReader        속도향상
+  
+  a 쓰고 a 읽어오고
+  b 쓰고 b 읽어오고
+  c 쓰고 c 읽어오고
+  
+  abc 쓰고 abc 읽어오고
   
