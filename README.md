@@ -127,12 +127,12 @@
 #### 17. 2025-03-12
  1. OOP 활용 복습 - Lambda
  2. OOP 활용 (Lambda + Stream) - Lambda(자바 api - 함수 인터페이스)
- 2-1) 함수 인터페이스
-  - Consumer - 받는용도 - accept
-  - Supplier - 제공용도 - get
-  - Predicate - 판단용도 - test
-  - Function - 처리용도 - apply
-  - Operator - 연산용도 - apply
+  - 함수 인터페이스
+   - Consumer - 받는용도 - accept
+   - Supplier - 제공용도 - get
+   - Predicate - 판단용도 - test
+   - Function - 처리용도 - apply
+   - Operator - 연산용도 - apply
  3. OOP 활용 (Lambda + Stream) - Stream( 데이터 종류에 상관없이( Stream ) 같은 방식으로 처리 ( lambda ) )
  4. OOP 활용 (JAVA I/O) - 입력(input)과 출력(output)
  4-1) 분류
