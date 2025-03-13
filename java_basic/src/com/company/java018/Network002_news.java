@@ -47,6 +47,7 @@ public class Network002_news {
 	}
 }
 /*
+	//내 로컬에서 사용 - http://localhost:8080
 #1.
 	Client ID: k397eleMXGY25hqhpx5p
 	Client Secret: tAjvip6d9j
