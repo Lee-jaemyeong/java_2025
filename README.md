@@ -150,8 +150,8 @@
   - 1) new FileInputStream(file) [byte#]/char  
   - 2) new InputStreamReader     바이트를 문자스트림으로 - 텍스트처리가능
   - 3) new BufferedReader        속도향상 (StringBuffer)
- 6. Network
-  - URL
+ 6. Network  (http://localhost:8080 내로컬에서만 사용:값)
+  - URL 
   - 연결객체 (HttpURLConnection)
   - 요청설정 (파라미터)
   - 응답코드 - 200(getResponseCode())
