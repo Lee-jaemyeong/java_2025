@@ -39,8 +39,8 @@ public class Lambda004_api {
 		//2. (t)->{}  파라미터 O / 리턴값 O  유무
 		// Function<String,Integer> function = (t)->{return Integer.parseInt(t);};
 		// Function<String,Integer> function = t -> Integer.parseInt(t);
-		Function<String,Integer> function = Integer::parseInt;
-		System.out.println(function.apply("10") + 3); // 13 문자열을 숫자 Integer.parseInt()
+		Function<String,Integer> function = Integer::parseInt; // 문자열을 숫자 Integer.parseInt()
+		System.out.println(function.apply("10") + 3); // 13 
 		
 		//#5. Operator - 연산용도 - apply
 		//1.메서드찾기

@@ -8,7 +8,7 @@ interface InterTest24 {int test(int a);}
 public class Repeat002_Lambda {
 	public static void main(String[] args) {
 		//람다식으로 구현하시오.
-		//Q1
+		//Q1 파라미터 X / 리턴값 X
 		// InterTest21 test1 = () -> {System.out.println("안녕");} test1.test();
 		InterTest21 test1 = () -> System.out.println("안녕"); test1.test();
 		//Q2
