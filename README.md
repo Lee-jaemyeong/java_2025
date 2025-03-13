@@ -141,3 +141,20 @@
  5. OOP 활용 (JAVA I/O) - 보조스트림 ( 스트림? 사용연결통로 )
 
 ---
+#### 18. 2025-03-13
+ 1. OOP 활용 복습 - OOP part2 (JVM 영역, 클래스, 다형성, 콜렉션프레임워크)
+ 2. OOP 활용 복습 - JAVA I/O(폴더 + text파일 만들기)
+ 3. OOP 활용 - (InputStream / OutputStream) : byte단위
+ 4. OOP 활용 - (InputStream / OutputStream) : char단위
+ 5. OOP 활용 (JAVA I/O) - 보조스트림
+  - 1) new FileInputStream(file) [byte#]/char  
+  - 2) new InputStreamReader     바이트를 문자스트림으로 - 텍스트처리가능
+  - 3) new BufferedReader        속도향상 (StringBuffer)
+ 6. Network
+  -1. URL
+  -2. 연결객체 (HttpURLConnection)
+  -3. 요청설정 (파라미터)
+  -4. 응답코드 - 200(getResponseCode())
+  -5. 응답데이터
+
+---
