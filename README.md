@@ -121,32 +121,32 @@
  1. OOP 활용 복습 - ArrayList,HashSet
  2. OOP 활용 (Collection Framework) - HashMap
  3. OOP 활용 (Collection Framework) - Iterator
- 4. OOP 활용 (Lambda + Stream) - Lambda (함수적 프로그래밍 지원기법 )
+ 4. Lambda + Stream - Lambda (함수적 프로그래밍 지원기법 )
 
 ---
 #### 17. 2025-03-12
- 1. OOP 활용 복습 - Lambda
- 2. OOP 활용 (Lambda + Stream) - Lambda(자바 api - 함수 인터페이스)
+ 1. Lambda 복습 - Lambda
+ 2. Lambda + Stream - Lambda(자바 api - 함수 인터페이스)
   - 함수 인터페이스
    - Consumer - 받는용도 - accept
    - Supplier - 제공용도 - get
    - Predicate - 판단용도 - test
    - Function - 처리용도 - apply
    - Operator - 연산용도 - apply
- 3. OOP 활용 (Lambda + Stream) - Stream( 데이터 종류에 상관없이( Stream ) 같은 방식으로 처리 ( lambda ) )
- 4. OOP 활용 (JAVA I/O) - 입력(input)과 출력(output)
+ 3. (Lambda + Stream - Stream( 데이터 종류에 상관없이( Stream ) 같은 방식으로 처리 ( lambda ) )
+ 4. JAVA I/O - 입력(input)과 출력(output)
  4-1) 분류
   - byte 단위(InputStream / OutputStream) - 모든종류( 그림, 멀티미디어, 문자 )
   - char 단위(Reader / Writer ) - 문자
- 5. OOP 활용 (JAVA I/O) - 보조스트림 ( 스트림? 사용연결통로 )
+ 5. JAVA I/O - 보조스트림 ( 스트림? 사용연결통로 )
 
 ---
 #### 18. 2025-03-13
  1. OOP 활용 복습 - OOP part2 (JVM 영역, 클래스, 다형성, 콜렉션프레임워크)
- 2. OOP 활용 복습 - JAVA I/O(폴더 + text파일 만들기)
- 3. OOP 활용 - (InputStream / OutputStream) : byte단위
- 4. OOP 활용 - (InputStream / OutputStream) : char단위
- 5. OOP 활용 (JAVA I/O) - 보조스트림
+ 2. JAVA I/O - JAVA I/O(폴더 + text파일 만들기)
+ 3. JAVA I/O - (InputStream / OutputStream) : byte단위
+ 4. JAVA I/O - (InputStream / OutputStream) : char단위
+ 5. JAVA I/O - 보조스트림
   - 1) new FileInputStream(file) [byte#]/char  
   - 2) new InputStreamReader     바이트를 문자스트림으로 - 텍스트처리가능
   - 3) new BufferedReader        속도향상 (StringBuffer)
