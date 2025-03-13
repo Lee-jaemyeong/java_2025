@@ -151,10 +151,10 @@
   - 2) new InputStreamReader     바이트를 문자스트림으로 - 텍스트처리가능
   - 3) new BufferedReader        속도향상 (StringBuffer)
  6. Network
-  -1. URL
-  -2. 연결객체 (HttpURLConnection)
-  -3. 요청설정 (파라미터)
-  -4. 응답코드 - 200(getResponseCode())
-  -5. 응답데이터
+  - URL
+  - 연결객체 (HttpURLConnection)
+  - 요청설정 (파라미터)
+  - 응답코드 - 200(getResponseCode())
+  - 응답데이터
 
 ---
