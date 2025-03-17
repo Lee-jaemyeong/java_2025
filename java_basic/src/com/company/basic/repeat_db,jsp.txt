@@ -1,0 +1,55 @@
+repeat _ db
+
+Q1. RDB?
+관계형 데이터베이스 - 테이블들이 관계(외래키)
+
+Q2. mysql에 접속하는 코드는? 아이디root / 비번 1234
+mysql -uroot -p
+>1234
+
+Q3. database 만들기 db명 : db1
+create databases db1;
+
+Q4. db1 사용
+use db1;
+
+Q5. db1 안에 테이블 만들기 : userinfos
+    번호 : no    자료형 int  필수입력, 숫자자동증가, 기본키
+    이름 : name 자료형 varchar(100) 필수입력
+    나이 : age  자료형 int
+create table userinfos(
+  no int not null auto_increment primary key,
+  name varchar(100) not null,
+  age int
+);
+desc userinfos;
+show tables;
+
+Q6. userinfos 테이블에 age int 필수입력으로 변경하시오
+alter table userinfos modify age int not null;
+
+Q7. userinfos 테이블에 name varchar(50) 필수입력으로 수정하시오
+alter table userinfos modify name varchar(50) not null;
+
+Q8. userinfos 테이블에 email varchar(50) 추가하시오
+alter table userinfos add email varchar(50) not null;
+
+Q9. userinfos 테이블에 email 삭제하시오
+alter table userinfos drop email;
+
+Q10. userinfos 테이블에 테이블명을 userinfo로 수정하시오
+alter table userinfos rename userinfo;
+
+--------------------------------------------------------------------------------------------
+
+repeat_ jsp
+
+Q1. 클라이언트 ↔ 서버?
+  서비스이용(요청 -> request)                 서비스제공(응답 -> response)
+
+Q2. WS와 WAS ?
+   Web Server : 정적서버 (apache)
+   Was Server : 동적서버 (apache + tomcat)
+
+Q3. FORM 태그 - 처리컨테이너( action ) / 처리방식 ( method ) / 데이터넘길때 보관이름 ( name )
+

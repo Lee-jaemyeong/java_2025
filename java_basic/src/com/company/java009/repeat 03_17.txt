@@ -1,0 +1,38 @@
+Q1.
+1-1. 자바메모리구조 - [ Runtume DATA AREA ]  jvm 메모리영역
+1-2 . RUNTIME DATA AREA를 적으시오.
+1) ( method ) area : 정보저장( 클래스정보, static, final )
+2) ( heap ) area : 실체화(객체-인스턴스) 저장, Garbage Collector가 처리
+3) ( stack ) area : 임시값 저장, 메서드의 작업공간, 지역변수 잠깐 사용되는 데이터
+
+Q2. class vs instance를 설명하시오.
+- class는 설계도 ( method )
+- instance는 실제로 만든 부품객체 ( 실체화 heap )
+
+Q3. A1 a = new A1();
+3-1) new  heap 공간에 메모리빌리기, 객체생성
+3-2) A1()  초기화
+3-3) a      메모리에서 빌린 주소 줌
+
+Q4. class와 instance를 메모리 구조와 연결지어서 설명하시오.
+class A1{}
+public class Class001 {
+    public static void main(String[] args) { //jvm - main 구동시점
+         // int i;  자료형 변수명;
+            A1 a = new A1();
+            System.out.println(a);
+            A1 a2 = new A1();
+            A1 a3 = new A1();
+      }
+}
+
+-----------------------------------------------------------------
+[method 정보들]  Class001.class / A1.class   #설계도(class)
+-----------------------------------------------------------------
+[heap]                                                    | [stack 임시]
+3번지 A1{}                                              ←  a3(3번지)
+2번지 A1{}                                              ←  a2(2번지)
+1번지 A1{}                                              ←  a(1번지)
+------------------------------------------------------------------
+# instance 실제로 만든 부품객체들
+(실체화) heap
