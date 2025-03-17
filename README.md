@@ -174,3 +174,14 @@
  4. MYSQL설치
 
 ---
+#### 20. 2025-03-17
+ 1. DBMS - Database Management System(데이터베이스 관리 시스템)
+ 2. RDBS - Relational Database Management System(관계형 데이터베이스 관리 시스템)
+ 3. RDBMS 구성요소
+  - 개체( Entity : Table )
+  - 관계( Relational : 외래키 )
+  - 속성( Arrtibute : 필드 )
+ 4. 데이터베이스 언어
+  - 정의어(DDL)  -  create, alter, drop - CAD
+  - 조작어(DML)  -  insert, select, update, delete - CRUD
+  - 제어어(DCL)  -  grant, revoke
