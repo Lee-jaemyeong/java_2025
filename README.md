@@ -159,3 +159,18 @@
  7. html + css (BootStrap) - css
 
 ---
+#### 19. 2025-03-14
+ 1. Thread
+  - 프로세스
+  - 멀티프로세스
+  - 동시성과 병렬성
+  - Thread 상속 / Runnable 인터페이스 구현
+ 2. Network
+  - Network
+  - 서버와 클라이언트
+  - Socket 프로그래밍
+  - TCP/IP
+ 3. 채팅프로그램 만들기
+ 4. MYSQL설치
+
+---
