@@ -186,11 +186,11 @@
   - 조작어(DML)  -  insert, select, update, delete - CRUD
   - 제어어(DCL)  -  grant, revoke
  5. TABLE - 저장소 안에 분류표
-   -자료형
+  -자료형
      - 1) 숫자 - int, double
      - 2) 문자 - char 고정문자열 - y/n / varchar 가변형문자열 / text
      - 3) 날짜 - date, datetime, timestamp
-   -속성
+  -속성
      - 필수입력     - not null  ( 아니오, 값없음 )
      - 숫자자동증가 - auto_increment
      - 기본키       - primary key
@@ -202,11 +202,11 @@
   - 슈퍼키(속성 + 속성 집합으로 구성된 키)
  7. alter
   - 문법 alter table 테이블명 ();
-   - add   (추가)      필드명 자료형 속성
-   - drop  (삭제)      필드명
-   - modify (필드수정) 수정할필드명 자료형 속성
-   - change (필드수정) 수정할필드명 새로넣을필드명 자료형 속성
-   - rename            새로운테이블명
+    - add   (추가)      필드명 자료형 속성
+    - drop  (삭제)      필드명
+    - modify (필드수정) 수정할필드명 자료형 속성
+    - change (필드수정) 수정할필드명 새로넣을필드명 자료형 속성
+    - rename            새로운테이블명
  8. jsp
   - 클라이언트 ↔ 서버 (서비스이용(요청 -> request)        서비스제공(응답 -> response))
   - WS : Web Server(정적서버 apache)
