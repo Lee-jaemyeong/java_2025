@@ -186,11 +186,11 @@
   - 조작어(DML)  -  insert, select, update, delete - CRUD
   - 제어어(DCL)  -  grant, revoke
  5. TABLE - 저장소 안에 분류표
-  -자료형
+  - 자료형
      - 1) 숫자 - int, double
      - 2) 문자 - char 고정문자열 - y/n / varchar 가변형문자열 / text
      - 3) 날짜 - date, datetime, timestamp
-  -속성
+  - 속성
      - 필수입력     - not null  ( 아니오, 값없음 )
      - 숫자자동증가 - auto_increment
      - 기본키       - primary key
