@@ -187,7 +187,8 @@
 ---
 #### 5. 2025-02-21
  1. 제어문(3) - 반복문(for)
- 2. mini project - Bank(https://youtu.be/RloOIEwHmbk)
+ 2. mini project - Bank
+   [![Video Label](http://img.youtube.com/vi/'RloOIEwHmbk'/0.jpg)](https://youtu.be/'RloOIEwHmbk')
 
 ---
 #### 4. 2025-02-20
