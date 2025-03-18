@@ -1,0 +1,56 @@
+java
+
+Q1. 생성자
+ 1. 역할? (초기화)
+ 2. [클래스 생성]할때 제일먼저 실행되는 특수한 형태의 메서드
+ 3. 생성자는 리턴값이 (없다.)
+ 4. 클래스명과 이름이 (같다.)
+
+Q2. 기본생성자를 반드시 선언해야하는 경우
+     ( 생성자 오버로딩 / 상속 )
+
+Q3. 생성자 초기화순서를 적으시오.
+ 기본값 - 명시적초기화 - 초기화블록 - 생성자
+
+Q4. 클래스변수,인스턴스변수,지역변수를 구분하시오.
+오류가 나면 오류나는 이유를 적으시오.
+----------------------------------------------------------------------------
+class A{
+  int a;  // 인스턴스변수
+  static String company; // 클래스변수
+ 
+  void method(){ int a=0; System.out.println(a);  }
+  static void show(){  System.out.println(this.a);  }  // 클래스함수 - this X
+
+  public A(){  }
+  public A(int a) {  this.a = a;  } // 지역변수
+}
+------------------------------------------------------------------------------
+
+mysql
+
+Q1. 5,fifth,555데이터 추가하기
+ - insert into userinfo values (5, 'fifth', 555);
+
+Q2. no가 5번인 데이터의 age를 55로 변경하기
+ - update userinfo set age=55 where no=5;
+
+Q3. no가 5번이고 name이 fifth인 데이터를 삭제하기
+ - delete from userinfo where no=5 and name='fifth';
+
+Q4. userinfo 데이터를 출력하기
+ - select *from userinfo;
+
+---------------------------------------------------------------------------------------
+
+jsp
+
+Q1. 전송버튼을 눌렀을 때 파일에서 빠진코드 작성
+
+String search = request.getParameter("para"); //##
+
+Q2. jdbc를 구현하려고 한다.
+ 필요한 메서드 적기
+
+1) 드라이버로드 ( Class.forName("com.mysql.cj.jdbc.Driver"); )
+2) DB연동 ( Connetion conn = DriverManager.getConnetion("jdbc:mysql://localhost:3306/mbasic","root","1234" )
