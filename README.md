@@ -1,4 +1,47 @@
+#### 22.2025-03-19
+ 1. MYSQL - CRUD(selete)
+   - 전체데이터 검색 : select *from 테이블명;
+   - 필드검색 : select 필드1(no...),필드2(name...) form 테이블명;
+   - 중복빼기(distinct) : select distinct 필드1 from 테이블명;
+   - 별명 as : select 필드1 as `별명1` , 필드2 `별명2` form 테이블명;
+   - 비교연산자 : =(같다),<>/!=(다르다), <(작다), <=(작거나 같다), >(크다), >=(크거나 같다)      
+   - 논리연산자 : and
+   - 범위로 추출 : between and
+   - 일치하는 레코드추출 : or, in
+   - 추출조건으로 null지정 : null과 같다는 것을 확인하고 싶을 때(=연산자 사용못함) is null
+   - 문자열 필터링
+      - like "a%" : a로 시작하는
+      - like "%a" : a로 끝나는
+      - like "%a%" : a가 포함되어 있는
+      - like "_a%" : 2번째 글자가 a인
+   - NOT(반대) : not in, not between and, is not null, not 필드명 ...
+ 2. jsp - DB연동
+   - Persistence(영속성)
+   - JDBC
+     - 드라이버로딩 : Class.forName()
+     - DB연결 : DriverManager.Connection
+     - Connection DB연동
+     - Statement PreparedStatement sql 구문실행
+     - ResultSet sql 구문실행 후 객체 받기(select)
 
+---
+#### 21.2025-03-18
+ 1. MYSQL - CRUD(조작어)
+   - insert(추가)
+   - update(수정)
+   - select(선택,확인)
+   - delete(삭제)
+ 2. jsp - 기본요소
+   - 주석 <!-- html 주석 -->, <%-- jsp 주석 --%>, <% //java 주석 %>
+   - 지시자 <%@page import="값"%>
+   - 스트립트립 <% %>
+   - 표현식 <%= %>
+ 3. jsp - FORM 태그 - 서버쪽으로 정보를 전달할때 사용하는 태그
+   - action : 요청을 처리해주는 컴포넌트 (링크)
+   - method : 요청을 처리해주는 방식 (get / post)
+   - name : 데이터 보관이름
+ 
+---
 #### 20. 2025-03-17
  1. DBMS - Database Management System(데이터베이스 관리 시스템)
  2. RDBS - Relational Database Management System(관계형 데이터베이스 관리 시스템)
