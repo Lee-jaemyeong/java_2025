@@ -43,3 +43,11 @@ delete from userinfo_ex where no=3 and age=10;
 
 #Q5.
 delete from userinfo_ex;
+
+#2025-03-20 repeat
+
+#Q1.
+select *from emp where depton=30 and ename like '%E%' and sal not between 1000 and 2000;
+
+#Q2.
+select *from emp where comm is null and mgr is not null and job in ('MANAGER','CLERK') and ename not like '_L%'; 
