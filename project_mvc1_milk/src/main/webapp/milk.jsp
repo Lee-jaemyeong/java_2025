@@ -131,7 +131,7 @@
 					 method="방식"       데이터 노출안됨 (post)
 					 name               oname, onum              text, number, email
 					 -->
-						<form action="milk_insert.jsp" method="post">
+						<form action="milk_insert.jsp" method="post" onsubmit="return form()">
 							<div class="mb-3 mt-3">
 								<label for="oname" class="form-label">주문할 우유이름</label> <input
 									type="text" class="form-control" id="oname"
@@ -204,6 +204,13 @@
 							</div>
 							<button type="submit" class="btn btn-danger">취소하기</button>
 						</form>
+						<script>
+						function form() {
+							let oname = document.querySelector("#oname");
+							
+							if( oname == value("") ){ alert("빈칸입니다."); oname.focus(); return false;}
+						}
+						</script>
 					<!--  -->
 					</div>
 				</div>
