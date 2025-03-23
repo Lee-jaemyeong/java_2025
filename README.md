@@ -198,7 +198,7 @@
  3. OOP(클래스배열) - 클래스[] 배열명 - new 클래스[갯수];
  4. mini project - Bank_Arr
 
- [![Video Label](http://img.youtube.com/vi/lTyqwdJSP5c/0.jpg)]([https://youtu.be/lTyqwdJSP5c]
+ [![Video Label](http://img.youtube.com/vi/lTyqwdJSP5c/0.jpg)](https://youtu.be/lTyqwdJSP5c)
 
 ---
 #### 10. 2025-02-28
