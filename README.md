@@ -1,5 +1,59 @@
+#### 24.2025-03-21
+ 1. MYSQL - Select Function(Number)
+   - ceil(올림)
+   - floor(내림)
+   - round(반올림)
+   - mod(숫자,나눌 수)(나머지 연산자)
+ 2. MYSQL - Function(String)
+   - length : 문자길이
+   - upper / lower   : 대문자 / 소문자
+   - instr( 문자열,찾을 문자열 )  : 문자열 위치찾기
+   - substr( 문자열,시작,갯수 )   : 문자열 일부분 추출
+   - left / right ( 문자열,갯수 ) : 왼쪽 추출 / 오른쪽 추출
+   - concat( 문자열,문자열 )   : 문자열 연결
+   - trim(),ltrim,rtrim    : 공백제거
+   - replace(문자열,찾아서,바꾸기) : 문자열 바꾸기
+   - repeat( 문자열,몇번 )  : 반복
+   - lpad( 문자열,전체자리수,특정문자 ) : 왼쪽 특정 문자 채우기
+   - rpad( 문자열,전체자리수,특정문자 ) : 오른쪽 특정 문자 채우기
+ 3. MYSQL - Select Function(Date)
+   - now(),current_time : 시스템 현재 시각 조회
+   - weekday : 요일
+   - date_format : 날짜지정,'%Y-%m-%d'
+   - date_add : ~일전 ~일후 (now() , interval -10 day)
+   - datediff : 차이 조회 ("2023-10-25","2023-10-24") = 1
+ 4. MYSQL - Select Function(if,case)
+   - if(조건,참,거짓) : 1형식
+   - case when 조건1 then 상태1 when 조건2 then 상태2 else 모든 조건에 해당되지 않을 때 end : 다형식
+ 5. jsp - 우유주문시스템(db연동)
+   - milk(delete) : 우유데이터 삭제 - 웹페이지에서 우유데이터(번호)를 입력받아 milk.jsp에 입력되어 있는 데이터 삭제
+   - 빈칸유효성검사 : 웹페이지에 빈칸이 있는 채로 버튼을 누르면 "빈칸입니다"가 뜨고 빈칸으로 이동
+ 6. jsp - jsp_basic(control,useful)
+   - if , switch , FOR/WHILE/DO WHILE 복습
+   - console.log : 콘솔창에 표시
+   - document.write : 웹페이지에 표시
+   - var - 전역변수, let - 지역변수 ( 변수중복 선언불가), const - 상수
+   - type of : 자료형 확인
+   - useful : 빈칸유효성검사 function form문안에 onsumit에 넣어 준 값 {let 변수 = document.querySelector("빈칸검사할 아이디"); if( 빈칸검사할 아이디.value == ""){ alert("빈칸입니다."); 빈칸검사할 아이디.focus(); return false; } }
+---
+#### 23.2025-03-20
+ 1. MYSQL - CRUD(selete 2)
+   - order by : 정렬(asc-오름차순,desc:내림차순)
+   - limit 갯수 : 갯수 제한
+ 2. MYSQL - CRUD(selete 3)
+   - 집계함수(Gruop by)
+     - avg(컬럼명) : 평균값
+     - max(컬럼명) : 최댓값
+     - min(컬럼명) : 최소값
+     - sum(컬럼명) : 합계
+     - conut(*)   : 요소수
+   - having 조건 집계함수 : 집계결과 필터링
+ 3. jsp - 우유주문시스템(db연동)
+   - milk(insert) : 우유데이터 삽입 - 웹페이지에서 우유데이터를 입력받아 milk.jsp에 데이터 삽입
+   - milk(update) : 우유데이터 수정 - 웹페이지에서 우유데이터를 입력받아 milk.jsp에 입력되어 있는 데이터 수정
+---
 #### 22.2025-03-19
- 1. MYSQL - CRUD(selete)
+ 1. MYSQL - CRUD(selete 1)
    - 전체데이터 검색 : select *from 테이블명;
    - 필드검색 : select 필드1(no...),필드2(name...) form 테이블명;
    - 중복빼기(distinct) : select distinct 필드1 from 테이블명;
@@ -196,6 +250,9 @@
  1. control part 복습
  2. OOP(지정접근자) - public, protected, default(package), private
  3. OOP(클래스배열) - 클래스[] 배열명 - new 클래스[갯수];
+ 4. mini project - Bank_Arr
+
+ [![Video Label](http://img.youtube.com/vi/lTyqwdJSP5c/0.jpg)](https://youtu.be/lTyqwdJSP5c)
 
 ---
 #### 10. 2025-02-28
