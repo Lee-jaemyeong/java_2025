@@ -161,7 +161,7 @@
 					 method="방식"       데이터 노출안됨 (post)
 					 name               ono, oname, onum             number, text, number
 					 -->
-						<form action="milk_update.jsp" method="post">
+						<form action="milk_update.jsp" method="post" onsubmit="return form_up()">
 							<div class="mb-3 mt-3">
 								<label for="ono_update" class="form-label"> 수정 주문번호 </label> <input
 									type="number" class="form-control" id="ono_update"
@@ -196,7 +196,7 @@
 					 method="방식"       데이터 노출됨 (get)
 					 name               ono                  number
 					 -->
-						<form action="milk_delete.jsp" method="get">
+						<form action="milk_delete.jsp" method="get" onsubmit="return form_del()">
 							<div class="mb-3">
 								<label for="ono_delete" class="form-label">취소 주문번호</label> 
 								<input type="number" class="form-control" id="ono_delete"
@@ -207,8 +207,24 @@
 						<script>
 						function form() {
 							let oname = document.querySelector("#oname");
+							let onum = document.querySelector("#onum");
 							
-							if( oname == value("") ){ alert("빈칸입니다."); oname.focus(); return false;}
+							if( oname.value == "" ){ alert("빈칸입니다."); oname.focus(); return false;}
+							if( onum.value == "" ){ alert("빈칸입니다."); onum.focus(); return false;}	
+						}
+						function form_up() {
+							let ono_update = document.querySelector("#ono_update");
+							let oname_update = document.querySelector("#oname_update");
+							let onum_update = document.querySelector("#onum_update");
+							
+							if( ono_update.value == "" ){ alert("빈칸입니다."); ono_update.focus(); return false;}
+							if( oname_update.value == "" ){ alert("빈칸입니다."); oname_update.focus(); return false;}
+							if( onum_update.value == "" ){ alert("빈칸입니다."); onum_update.focus(); return false;}
+						}
+						function form_del() {
+							let ono_delete = document.querySelector("#ono_delete");
+							
+							if( ono_delete.value == "" ){ alert("빈칸입니다."); ono_delete.focus(); return false;}
 						}
 						</script>
 					<!--  -->

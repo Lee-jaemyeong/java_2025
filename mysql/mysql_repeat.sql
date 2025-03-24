@@ -64,3 +64,33 @@ select depton,job,count(job) `사원수`,max(sal) `최고급여`,sum(sal) `급�
 select @@sql_mode;
 set session sql_mode = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
+#2025-03-24
+
+#Q1.
+create table join_userban(
+	no int not null auto_increment primary key,
+    name varchar(20) not null,
+    ban char(2)
+);
+desc join_userban;
+
+#Q2.
+insert into join_userban values(1,'first','A');
+insert into join_userban values(2,'second','B');
+insert into join_userban values(3,'third','A');
+insert into join_userban values(4,'fourth','C');
+insert into join_userban values(5,'fifth','B');
+insert into join_userban values(6,'sixth','C');
+insert into join_userban values(7,'fifth','B');
+insert into join_userban values(8,'sixth','C');
+
+select *from join_userban;
+
+#Q3.
+update join_userban set ban='D' where no>=7;
+
+#Q4.
+delete from join_userban where no>=7;
+
+#Q5.
+select ban,count(*) `반별 학생수` from join_userban group by ban;
