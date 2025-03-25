@@ -1,3 +1,35 @@
+#### 25.2025-03-24
+ 1. MYSQL - Select Function(join)
+   - join : 두 개 이상의 테이블들을 연결 또는 결합하여 데이터를 출력
+   - join 종류
+     - inner join : 양 쪽 테이블 모두 일치
+       - = join
+       - join on
+       - join using
+       - natural join
+     - outer join : 특정 테이블을 기준으로 검색
+       - left join
+       - right join
+ 2. jsp - 내장객체
+   - 내장객체 종류
+     - request(요청)
+     - response(응답)
+     - session(정보저장)
+     - out(출력)
+   - request(요청)
+     - jsp페이지가 웹컨테이너에 의해 서블릿으로 변환될때
+     - 고정된 이름의 객체 컨테이너로 자동으로 구현
+   - response(응답)
+     - Http요청에 대한 응답정보를 저장한 객체
+     - 응답처리를 하는객체인 response는 실행결과를 브라우저로 되돌려줄때 사용하는 내장객체
+     - jsp에서 다른페이지로 이동시키는방법
+       - sendRedierct   - 브라우저 url을 변경 , request/response객체가 유지되지 않음
+       - RequestDispatcher - 경로가 숨겨져서 안보임
+ 3. Milk - 우유주문시스템
+
+ [![Video Label](http://img.youtube.com/vi/5tDv0Q8iAMg/0.jpg)](https://youtu.be/5tDv0Q8iAMg)
+ 
+---
 #### 24.2025-03-21
  1. MYSQL - Select Function(Number)
    - ceil(올림)
