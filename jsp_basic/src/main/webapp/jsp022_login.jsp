@@ -17,12 +17,12 @@
 		<div class="my-5"><%=session.getAttribute("username")%></div>
 		
 		<h3>FORM-LOGIN</h3>
-		<p style="text-align:center"><img src="img/login.png" alt="lodin"></p>
+		<p style="text-align:center"><img src="img/login.png" alt="login"></p>
 		<form action="jsp022_login_action.jsp" method="post" onsubmit="return login()">
 		<h4>LOGIN</h4>
 			<div class="my-3">
-				<label for="id" class="form-label">아이디</label>
-				<input type="text" class="form-control" id="id" placeholder="아이디를 입력하세요" name="id"/>
+				<label for="name" class="form-label">아이디</label>
+				<input type="text" class="form-control" id="name" placeholder="아이디를 입력하세요" name="name"/>
 			</div>
 			<div class="my-3">
 				<label for="pass" class="form-label">비밀번호</label>
@@ -38,10 +38,10 @@
 		</form>
 		<script>
 			function login(){
-				let id = document.querySelector("#id");
+				let name = document.querySelector("#name");
 				let pass = document.querySelector("#pass");
 				
-				if(id.value == "") {alert("아이디를 입력해주세요"); id.focus(); return false;}
+				if(name.value == "") {alert("아이디를 입력해주세요"); name.focus(); return false;}
 				if(pass.value == "") {alert("비밀번호를 입력해주세요"); pass.focus(); return false;}
 			}
 		</script>

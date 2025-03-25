@@ -10,7 +10,7 @@
 		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
 		String url ="jdbc:mysql://localhost:3306/mbasic";
 		String id = "root", passw = "1234";
-		String sql = "select count(*) `cnt` from member where name=? and pass=?";
+		String sql = "select count(*) 'cnt' from member where name=? and pass=?";
 		int result = -1;
 		
 		try{
