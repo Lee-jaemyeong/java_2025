@@ -1,3 +1,26 @@
+#### 26.2025-03-25
+ 1. MYSQL - Select subquery
+    - select 구문안에 select 구문
+    - 메인쿼리 안에 또 다른 쿼리가 있는 것
+    - subquery 형식 : select 컬럼명 from 테이블명 where 컬럼명 in (select을 이용한 컬럼)
+    - 다중행 연산자
+      - in  : 서브쿼리의 결과가 하나라도 일치하면 true
+      - any : 서브쿼리의 결과가 하나 이상이면 true
+      - all : 서브쿼리의 결과가 모두 만족하면 true
+ 2. jsp - 내장객체 (2)
+    - 내장객체 종류
+      - session(정보저장)
+        - http 프로토콜 ( 데이터요청 - 응답을 받게 되면 바로 종료 )
+        - 서버측에 저장되는 정보
+      - cookie
+        - 클라이언트 측에 저장되는 정보
+        - 보안에 매우 취약함
+      - error
+        - 4xx (클라이언트 오류) 5xx (서버측에 오류)
+        - 404 페이지 찾을 수 없음, 405 메서드 요청 잘못됨, 500 자바코드상에 오류
+        - web.xml  에러설정
+
+---
 #### 25.2025-03-24
  1. MYSQL - Select Function(join)
    - join : 두 개 이상의 테이블들을 연결 또는 결합하여 데이터를 출력
@@ -10,21 +33,20 @@
      - outer join : 특정 테이블을 기준으로 검색
        - left join
        - right join
- 2. jsp - 내장객체
+ 2. jsp - 내장객체 (1)
    - 내장객체 종류
      - request(요청)
+       - jsp페이지가 웹컨테이너에 의해 서블릿으로 변환될때
+       - 고정된 이름의 객체 컨테이너로 자동으로 구현
      - response(응답)
-     - session(정보저장)
+       - Http요청에 대한 응답정보를 저장한 객체
+       - 응답처리를 하는객체인 response는 실행결과를 브라우저로 되돌려줄때 사용하는 내장객체
+       - jsp에서 다른페이지로 이동시키는방법
+         - sendRedierct   - 브라우저 url을 변경 , request/response객체가 유지되지 않음
+         - RequestDispatcher - 경로가 숨겨져서 안보임
+     - scope (범위)
+       [ application(애플리케이션) > session(브라우저) > request(요청) > pageContext(페이지) ]
      - out(출력)
-   - request(요청)
-     - jsp페이지가 웹컨테이너에 의해 서블릿으로 변환될때
-     - 고정된 이름의 객체 컨테이너로 자동으로 구현
-   - response(응답)
-     - Http요청에 대한 응답정보를 저장한 객체
-     - 응답처리를 하는객체인 response는 실행결과를 브라우저로 되돌려줄때 사용하는 내장객체
-     - jsp에서 다른페이지로 이동시키는방법
-       - sendRedierct   - 브라우저 url을 변경 , request/response객체가 유지되지 않음
-       - RequestDispatcher - 경로가 숨겨져서 안보임
  3. Milk - 우유주문시스템
 
  [![Video Label](http://img.youtube.com/vi/5tDv0Q8iAMg/0.jpg)](https://youtu.be/5tDv0Q8iAMg)
