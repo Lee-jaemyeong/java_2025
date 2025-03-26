@@ -35,6 +35,5 @@
 			}
 		</script>
 	</div>
-	
 <!-- footer.jsp -->
 <%@ include file="jsp025_footer.jsp" %>
