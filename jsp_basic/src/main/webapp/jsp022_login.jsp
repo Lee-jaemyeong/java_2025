@@ -1,22 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- Latest compiled and minified CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-	<div class="container my-5">
 	
-		<div class="my-5"><%=session.getAttribute("username")%></div>
-		
-		<h3>FORM-LOGIN</h3>
+<%@ include file="jsp022_header.jsp" %> <!-- 데이터 가져오기 -->
+<!-- navbar -->
+	
+	<div class="container my-5">
+		<h3>Portfolio</h3>
 		<p style="text-align:center"><img src="img/login.png" alt="login"></p>
 		<form action="jsp022_login_action.jsp" method="post" onsubmit="return login()">
 		<h4>LOGIN</h4>
@@ -46,5 +35,6 @@
 			}
 		</script>
 	</div>
-</body>
-</html>
+	
+<!-- footer.jsp -->
+<%@ include file="jsp022_footer.jsp" %>

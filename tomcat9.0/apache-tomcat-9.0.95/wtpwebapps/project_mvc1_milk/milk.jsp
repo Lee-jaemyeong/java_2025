@@ -1,3 +1,5 @@
+<%@page import="javax.sql.*"%>
+<%@page import="javax.naming.*"%>
 <%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -233,5 +235,12 @@
 			</div>
 		</div>
 	</div>
+	<%
+	Context initContext = new InitialContext();
+	Context envContext  = (Context)initContext.lookup("java:/comp/env");
+	DataSource ds = (DataSource)envContext.lookup("jdbc/mbasic");
+	Connection conn2 = ds.getConnection();
+	if(conn2 != null) { out.println("db연동성공!"); }
+	%>
 </body>
 </html>
