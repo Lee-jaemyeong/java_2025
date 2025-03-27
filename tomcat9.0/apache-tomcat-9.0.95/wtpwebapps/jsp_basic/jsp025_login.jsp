@@ -1,9 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	
-<%@ include file="jsp025_header.jsp" %> <!-- 데이터 가져오기 -->
+<%@ include file="jsp025_header.jsp" %>
 <!-- navbar -->
-	
+<%
+// 쿠키검사
+String cookie = request.getHeader("Cookie");
+// 찾는쿠키가 null이 아니면 
+if(cookie != null) {
+	// 하단에 view checked
+	String check="checked";
+}
+%>
+
 	<div class="container my-5">
 		<h3>Portfolio</h3>
 		<p style="text-align:center"><img src="img/login.png" alt="login"></p>
@@ -19,7 +28,8 @@
 			</div>
 			<div class="my-3">	
 				<input type="checkbox" id="check" name="remember"/>
-				<label for="check" class="form-label">아이디 기억하기</label>
+				<label for="check" class="form-label" 
+					<% if("check" != null){%> checked <% }  %>>아이디 기억하기</label>
 	  	 	</div>
 	  	 	<div  class="my-3 text-end">
 	  	 		<input type="submit" title="login 하러가기" class="btn btn-danger" value="LOGIN">
@@ -35,6 +45,5 @@
 			}
 		</script>
 	</div>
-	
 <!-- footer.jsp -->
 <%@ include file="jsp025_footer.jsp" %>

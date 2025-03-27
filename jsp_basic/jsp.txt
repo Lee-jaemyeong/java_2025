@@ -88,7 +88,7 @@ https://www.google.com/search?q=apple&name=sally
   
 ■4. mvc1 vs mvc2
 1. MVC
-  - 서로 영향없이 쉽게 고칭수 있는 애플리케이션
+  - 서로 영향없이 쉽게 고칠수 있는 애플리케이션
   
   - M : 애플리케이션의 정보 ( db정보, dto, dao, 비지닉스 login 포함)
   - V : view 사용자가 사용하는 화면
