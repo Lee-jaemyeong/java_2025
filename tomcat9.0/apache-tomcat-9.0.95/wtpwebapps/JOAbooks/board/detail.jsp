@@ -18,9 +18,9 @@
 				<span><i class="bi bi-book"></i> 내용</span>
 			</div>
 	  	 	<div  class="my-3 text-end">
-	  	 		<input type="submit" title="입력" class="btn btn-info text-white" value="입력">
-	  	 		<input type="submit" title="취소" class="btn btn-light text-black" value="취소">
-	  	 		<input type="submit" title="목록보기" class="btn btn-light text-black" value="목록보기">
+		  		<input type="submit"   value="입력"  class="btn btn-info btn-block text-white" > 
+		  	 	<a href="list.jsp"   class="btn btn-light text-black btn-block" >삭제</a>
+		  	 	<a href="list.jsp"   class="btn btn-light text-black btn-block" >목록보기</a>
 	  	 	</div>
 		</form>
 	</div>
