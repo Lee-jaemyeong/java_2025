@@ -4,7 +4,7 @@
 	<div class="container my-5">
 	<h3 class="text-center">MULTIBOARD-글쓰기</h3>
 	
-		<form action="" method="post" onsubmit="return form()">
+		<form action="write.do" method="post" onsubmit="return form()">
 		<h4>WRITE(CREATE)</h4>
 			<div class="mb-3 mt-3">
 				<label for="bname" class="form-label">이름</label> <input
@@ -24,7 +24,7 @@
 	  	 		<input type="submit" title="입력하기" class="btn btn-info text-white"  value="입력">
 	  	 	</div>
 		</form>
-		<form action="list.jsp" method="post">
+		<form action="list.do" method="post">
 			<div class="text-end">
 	  	 		<input type="submit" title="취소" class="btn btn-light text-black"  value="취소">
 	  	 	</div>

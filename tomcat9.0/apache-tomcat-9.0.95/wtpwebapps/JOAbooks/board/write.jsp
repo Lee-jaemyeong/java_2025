@@ -4,7 +4,7 @@
 	<div class="container my-5">
 	<h3 class="text-center">MULTIBOARD-글쓰기</h3>
 	
-		<form action="" method="post" onsubmit="return form()">
+		<form action="write.do" method="post" onsubmit="return form()">
 		<h4>WRITE(CREATE)</h4>
 			<div class="mb-3 mt-3">
 				<label for="bname" class="form-label">이름</label> <input
@@ -20,12 +20,18 @@
 			<label for="bcontent">내용</label>
 			<textarea class="form-control" rows="5" id="bcontent" name="bcontent"></textarea>
 			</div>
-			<div class="my-3  text-end">
-		  	 	<input type="submit"   value="입력"  class="btn btn-info btn-block text-white" > 
-		  	 	<a href="list.jsp"   class="btn btn-light text-black btn-block" >취소</a>
-		  	 	<a href="list.jsp"   class="btn btn-light text-black btn-block" >목록보기</a>
+			<div  class="my-3 text-end">
+	  	 		<input type="submit" title="입력하기" class="btn btn-info text-white"  value="입력">
 	  	 	</div>
 		</form>
+		<form action="list.do" method="post">
+			<div class="text-end">
+	  	 		<input type="submit" title="취소" class="btn btn-light text-black"  value="취소">
+	  	 	</div>
+	  	 	<div class="my-3 text-end">
+	  	 		<input type="submit" title="목록보기" class="btn btn-light text-black"  value="목록보기">
+	  	 	</div>
+	  	 </form>
 		<script>
 			function form() {
 				let bname = document.querySelector("#bname");
