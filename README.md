@@ -1,3 +1,47 @@
+### 29.2025-03-28
+ 1. jsp - 필요기능
+    - el/jstl
+      - el
+        - 표현식( 출력 )
+        - before:<%= %>
+        - after:${}
+      - jstl ( JavaServer page Standard Tag Library )
+        - 자바코드 대신 태그로 웹페이지 작성
+        - before:<%= if() %>
+        - after:<c:if test=></c:if> / <c:forEach items="" var></c:forEach>
+    - admin만 글쓰기 ( session 정리 )
+    - Naver api
+    - ajax
+ 2. jsp - jstl 라이브러리
+    - core : 기본적인 기능제공
+    - fmt  : format 형식
+    - xml  : xml관련처리
+    - sql  : sql관련처리
+ 3. jsp - api / ajax
+    
+---
+#### 28.2025-03-27
+ 1. jsp - board 프로젝트
+    - DBCP 셋팅
+    - frontcontroller 만들기
+
+---
+#### 27.2025-03-26
+ 1. jsp - session 복습
+ 2. jsp - dbcp(분산응용프로그램)
+    - 다운로드 https://commons.org/  [commons] - dbcp, poll, collections
+    - [WEB-INF] - [lib] - JAR
+    - DBCP - JAVA 파일 만들기 https://tomcat.apache.org/
+ 3. mvc1 vs mvc2
+    - MVC : 서로 영향없이 쉽게 고칠수 있는 애플리케이션
+      - M : 애플리케이션의 정보 ( db정보, dto, dao, 비지닉스 login 포함)
+      - V : view 사용자가 사용하는 화면
+      - C : controller model과 view 사이의 상호작용 관리
+    - mvc1 vs mvc2
+      - mvc1 - controller 역할을 jsp가 담당
+      - mvc2 - controller 역할을 servlet이 담당 
+ 4. jsp - Login 프로젝트
+---
 #### 26.2025-03-25
  1. MYSQL - Select subquery
     - select 구문안에 select 구문
