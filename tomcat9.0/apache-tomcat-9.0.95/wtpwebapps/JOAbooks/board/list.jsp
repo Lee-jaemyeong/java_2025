@@ -10,8 +10,7 @@
 		<script>
 		//1. window.onload = function(){}; 브라우저 로딩되면 동작
 		// $() jquery
-		$(function() {
-			
+		function loadBooks() {
 			$.ajax({
 				url:"${pageContext.request.contextPath}/books",
 				dataType:"json",
@@ -36,10 +35,50 @@
 				} // $(".result") document.querySelector(".result")
 			});
 			
+		}
+		$(function() {
+			loadBooks();
 		}); // 2. jQuery 브라우저 로딩되면 동작
 		</script>
+		<hr/>
 	</div>
-
+	
+	<div class="container my-5">
+	<h3> NAVER NEWS </h3>
+		<div class="result1">
+		</div>
+		
+		<script>
+		function loadNews(){
+			$.ajax({
+				url:"${pageContext.request.contextPath}/news",
+				dataType:"json",
+				type:"GET",
+				success:function(json){
+					//1. 데이터 분해
+					let items = json.items;
+					
+					for(let i=0; i<items.length; i++) {
+						let div2 = $('<div class="card my-3">');
+						let p3 = $('<div class="card-body">').html( items[i].title );
+						let p4 = $('<link rel="stylesheet" href="'+ items[i].link +'" />');
+						let p5 = $('<div class="card-body">').html(items[i].description);
+						div2.append(p3).append(p4).append(p5);
+						$(".result1").append(div2);
+					}
+					
+				},error:function(xhr, textStatus, errorThrown){
+					$(".result1").html(textStatus + "(HTTP-" + xhr.status + "/" + errorThrown);
+				}
+			});
+			
+		}
+		
+		$(function() {
+			loadNews();
+		});
+		</script>
+	</div>
 	<div class="container my-5">
 	<h3 class="text-center">MULTIBOARD</h3>
 	<%-- <%=request.getAttribute("list") %> --%>

@@ -28,9 +28,11 @@
 			<div class="collapse navbar-collapse" id="mynavbar">
 				<ul class="navbar-nav d-flex">
 					<li class="nav-item">
-					<a class="nav-link text-primary" href="javascript:void(0)"><i class="bi bi-person-plus-fill"></i> Sign Up</a></li>
+					<a class="nav-link text-primary" href="board_login_servlet.jsp"><i class="bi bi-person-plus-fill"></i> Sign Up</a></li>
 					<li class="nav-item">
-					<a class="nav-link text-primary" href="javascript:void(0)"><i class="bi bi-person-fill"></i> Login</a></li>
+					<a class="nav-link text-primary" href="board_login.jsp"><i class="bi bi-person-fill"></i> Login</a></li>
+					<li class="nav-item">
+					<a class="nav-link text-primary" href="board_logout.jsp"><i class="bi bi-person-fill"></i> Logout</a></li>
 				</ul>
 			</div>
 		</div>
