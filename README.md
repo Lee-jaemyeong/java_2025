@@ -1,3 +1,68 @@
+### 31.2025-04-01
+ 1. SPRING - JDBC/DB 연동
+    - DataSource
+      - SimpleDriverDataSource 가장단순버젼 : getConnection() 매번생성
+ 2. SPRING - Mybatis
+    - Mybatis
+      - sql을 별도로 파일분리해서 관리
+      - ORM( object relational mapping) 프레임워크
+      - mybatis
+        - SqlSessionFactory   SqlSession 생성관리
+        - SqlSession : sql실행, 트랜잭션
+ 3. SPRING - Board project
+
+---
+### 30.2025-03-31
+ 1. SPRING
+    - Step0. jsp
+      - mvc1 -  jsp( controller )역할
+      - mvc2 - servlet( controller )역할
+      - frontcontroller
+    - Step1.  framework
+      - framework  [  디자인패턴 + 라이브러리 = 프레임워크 ]
+      - 소프트웨어 개발의 뼈대역할
+ 2. SPRING - DI
+    - ioc + di
+      - ioc
+        - inversion of control
+        - 인스턴스의 생성~소멸까지 생명주기를 개발자가 아니라 컨테이너가 하는 것
+        - pojo ( plain old java object)
+    - di ( dependency injection : 의존성주입 )
+      - 각 클래스간의 의존관계를  [설정파일]을 통해 [컨테이너]가 자동으로 연결
+      - 장점 : 코드단순화 / 결합도 제거
+ 3. SPRING 실습
+    - 설치
+    - spring setting
+      - dynamic web project
+      - configure : [Convert to Maven Project]
+      - spring : add Spring project Nature
+      - java se-11 / project facts, build path
+      - build path-add Libraries-JUnit 4
+      - 구조확인
+        - pom.xml : 설치 다운로드
+        - src/main/java : 실제 자바파일들 위치
+        - src/test/java : 실제 테스트파일위치
+        - src/main/webapp : jsp 파일들위치
+    - spring mvc
+      - 검색 : spring
+      - legacy project
+      - mvc project
+    - SPRING 정리
+ 4. Bean
+    - 스프링이 관리하는 객체
+    - xml vs Annotation
+      - xml [운영]
+        - 모든 bean을 명시적으로 xml 에 등록
+        - 여러개발자가 같은 설정파일을 공유해서 개발하면 수정시 충돌이 일어날 경우가 많음.
+      - Annotation (Bena Scanning ) [개발]
+        - @을 붙여서 자동인식
+        - 개발속도 향상
+        - Bean간의 의족관계를 파악하기 힘듦
+    - @Component
+      - @Component 일반적인 컴포넌트
+      - @Component 구체화된 형식 : @Controller(웹요청받아서 응답), @Service(비즈니스로직), @Repository(db연동)
+
+---
 ### 29.2025-03-28
  1. jsp - 필요기능
     - el/jstl
@@ -21,7 +86,7 @@
     
 ---
 #### 28.2025-03-27
- 1. jsp - board 프로젝트
+ 1. jsp - board project
     - DBCP 셋팅
     - frontcontroller 만들기
 
@@ -40,7 +105,7 @@
     - mvc1 vs mvc2
       - mvc1 - controller 역할을 jsp가 담당
       - mvc2 - controller 역할을 servlet이 담당 
- 4. jsp - Login 프로젝트
+ 4. jsp - Login project
 ---
 #### 26.2025-03-25
  1. MYSQL - Select subquery
