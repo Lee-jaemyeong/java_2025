@@ -40,5 +40,6 @@ public class JunitTest001 {
 		//사용방법2 : assertSame(area1, area2); 
 		assertSame(area1, area2);
 	}
-	
+	//1. 스프링이 관리한다.
+	//2. 싱글톤 - 한번생성, 전역사용 → 효율적인 리소스 관리
 }

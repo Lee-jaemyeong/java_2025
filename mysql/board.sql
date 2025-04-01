@@ -12,3 +12,8 @@ bdate timestamp not null default current_timestamp,
 bip varchar(100) not null
 );
 desc board;
+
+create table sboard select *from board;
+desc sboard;
+alter table sboard modify bno int not null auto_increment primary key;
+alter table sboard add bpass varchar(50) not null;
