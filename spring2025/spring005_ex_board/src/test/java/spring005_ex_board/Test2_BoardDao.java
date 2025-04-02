@@ -18,8 +18,8 @@ import com.company.dto.BoardDto;
 public class Test2_BoardDao {
 	@Autowired BoardDao dao;
 	
-	//@Test
-	@Ignore
+	@Test
+	//@Ignore
 	public void selectAll() {
 		System.out.println(dao.selectAll());
 	}

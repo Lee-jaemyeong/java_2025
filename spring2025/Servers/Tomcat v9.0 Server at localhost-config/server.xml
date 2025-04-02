@@ -167,7 +167,7 @@
 	
 	
 	
-	<Context docBase="projectName" path="/myapp" reloadable="true" source="org.eclipse.jst.jee.server:projectName"/><Context docBase="spring002_di_ex" path="/spring002_di_ex" reloadable="true" source="org.eclipse.jst.jee.server:spring002_di_ex"/><Context docBase="spring003_bean" path="/spring003_bean" reloadable="true" source="org.eclipse.jst.jee.server:spring003_bean"/></Host>
+	<Context docBase="projectName" path="/myapp" reloadable="true" source="org.eclipse.jst.jee.server:projectName"/><Context docBase="spring002_di_ex" path="/spring002_di_ex" reloadable="true" source="org.eclipse.jst.jee.server:spring002_di_ex"/><Context docBase="spring003_bean" path="/spring003_bean" reloadable="true" source="org.eclipse.jst.jee.server:spring003_bean"/><Context docBase="spring010_mvc" path="/spring010_mvc" reloadable="true" source="org.eclipse.jst.jee.server:spring010_mvc"/><Context docBase="spring011_ex_board" path="/spring011_ex_board" reloadable="true" source="org.eclipse.jst.jee.server:spring011_ex_board"/></Host>
     </Engine>
   </Service>
 </Server>
