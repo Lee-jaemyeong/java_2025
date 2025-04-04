@@ -13,7 +13,7 @@
 			</div>
 			<div class="mb-3">
 				<label for="bpass" class="form-label">비밀번호</label> <input
-					type="text" class="form-control" id="bpass"
+					type="password" class="form-control" id="bpass"
 					placeholder="비밀번호을 입력해주세요" name="bpass">
 			</div>
 			<div class="mb-3">

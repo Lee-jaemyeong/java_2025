@@ -6,23 +6,23 @@
 		<form action="board/write" method="post" >
 			<div class="my-3">
 				<span><i class="bi bi-book"></i> 조회수</span>
-				<p>${detail.bhit}</p> 
+				<p>${dto.bhit}</p> 
 			</div>
 			<div class="my-3">
 				<span><i class="bi bi-book"></i> 이름</span>
-				<p>${detail.bname}</p>
+				<p>${dto.bname}</p>
 			</div>
 			<div class="my-3">
 				<span><i class="bi bi-book"></i> 제목</span>
-				<p>${detail.btitle}</p>
+				<p>${dto.btitle}</p>
 			</div>
 			<div class="my-3">
 				<span><i class="bi bi-book"></i> 내용</span>
-				<textarea class="form-control" readonly>${detail.btitle}</textarea>
+				<textarea class="form-control" readonly>${dto.bcontent}</textarea>
 			</div>
 	  	 	<div  class="my-3 text-end">
-	  	 		<a href="update?bno=${detail.bno}" class="btn btn-info text-white">수정</a>
-	  	 		<a href="delete?bno=${detail.bno}" class="btn btn-info text-white">삭제</a>
+	  	 		<a href="${pageContext.request.contextPath}/board/update?bno=${dto.bno}" class="btn btn-info text-white">수정</a>
+	  	 		<a href="${pageContext.request.contextPath}/board/delete?bno=${dto.bno}" class="btn btn-info text-white">삭제</a>
 	  	 		<a href="list" class="btn btn-light text-black">목록</a>
 	  	 	</div>
 		</form>

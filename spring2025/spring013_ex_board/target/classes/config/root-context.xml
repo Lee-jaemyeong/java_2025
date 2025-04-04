@@ -9,6 +9,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+	<!-- Step4) -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.company.dao" />
 		<property name="annotationClass" value="com.company.dao.MyDao" />
@@ -43,13 +44,26 @@
 		<constructor-arg  ref="sqlSessionFactory" />
 	</bean>
 	
+	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:config/log4jdbc.log4j2.properties</value>
+			</list>
+		</property>
+	</bean> -->
+	
 	<!-- Step1) Driver driver, String url, String username, String password -->
+	
 	<context:property-placeholder location="classpath:config/db.properties" />
-	<bean id="datasource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" >
-		<property name="driverClass"  value="${db.driverClass}" />
-		<property name="url"  value="${db.url}" />
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig" >
+		<property name="driverClassName"  value="${db.driverClassName}" />
+		<property name="jdbcUrl"  value="${db.url}" />
 		<property name="username"  value="${db.username}" />
 		<property name="password"  value="${db.password}" />
 	</bean>
+	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource"  destroy-method="close">
+		<constructor-arg ref="hikariConfig" />
+	</bean>
+	
 	
 </beans>
