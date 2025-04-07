@@ -1,0 +1,85 @@
+■ STEP1. project
+   - enc UTF-8
+   - project
+
+spring dev - 프로젝트 수정된 내용 반영
+lombok - dto, @Entity
+
+   연습) boot002 project 만들기
+
+■ STEP2. setting (properties)
+- application properties
+>> before
+##########################################
+##            BOOT SETTING              ##
+##########################################
+# WebApplication
+
+# Banner
+
+# DataSource
+
+# Jpa
+
+# Logging
+
+# Thymeleaf
+
+- dto( lombok )
+
+
+    연습) boot002 project 만들기
+	1) application.properties 설정
+	    context-path=/boot2
+	    포트번호 8282
+	   application-type=    web으로 설정
+	2) @Controller @ResponceBody 설정해서
+	 localhost:8282/boot2/ex1  접속시 -    springboot 출력
+
+	3) @Controller  설정해서
+	RequestMapping("/ex2")    - model 설정  test, ex2
+	localhost:8282/boot2/ex2  접속시 - model에서 설정한 - ex2출력
+
+■ STEP3. db
+- jpa 
+	1) application.properties
+	2) @Entity - Dto / 테이블만들기
+	3) @Repository - Dao
+- ex)
+	1) @Entity 이용해서 Member 테이블만들기
+	2) @Repository 이용해서 MemberRepository
+
+■ STEP4. view
+1. pom.xml 셋팅확인
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+<!--  https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect  -->
+<!--  추가  -->
+<dependency>
+<groupId>nz.net.ultraq.thymeleaf</groupId>
+<artifactId>thymeleaf-layout-dialect</artifactId>
+</dependency>
+<!--  추가  -->
+
+2. application.properties 설정확인
+# Thymeleaf
+spring.thymeleaf.cache=false
+spring.thymeleaf.prefix=classpath:/templates/
+spring.thymeleaf.suffix=.html
+
+3. layout
+4. 화면설정
+
+연습) boot002 테스트
+	1. pom.xml 설정
+	2. application.properties 셋팅
+	3. fragments 폴더안에 :  bootstrap 가서 원하는 nav 선택 - header.html
+	4. fragments 폴더안에 :  footer.html 설정
+	5. fragments 폴더안에 :  layout 설정
+	6. test.html 파일 만들어서 layout 나오는지 확인
+	localhost:8282/boot2/test
+
+■ STEP5. board
+■ STEP6. security
