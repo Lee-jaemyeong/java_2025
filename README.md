@@ -1,3 +1,74 @@
+### 34.2025-04-04
+ 0. SPRING - 복습
+ 1. SPRING - dto → lombok
+    - @Data
+ 2. SPRING - Aop ( 관점지향프로그래밍 : Aspect Oriented Programming )
+    - 핵심기능 vs 부가기능
+      - 핵심기능 : 비지니스로직
+      - 부가기능 : 비지니스로직 도와주는 기능
+    - Aspect
+      - AOP ( Aspect Oriented Programming )
+      - Aspect : 관점, 어떤행동, 시작, 완료, 반복,,,,, 나타내는 형태
+      - Advice(부가기능정의) + PointCut(적용부위) = Aspect
+    - 용어
+      - Target : 대상
+      - Advice : 부가기능정의
+      - PointCut : 적용타겟에 메서드로 대상을 선별하는 정규식
+      - Weaving : Target(대상)에 Advice(부가기능)를 처리(삽입)하는 과정
+    - 특징
+      - 프록시기반의 Aop
+      - 프록시(대리)
+      - 프록시 Target(대상)에 Advice(부가기능)를 처리(삽입)하는 과정에서 생성되는 객체
+      - 호출 → [ Proxy[ Target ] ]
+ 3. SPRING - HikariCP (dbcp / sql 과정다보이게)
+ 4. SPRING - Tx ( sql 여러개 실행될때 중간에 실패하면 sql 다 처리 안되게)
+    - 트랜잭션
+    - 여러단계의 처리를 하나의 처리처럼 다루는 기능
+    - 반영(commit) / 되돌리기 (rollback)
+ 5. SPRING - Board-useful 버전
+
+---
+### 33.2025-04-03
+ 0. SPRING - 복습
+ 1. SPRING - useful(Jstl)
+    - pom.xml 설정
+    - Model
+      - table
+      - dto   UserDto / mapper-config.xml
+      - dao   UserDao / user-mapper.xml / root-context.xml (등록)
+    - @Repository - Dao ( sql 실행 )
+    - @Service : 비즈니스로직 - 처리하는 기능
+  2. SPRING - Board-service 버전
+
+---
+### 32.2025-04-02
+ 0. SPRING - 복습
+ 1. SPRING - MapperFactoryBean
+   - before : Impl 구현클래스삭제 - 구현클래스 없애고.... 안에 있는 설정을 @Autowired private SqlSession sqlSession;  //sql 실행
+     - private static final String namespace="com.company.dao.TestDao";
+ 2. SPRING - MapperScannerConfigurer
+    - MapperFactoryBean 매번 설정이 힘듦. 모든 mapper에 설정하기 힘듦
+      - MyDao 인터페이스 생성
+      - mapper로 만들어주는 interface
+      - MyDao root-context.xml 등록
+ 3. SPRING - mvc controller - 서로 영향없이 쉽게 고칠수 있는 애플리케이션을 만들자!
+    - mvc
+      - Model : 정보 ( dto, dao, service )
+      - View : 화면 ( html, css, js/jquery )
+      - Controller : 처리 ( 요청을 받아서 처리후 응답 )
+    - mvc1 vs mvc2
+      - mvc1 : controller의 역할을 jsp 담당
+      - mvc2 : controller의 역할을 servlet 담당
+      - Frontcontroller - 공통작업수행 → 세부컨트롤러에 처리
+    - SPRING MVC
+      - 클라이언트 ( 코요테 - web.xml - root-context.xml / servlet-context.xml / DispatcherServlet )
+      - DispatcherServlet - HandlerMapping  - @Controller / 처리할 Controller 확인
+      - 세부Controller 클라이언트 요청처리 ( sevice - 비지니스로직 )
+      - 요청결과와 View정보를 DispatcherServlet 줌 / View 개체를 생성해서 응답
+ 4. SPRING - Board-mvc 버전
+ 5. xml 템플릿 설정, gitgnore 설정
+
+---
 ### 31.2025-04-01
  1. SPRING - JDBC/DB 연동
     - DataSource
