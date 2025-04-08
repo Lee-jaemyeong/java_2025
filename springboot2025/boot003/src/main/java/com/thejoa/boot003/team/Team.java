@@ -1,4 +1,4 @@
-package com.thejoa.boot001.myjpa;
+package com.thejoa.boot003.team;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.thejoa.boot003.member.Member;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,8 +21,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Team {
-	@Id  //1. 기본키
-	@GeneratedValue(strategy=GenerationType.IDENTITY) //2. 숫자자동증가
+	@Id  
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	private String name;
@@ -28,10 +30,6 @@ public class Team {
 	@Column( updatable = false )  // 수정못하게
 	private LocalDateTime createDate = LocalDateTime.now();
 	
-	//@Transient  //3. 컬럼인식못하게
-	//private String email;
-	
-	// mappedBy  주인, 부모, 부모가 있으면 참조할 수 있게... 자식
 	@OneToMany(mappedBy = "team" , cascade = CascadeType.REMOVE)
 	List<Member> member=new ArrayList<>();
 }
