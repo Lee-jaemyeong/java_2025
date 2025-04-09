@@ -1,4 +1,4 @@
-package com.thejoa.boot003.member;
+package com.thejoa.boot005.member;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,8 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.thejoa.boot003.team.Team;
-import com.thejoa.boot003.board.Board;
+import com.thejoa.boot005.team.Team;
+import com.thejoa.boot005.board.Board;
 
 import lombok.Getter;
 import lombok.Setter;

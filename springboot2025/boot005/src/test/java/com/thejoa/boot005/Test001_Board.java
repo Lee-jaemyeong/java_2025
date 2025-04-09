@@ -1,4 +1,4 @@
-package com.thejoa.boot003;
+package com.thejoa.boot005;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.thejoa.boot003.member.Member;
-import com.thejoa.boot003.member.MemberRepository;
-import com.thejoa.boot003.board.Board;
-import com.thejoa.boot003.board.BoardRepository;
+import com.thejoa.boot005.member.Member;
+import com.thejoa.boot005.member.MemberRepository;
+import com.thejoa.boot005.board.Board;
+import com.thejoa.boot005.board.BoardRepository;
 
 @SpringBootTest
 class Test001_Board {

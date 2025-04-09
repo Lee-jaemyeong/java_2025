@@ -1,4 +1,4 @@
-package com.thejoa.boot003.board;
+package com.thejoa.boot005.board;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

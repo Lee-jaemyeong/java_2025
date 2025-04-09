@@ -1,4 +1,4 @@
-package com.thejoa.boot003.board;
+package com.thejoa.boot005.board;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.thejoa.boot003.member.Member;
+import com.thejoa.boot005.member.Member;
 
 @Service
 public class BoardService {
