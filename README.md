@@ -1,4 +1,31 @@
-### 34.2025-04-04
+#### 35.2025-04-07
+ 1. SPRING BOOT - setting
+    - spring boot project 생성
+    - setting( application properties )
+       - WebApplication
+       - Banner
+       - DataSource
+       - Jpa
+       - Logging
+       - Thymeleaf
+ 2. SPRING BOOT - db
+    - jpa
+      - application.properties
+      - @Entity - Dto / 테이블만들기
+      - @Repository - Dao
+    - jpa-외래키설정
+      - JpaRepository<테이블명, pk의 자료형>{}
+      - ManyToOne / OneToMany
+ 3. SPRING BOOT - view
+    - pom.xml 셋팅
+    - application.properties 설정 
+      - Thymeleaf
+      - none=java / servlet=web
+    - layout
+    - 화면설정
+
+---
+#### 34.2025-04-04
  0. SPRING - 복습
  1. SPRING - dto → lombok
     - @Data
@@ -28,7 +55,7 @@
  5. SPRING - Board-useful 버전
 
 ---
-### 33.2025-04-03
+#### 33.2025-04-03
  0. SPRING - 복습
  1. SPRING - useful(Jstl)
     - pom.xml 설정
@@ -41,7 +68,7 @@
   2. SPRING - Board-service 버전
 
 ---
-### 32.2025-04-02
+#### 32.2025-04-02
  0. SPRING - 복습
  1. SPRING - MapperFactoryBean
    - before : Impl 구현클래스삭제 - 구현클래스 없애고.... 안에 있는 설정을 @Autowired private SqlSession sqlSession;  //sql 실행
@@ -69,7 +96,7 @@
  5. xml 템플릿 설정, gitgnore 설정
 
 ---
-### 31.2025-04-01
+#### 31.2025-04-01
  1. SPRING - JDBC/DB 연동
     - DataSource
       - SimpleDriverDataSource 가장단순버젼 : getConnection() 매번생성
@@ -83,7 +110,7 @@
  3. SPRING - Board project
 
 ---
-### 30.2025-03-31
+#### 30.2025-03-31
  1. SPRING
     - Step0. jsp
       - mvc1 -  jsp( controller )역할
@@ -134,7 +161,7 @@
       - @Component 구체화된 형식 : @Controller(웹요청받아서 응답), @Service(비즈니스로직), @Repository(db연동)
 
 ---
-### 29.2025-03-28
+#### 29.2025-03-28
  1. jsp - 필요기능
     - el/jstl
       - el
