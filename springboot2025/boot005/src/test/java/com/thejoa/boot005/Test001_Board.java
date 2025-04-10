@@ -25,8 +25,7 @@ class Test001_Board {
 	//@Test
 	public void insertMember() {
 		Member member = new Member();
-		member.setName("second");
-		member.setAge(22);
+		member.setUsername("second");
 		memberRepository.save(member); // ## insert, update - save 유저추가
 	}
 	

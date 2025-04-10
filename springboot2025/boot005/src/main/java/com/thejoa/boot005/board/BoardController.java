@@ -1,5 +1,8 @@
 package com.thejoa.boot005.board;
 
+import java.security.Principal;
+
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.thejoa.boot005.member.Member;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,12 +35,16 @@ public class BoardController {
 	} // http://localhost:8080/board/detail/3
 	
 	@GetMapping("/board/insert")
-	public String insert_get(){  return "board/write"; } 
+	public String insert_get(Principal principal, Model model){ 
+		model.addAttribute("username" , principal.getName());
+		return "board/write"; 
+		} 
 	// http://localhost:8080/board/insert   ( 글쓰기 폼 )
 	
 	@PostMapping("/board/insert")
-	public String insert_post( Board board , @RequestParam Long member_id ){
-		service.insert(board , member_id);//## 글쓰기기능
+	public String insert_post( Board board , Member member ){
+		board.setMember(member);//## 글쓰기기능
+		service.insert(board);
 		return "redirect:/board/list"; 
 	} // form태그에서 테스트   ( 글쓰기 기능 )
 	// @RequestParam - form, query string, 데이터 헤더로부터 데이터 추출

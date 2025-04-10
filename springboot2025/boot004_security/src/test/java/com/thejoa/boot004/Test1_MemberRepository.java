@@ -12,12 +12,12 @@ import com.thejoa.boot004.member.Member;
 import com.thejoa.boot004.member.MemberRepository;
 
 @SpringBootTest
-class Boot004SecurityApplicationTests {
+class Test1_MemberRepository {
 	
 	@Autowired MemberRepository memberRepository;
 	
-	@Disabled
-	//@Test
+	//@Disabled
+	@Test
 	public void insert() {
 		Member member = new Member();
 		member.setUsername("first");
