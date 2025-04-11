@@ -26,7 +26,7 @@ class Test002_Member {
 		Member member = new Member();
 		member.setName("second");
 		member.setAge(22);
-		member.setTeam(team);
+		//member.setTeam(team);
 		memberRepository.save(member);
 	}
 	// insert into member (age, create_date, name, team_id) values (?, ?, ?, ?)
