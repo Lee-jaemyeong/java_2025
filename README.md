@@ -1,3 +1,14 @@
+#### 36.2025-04-08
+ 1. SPRING BOOT - 엔티티
+    - @Entity : curd를 spring에서 적용
+    - @Id : 기본키(primary key)
+    - @GeneratedValue(strategy=GenerationType.IDENTITY) : 숫자자동증가(auto_increment)
+    - @Column( updatable=false ) : 수정못하게
+    - @OneToMany(mapperBy="부모이름" , cascade=CascadeType.REMOVE) : 부모가 있으면 참조할 수 있게... 자식
+    - @JoinColumn(name="팀 이름") : 팀 셋팅
+ 2. SPRING BOOT - BOARD
+
+---
 #### 35.2025-04-07
  1. SPRING BOOT - setting
     - spring boot project 생성
