@@ -1,0 +1,63 @@
+■1. 멤버관리
+■1. 멤버관리
+1. 그룹-유저   다:다  ( 그룹은 여러 유저를 갖을수 있다/ 유저는 여러그룹을 갖을 수 있다.) → GroupUser
+2. 유저(User)-일기   1:다   ( 나는 여러개의 일기를 쓸수 있다)
+3. 유저(User)-체크리스트(goal)   1:다   ( 나는 여러개의 일기를 쓸수 있다)
+
+
+4. 목표(goal) - 목표기록(일자별 개인별 기록 : goalStatus)( 一 : 多 )  
+예) 1번 유저 1, 비타민 먹기 4월 11일~4월 13일 
+
+5. 목표(goal)- 목표 달성률(그룹내 기간별 개인별 성공률 : goal_achievement) ( 一 : 多 ) 
+예) 4월 11일 ~ 4월 15일까지 비타민 먹기 성공률 50% -> 일기에 포함
+
+6. 팔로우(follower) - 유저(User)(  一 : 多 )
+7. 팔로우(following) - 유저(User)(  一 : 多 )
+
+일기 - 이모티콘 ( 多 : 多  )  
+
+
+Group [id, group_title,   group_content, group_leader , badge_id, create _date# ]
+
+User  [id, username, password , email, create_date# ]
+
+GroupUser [group_id, user_id, create_date#]
+
+Follow [ followerId,   followingId, create_date ] 팔로워-지켜보겠어  마동석  , 팔로잉- 마동석이 팔로잉당한거야  )  
+				follow
+				followerId,   followingId	create_date
+				1	   2		
+				1	   3
+				1	   4
+				2	   1
+				3               1		
+1   me									
+2   마동석
+3.  김우빈
+4.  카리나
+
+
+_________________________________________________________________________________________________
+_________________________________________________________________________________________________
+
+■2. 일기관리
+■2 일기관리
+Scope(공개범위)    [id, title]
+-----------------------
+1 나만보기   
+2 친구공개   
+3 그룹공개   
+4 전체공개
+-----------------------
+
+badge (뱃지)   [id , badge_title]
+emoji (이모티콘)   [id , emoji_content ] 
+template (템플릿)   [id , template_title, template_content ] 
+Diary (다이어리) [ id, user_id,  diary_title, diary_content, template_id, scope_id]  
+
+
+goal(체크리스트)  [id, user_id, goal_title, start_date, due_date,   공개범위 ]
+목표기록[id, date, is_success, goal_id]  예) 1, 비타민 먹기 4월 11일~4월 13일 
+목표달성[id, start_date, due_date, completionRate, goal_id] 예)
+
+ 
