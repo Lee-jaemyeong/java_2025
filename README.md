@@ -1,3 +1,8 @@
+### 37.2025-04-09
+ 0. SPRING BOOT - 복습
+ 1. SPRING BOOT - CRUD
+
+---
 #### 36.2025-04-08
  1. SPRING BOOT - 엔티티
     - @Entity : curd를 spring에서 적용
@@ -7,6 +12,9 @@
     - @OneToMany(mapperBy="부모이름" , cascade=CascadeType.REMOVE) : 부모가 있으면 참조할 수 있게... 자식
     - @JoinColumn(name="팀 이름") : 팀 셋팅
  2. SPRING BOOT - BOARD
+    - @Modifying : 삽입, 수정, 삭제 쿼리는 변경작업
+    - @Transactional : rollback 활성화
+    - @Query
 
 ---
 #### 35.2025-04-07
