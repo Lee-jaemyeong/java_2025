@@ -1,9 +1,38 @@
-### 37.2025-04-09
+#### 38.2025-04-10
+ 0. SPRING BOOT - 복습
+ 1. SPRING BOOT - Security(2)
+    - passwordEncoder.encode() : 비밀번호 암호화
+    - @NotEmpty(message="알림말") : 공백
+    - sec:authorize="isAuthenticated()" : 로그인해야지 사용가능
+    - sec:authorize="isAnonymous()" : 권한없어도 사용가능
+ 2. SPRING BOOT - Security 적용 board
+ 
+---
+#### 37.2025-04-09
  0. SPRING BOOT - 복습
  1. SPRING BOOT - CRUD
     - @Modifying : 삽입, 수정, 삭제 쿼리는 변경작업
     - @Transactional : rollback 활성화
-    - @Query
+    - @Query : crud
+ 2. SPRING BOOT - Security
+    - spring security?
+      - 애플리케이션의 보안(인증, 인가) 담당
+      - filter의 흐름에 따라 처리
+    - 인증 vs 인가
+      - 인증 - 본인이 맞는지 확인
+      - 인가 - 인증된 사용자가 접근가능
+    - spring security 아키텍쳐
+      - 사용자가 로그인폼 로그인시도 (username + password 전달)
+      - UsernamePasswordAuthentication 요청정보 - Authentication 생성
+      - Authentication 인증처리
+    - spring security 아키텍쳐 (2)
+      - Authentication Manager 인증담당
+        - UsernamePasswordAuthentication Token 은 Provider를 찾는데 사용
+      - AuthenticationProvider - 로그인정보와 db정보를 비교
+      - UserDetailService - db에 있는 사용자 정보 가져오기
+    - 인증완료 (사용자정보) SecurityContextHolder에 담기
+      - AuthenticationSuccessHandler 성공!
+      - AuthenticationFailureHandler 실패!
 
 ---
 #### 36.2025-04-08
@@ -13,6 +42,7 @@
     - @GeneratedValue(strategy=GenerationType.IDENTITY) : 숫자자동증가(auto_increment)
     - @Column( updatable=false ) : 수정못하게
     - @OneToMany(mapperBy="부모이름" , cascade=CascadeType.REMOVE) : 부모가 있으면 참조할 수 있게... 자식
+    - @ManyToOne
     - @JoinColumn(name="팀 이름") : 팀 셋팅
  2. SPRING BOOT - BOARD
 
