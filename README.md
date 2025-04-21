@@ -1,3 +1,25 @@
+#### 39.2025-04-11
+ 1. SPRING BOOT - ERD(Entity Relationship Diagram)
+    - 정규화
+      - 관계형데이터모델 - 데이터간 관계에 초점을 둔 모델
+      - 이상(Anomaly)- 공간낭비
+        - 삽입, 갱신, 삭제 이상
+      - 정규화? 이상을 제거하는것.
+    - erd 핵심구성요소
+      - 개체(Entity) - 테이블, 개념의 정보단위
+      - 속성(Attribute) - 테이블 열, 가장작은 논리적단위
+      - 관계(Relationship) - 외래키
+    - 정규화 1NF-5NF (NF:  Normal Form)
+      - 1NF : 관계 (최소형) - 최소한 테이블, [중복]되는 항목이 없어야 함.
+      - 2NF : 부분함수 종속제거 -  모든속성이 기본키에 완전함수 종속
+      - 3NF : 이행함수 종속제거
+      - 4NF : 다치종속
+      - 5NF : 조인종속
+  2. FIGMA
+     - UI/UX 디자인 도구
+  3. 팀 프로젝트
+
+---
 #### 38.2025-04-10
  0. SPRING BOOT - 복습
  1. SPRING BOOT - Security(2)
