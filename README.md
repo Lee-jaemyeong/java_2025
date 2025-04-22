@@ -1,3 +1,10 @@
+#### 40.2025-04-14
+ 1. 팀 프로젝트 - Git hub
+    - Team Repository 생성
+    - 팀원 invite
+    - 팀 프로젝트 생성및 회의
+
+---
 #### 39.2025-04-11
  1. SPRING BOOT - ERD(Entity Relationship Diagram)
     - 정규화
