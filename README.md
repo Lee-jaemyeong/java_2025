@@ -1,3 +1,32 @@
+#### 43.2025-04-17
+ 1. SPRING BOOT - 스케쥴러
+    - @Scheduled - 부품
+    - fixedDelay 		  어떤 작업이 끝난 후 지정된 시간에 실행
+    - cron			  크론표현식
+      - cron = "0 0 0 * * ?"  초  분  시  날짜  월  요일   - 자정
+    - (*) 제한없는 모든값
+    - (?) 특정값 없음 (대신 다른필드를 기준으로 실행)
+    - @EnableScheduling  구동시키기
+      - @SpringBootApplication
+      - @EnableScheduling
+      - public class Boot008ApiApplication {}
+ 2. SPRING BOOT - 네이버 개발자 (book 검색)
+ 3. SPRING BOOT - 네이버 개발자 (메일)
+    - 보내는 쪽 (naver host , 아이디 , 비번)
+    - 받는 사람 (메일 주소)
+    - 인증과 함께 보내는 세션설정 (naver host, 인증, 포트, debug, 이메일 전송시 보안연결, ssl 인증서 신뢰, protocols)
+    - 메일보내기
+ 4. 팀 프로젝트
+
+---
+#### 42.2025-04-16
+ 1. SPRING BOOT - upload_img(이미지 업로드 기능)
+   - 이미지 업로드 기능 추가
+   - 이미지 업로드 view 수정
+   - 이미지 수정 기능 추가
+ 2. 팀 프로젝트
+
+---
 #### 41.2025-04-15
  1. SPRING BOOT - paging
     - 변수 생성
@@ -12,6 +41,7 @@
     - 계산
       - 전체계산한 값
       - 시작번호 넘겨받은 값
+ 2. 팀 프로젝트
 
 ---
 #### 40.2025-04-14
