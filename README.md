@@ -1,3 +1,36 @@
+#### 45.2025-04-21
+ 1. SPRING BOOT - 생활형 ai
+    - openai api key 등록
+    - 헤더 설정
+    - 요청 바디 작성
+    - 요청 전송
+    - postman 확인
+ 2. SPRING BOOT - ajax(naver book) / keyup
+    - $.ajax({});
+    - 데이터 가져오기
+    - tbody 행추가  ## 템플릿 리터럴 ``(백틱)
+    - keyup(키보드 누를 때)
+    - let 변수명 = $(값).val().trim() / 입력값 공백없이
+    - if(변수명.length>0) / 검색어가 공백이 아닐 때 호출
+ 3. 팀 프로젝트
+
+---
+#### 44.2025-04-18
+ 1. SPRING BOOT - kakao api
+    - 카카오개발자센터
+      - 애플리케이션만들기
+      - 로그인활성화
+      - 동의항목
+      - redirect url
+      - rest api key
+    - 스프링부트 프로젝트
+      - pom.xml (dependency 추가)
+      - application.properties 등록
+        - redirect uri
+        - rest api
+ 2. 팀 프로젝트
+
+---
 #### 43.2025-04-17
  1. SPRING BOOT - 스케쥴러
     - @Scheduled - 부품
