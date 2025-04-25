@@ -1,3 +1,31 @@
+### 48.2025-04-24
+ 1. SPRING BOOT - sms 문자 보내기
+    - coolsms
+      - 카카오톡 및 문자 메세지 웹 발송을 지원해주는 REST API 제공 서비스입니다.
+      - 단문, 장문, 포도 메세지 등을 보낼 수 있다.
+    - api키 생성
+    - dependency(nurigo) 삽입
+ 2. 팀 프로젝트
+
+---
+#### 47.2025-04-23
+ 1. SPRING BOOT - 기상청 api(kma)
+    - data.go.kr(정부 api)
+      - 인증키
+      - 사용법
+ 2. SPRING BOOT - xml
+    - $(xml).find("찾을 변수명").each(){}
+    - let tr = $("<tr>") // tr 태그 동적으로 만들기
+    - tr.append(td1) // tr태그에 td태그를 넣기
+    - $(.ajax클래스명 tbody).append(tr) // tbody안에 tr넣기
+ 3. 팀 프로젝트
+
+---
+#### 46.2025-04-22
+ 1. SPRING BOOT - ajax(id double check)
+ 2. 팀 프로젝트
+
+---
 #### 45.2025-04-21
  1. SPRING BOOT - 생활형 ai
     - openai api key 등록
