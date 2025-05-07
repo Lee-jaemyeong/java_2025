@@ -1,6 +1,7 @@
 #### 54.2025-05-02
  1. 팀 프로젝트 발표
  2. Team Yoonlee3
+
  [![Video Label](http://img.youtube.com/vi/F6DzPczeOM4/0.jpg)](https://youtu.be/F6DzPczeOM4)
 
 ---
