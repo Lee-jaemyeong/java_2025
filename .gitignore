@@ -3,3 +3,6 @@
 /tomcat9.0/*.log
 /Servers/.project
 /Servers/.settings/
+/springboot2025/.metadata/
+/springboot2025/test1/.metadata/
+/springboot2025/test2/.metadata/

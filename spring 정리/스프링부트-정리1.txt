@@ -1,0 +1,49 @@
+> 스프링부트 정리
+> 포트폴리오 정리
+> aws     - 올리기
+
+.............................. node, react
+.............................. node, react
+
+Q1. 스프링부트 프로젝트를 생성하시오.  
+   ver 2.7.14  /  java 11 / 
+   dev tool , lombok, spring web, thymeleaf , mysql , jpa 를 셋팅하시오.
+
+Q2.  다음과 같이 board  Entity 와 repository를 작성하시오.
+mysql> desc board;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | bigint       | NO   | PRI | NULL    | auto_increment |
+| btitle      | varchar(200) | YES  |     | NULL    |                |
+| bcontent    | text         | YES  |     | NULL    |                |
+| bpass       | varchar(255) | YES  |     | NULL    |                |
+| bhit        | bigint       | YES  |     | NULL    |                |
+| create_date | datetime(6)  | YES  |     | NULL    |                | 
+| bip         | varchar(255) | YES  |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+9 rows in set (0.00 sec)
+
+Q3.  @Query를 이용하여  id를 기준으로 내림차순을하는 sql을 작성후  테스트하시오.
+
+Q4.  @Query를 이용하여 id와 pass가 같으면 삭제하는  sql을 작성후 테스트하시오.
+
+Q5.  @Query를 이용하여  id와 pass가 같으면  btitle과 bcontent를 수정하는 sql을 작성후 테스트하시오.
+
+Q6.  board 서비스를 작성하고  crud를 테스트하시오.
+
+Q7. templates 폴더안에 fragments 폴더를 작성하고 header.html, footer.html, layout.html을 작성하시오.
+
+Q8.  board 컨트롤러를 작성하시오. 
+/board/list             GET 방식 ,  thymeleaf를 이용하여  board 폴더안에 list.html
+/board/detail/{id}    GET 방식 ,  thymeleaf를 이용하여  board 폴더안에 detail.html,  해당 id의 글 상세보기
+/board/insert          GET 방식 ,  thymeleaf를 이용하여  board 폴더안에 write.html
+/board/insert 	   POST방식,  service를 이용하여 insert 글쓰기 기능처리 후 /board/list 경로로 넘어가기    
+/board/update/{id}  GET 방식 ,  thymeleaf를 이용하여  board 폴더안에 edit.html  ,  해당 id의 글 수정할수 있게 데이터 채우기
+/board/update       POST방식,  service를 이용하여 id와 pass가 같으면 글수정 기능처리 후 /board/detail 경로로 넘어가기     
+/board/delete/{id}   GET 방식 ,  thymeleaf를 이용하여  board 폴더안에 delete.html
+/board/delete        POST방식,   service를 이용하여 id와 pass가 같으면 글삭제 기능처리 후  /board/list 경로로 넘어가기    
+
+Q9.  글리스트와 글쓰기을 완성하시오.
+
+Q10. 글상세보기, 수정하기 , 삭제하기을 완성하시오.
