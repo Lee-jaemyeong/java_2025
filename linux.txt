@@ -1,0 +1,435 @@
+■1. LINUX BASIC
+■2. AWS
+
+
+■1. LINUX BASIC
+□1. 실습환경구성
+□2. 기본명령어
+
+
+□1. 실습환경구성
+https://learn.microsoft.com/ko-kr/windows/wsl/install-manual
+
+1) 1단계 - Linux용 Windows 하위 시스템 사용
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+2) 2단계 - WSL 2 실행에 대한 요구 사항 확인
+windows 사양
+
+3) 3단계 - Virtual Machine 기능 사용
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+4) 4단계 - Linux 커널 업데이트 패키지 다운로드
+
+5) 5단계 - WSL 2를 기본 버전으로 설정
+wsl --set-default-version 2
+
+6) 우분투 설치
+
+wsl  -l  -o
+wsl --install -d Ubuntu-22.04
+wsl --list --all 설치확인
+
+※ 우분투 삭제
+wsl --list --all
+wsl --unregister Ubuntu-22.04
+wsl --shutdown
+
+7) 중간에 cmd 창
+아이디/비밀번호 입력
+ubuntu  
+ubuntu    비밀번호는 화면상에 안보임
+ubuntu    
+
+□2. 기본명령어
+1)  $,  #
+$  일반사용자
+#  root
+
+```bash
+ubuntu@DESKTOP-OSN6JEM:~$ su-
+password:			화면에 안보임 ubuntu
+root@DESKTOP-OSN6JEM:~#
+```
+
+root 비밀번호 바꾸기
+```bash
+wsl -u root
+root@DESKTOP-OSN6JEM:~# passwd
+```
+
+2) 명령어 사용법
+```bash
+명령어 option input
+```
+date
+cal
+  sudo apt update && sudo apt install bsdmainutils
+cal    2025
+cal 05 2025
+cal -y
+cal -j
+man cal
+clear
+
+3) 출력 echo, 위치확인
+```
+echo  hello world
+echo  $PATH
+```
+```
+which date
+which echo
+```
+
+정리문제
+.........................................................
+Q1) 리눅스 열기
+Q2) root권한으로 로그인
+    ubuntu@User-2023CNVKK:~$  su -
+    비밀번호
+Q3) 현재시스템날짜, 시간 출력  date
+Q4) 현재 월 달력 출력   cal
+Q5) 현재화면 지우기     clear   
+Q6) good 출력      echo good
+Q7) echo  명령어 위치확인 which echo
+.........................................................
+
+4) 디렉토리 구조
+
+/     루트
+/usr 기본실행
+/bin 명령어파일
+/etc 설정파일
+/home 유저계정
+/opt 추가패키지
+/tmp 임시파일
+/var  시스템운영 로그파일
+
+* 현재 작업 디렉토리
+```
+pwd     
+```
+* 이동  (change directory)
+```
+cd 
+cd  /
+cd  ~  계정디렉토리
+cd  ..   상위디렉토리
+```
+*목록확인
+```bash
+ls  -al  숨김파일, 상세보기
+```
+
+5) 폴더 만들기
+```bash
+mkdir  폴더명
+```
+Q. basic2 폴더만들고 basic2로 이동
+mkdir basic2 && cd basic2
+
+6) 파일 쓰고 읽기
+쓰고, 추가, 읽기
+```bash
+cat  >    파일명
+cat  >>  파일명
+cat  <    파일명
+```
+
+```
+pwd
+ls -al
+cd basic2
+
+cat > file1
+one 
+two
+three 
+^C
+```
+
+7) 파일/폴더복사
+```bash
+cp  원본  사본
+```
+*파일복사
+```
+cp file1 file2
+ls
+cat -n file2
+```
+*폴더복사
+```
+cp -r basic2 basic4
+```
+
+8) 파일/폴더삭제
+```
+rm -r 이름
+```
+*파일삭제
+```
+rm file2
+```
+*폴더삭제
+```
+rm -r basic3
+```
+
+..................................................................
+Q1. root 로 접속 (pass),    /home/test 폴더만들고 이동 
+Q2. 현재위치 확인
+Q3. 파일 mynum
+one
+two
+three 내용적기
+Q4. 파일읽기
+Q5. mynum에 내용추가 - 줄12개
+one
+two
+three 
+one
+two
+three 
+one
+two
+three 
+one
+two
+three 
+Q6. mynum에  번호붙이기
+Q7. # head  mynum
+- 앞에서 10개 데이터만 확인
+Q8. # head -n 3 mynum
+- 앞에서 3개 데이터만 확인
+Q9. # tail    mynum
+- 끝에서 10개 데이터만 확인
+Q10. # tail  -n 3  mynum 
+- 끝에서 3개 데이터만 확인
+..................................................................
+
+9) vi editor
+- 입력모드(텍스트입력) / 명령모드(커서이동, 복사, 저장)
+```bash
+파일선택 : vi 파일명
+입력모드 : i
+빠져나오기 : esc
+파일저장  :   :wq! ( 저장하고 나오기 강제종료 )
+```
+
+...............................................................
+Q1. mynum 파일복사  fruit
+Q2. vi 에디터이용해서
+      one  apple
+      two  banana
+      three  coconut으로 수정
+
+      vi fruit
+      i
+      esc
+      :wq!
+Q3. 파일 확인
+      cat -n fruit
+Q4. test 폴더 삭제
+      rm -r test
+...............................................................
+
+
+● 10) 유저권한
+#            root
+$            일반유저
+nologin    System 
+
+1. /home/user1 폴더만들기
+2. 유저  user1
+3. 비밀번호설정
+4. 유저만들어졌는지 확인
+
+*유저만들기
+```bash
+mkdir /home/user1
+useradd user1 -d /home/user1
+passwd user1
+nl  /etc/passwd
+
+grep /bin/bash  /etc/passwd
+```
+*유저로 접근해서 폴더만들기 - 거부
+```bash
+su - user1
+$ mkdir test
+```
+*권한주기
+```bash
+          user / group / 기타
+chmod   7        7         7
+```
+4-read(r)
+2-write(w)
+1-execute(x)
+
+```
+chmod  777  모든사용자 r,w,x
+chmod  755  사용자 rwx, 그룹 및 기타 rx
+```
+
+```
+chmod  777  /home/user1
+chmod  755  /home/user1
+chmod  u+x  /home/user1  다른권한안주고 user의 실행권한 추가
+```
+```
+chown user1:user1 /home/user1 폴더 소유자
+chmod 755 /home/user1
+chmod u+w /home/user1 다른권한안건들이고 쓰기권한추가
+chmod u-w /home/user1 다른권한안건들이고 쓰기권한삭제
+```
+
+● 11) 프로세스
+
+```bash
+ps aux  |  grep ubuntu
+```
+aux 모든 프로세스 확인
+
+```bash
+top
+```
+
+```bash
+kill -9 PID
+```
+
+* bg 백그라운드, fg 포그라운드 실행 
+```bash
+sleep  100
+ctrl + z
+bg
+jobs
+fg
+```
+
+* 터미널 종료해도 프로세스 계속실행
+```bash
+nohup 프로그램명 &
+```
+
+● 12) 압축
+```bash
+tar  -cvf  my.tar  파일/디렉토리
+```
+c: 새압축파일생성
+v: 진행사항출력
+f: 파일이름지정
+
+*압축
+```
+cd /home/ubuntu
+tar -cvf my.tar basic4
+```
+*압축풀기
+```bash
+tar -xvf my.tar
+```
+
+_______________________________________________________________________________________________
+
+■2. AWS
+1. ubuntu 셋팅연습
+  1-1  jdk
+	◎ 설치할 수 있는 jdk 버젼
+	sudo apt-cache search jdk
+	◎ apt 업데이트
+	sudo apt-get update
+	◎ java 설치
+	sudo apt-get install openjdk-11-jdk
+	◎ java 버젼확인
+	java -version
+	◎ java 경로확인
+	which javac
+	readlink -f /usr/bin/javac
+
+	/usr/lib/jvm/java-11-openjdk-amd64/bin/javac
+
+	◎ java 경로설정  /etc/profile
+	sudo vi /etc/profile
+	i
+	
+	맨끝에
+	export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+	export PATH=$JAVA_HOME/bin:$PATH
+	export CLASSPATH=$CLASSPATH:$JAVA_HOME/jre/lib/ext:$JAVA_HOME/lib/tools.jar
+
+	[esc]
+	:wq!	
+
+	◎ 경로 설정반영
+	source /etc/profile
+
+	◎ 환경변수 설정확인
+	echo $JAVA_HOME
+	echo $CLASSPATH
+	echo $PATH
+
+  1-2. tomcat9
+	◎ 설치할 수 있는 tomcat 버젼
+	sudo apt-cache search tomcat
+
+	◎ apt 업데이트
+	sudo apt-get update
+
+	◎ tomcat9 설치
+	sudo apt-get install tomcat9
+
+	◎ tomcat 버젼확인
+	which tomcat*
+	find / -name tomcat*
+
+	sudo /usr/share/tomcat9/bin/version.sh
+
+	◎ 방화벽
+	sudo ufw status
+	sudo ufw enable
+	sudo ufw allow 8080/tcp
+
+	sudo ufw status  |  grep 8080
+
+	◎ 톰캣시작 
+	sudo service tomcat9 start
+
+	◎ 톰캣시작확인
+	sudo systemctl status tomcat9
+
+	◎ ip 확인
+	sudo apt-get install net-tools
+	ifconfig
+
+  1-3. mysql
+	◎ 설치할 수 있는 mysql-server 버젼
+	sudo apt-cache search mysql-server	
+
+	◎ apt 업데이트
+	sudo apt-get update
+
+	◎ mysql8 설치
+	sudo apt-get install mysql-server-8.0
+
+	◎ mysql8 버젼확인
+	which mysql
+	find / -name mysql-server-8.0
+
+	/etc/init.d/mysql status
+
+	◎ mysql 접속
+	sudo mysql -uroot 비번없음
+
+2. aws 회원가입
+▶▶  STEP0. 회원가입 + 로그인
+#1. https://console.aws.amazon.com
+   >> 회원가입
+#2. 로그인
+   >> 루트사용자
+
+
+
