@@ -1,3 +1,79 @@
+#### 56.2025-05-08
+ 1. LINUX
+    - 실습환경구성
+      - 1단계-Linux용 Windows 하위 시스템 사용
+        dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+      - 2단계-WSL 2 실행에 대한 요구 사항 확인
+      - 3단계-Virtual Machine 기능 사용
+        dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+      - 4단계-Linux 커널 업데이트 패키지 다운로드
+      - 5단계-WSL 2를 기본 버전으로 설정
+        wsl --set-default-version 2
+      - 우분투 설치
+        wsl  -l  -o
+        wsl --install -d Ubuntu-22.04
+        wsl --list --all 
+    - 기본명령어
+      - $,  #
+        - $(일반사용자)
+        - #(root)
+      - 명령어 사용법
+        - 명령어 option input
+      - 출력 echo, 위치확인
+        - 출력
+          echo  hello world
+          echo  $PATH
+        - 위치확인
+          which date
+          which echo
+        - 디렉토리 구조
+          - / (루트)
+          - /usr (기본실행)
+          - /bin (명령어파일)
+          - /etc (설정파일)
+          - /home (유저계정)
+          - /opt (추가패키지)
+          - /tmp (임시파일)
+          - /var (시스템운영 로그파일)
+          - 현재 작업 디렉토리 (pwd)
+          - 이동 (change directory)
+            - cd
+            - cd /
+            - cd ~ 계정디렉토리
+            - cd .. 상위디렉토리
+      - 폴더 만들기
+        - mkdir  폴더명
+      - 파일 쓰고 읽기 (쓰고, 추가, 읽기)
+        - cat > 파일명
+        - cat >> 파일명
+        - cat < 파일명
+      - 파일/폴더복사
+        - 파일복사(cp file1 file2)
+        - 폴더복사(cp -r basic2 basic4)
+      - 파일/폴더삭제
+        - 파일삭제(rm file2)
+        - 폴더삭제(rm -r basic3)
+      - vi editor
+        - 입력모드(텍스트입력) / 명령모드(커서이동, 복사, 저장)
+          - 파일선택 : vi 파일명
+          - 입력모드 : i
+          - 빠져나오기 : esc
+          - 파일저장  :   :wq! ( 저장하고 나오기 강제종료 )
+      - 유저권한(4-read(r), 2-write(w), 1-execute(x))
+        - chmod  777  모든사용자 r,w,x           
+      - 프로세스(aux 모든 프로세스 확인)
+        - ps aux | grep ubuntu
+      - 압축 (c: 새압축파일생성, v: 진행사항출력, f: 파일이름지정)
+        - 압축
+          - tar -cvf my.tar 파일/디렉토리
+        - 압축풀기
+          - tar -xvf my.tar
+
+---
+#### 55.2025-05-07
+ 1. SPRING BOOT - TEST(시험)
+
+---
 #### 54.2025-05-02
  1. 팀 프로젝트 발표
  2. Team Yoonlee3
