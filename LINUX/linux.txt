@@ -432,4 +432,175 @@ ________________________________________________________________________________
    >> 루트사용자
 
 
+3. aws ec2 올리기 준비물
+1) 만든 프로젝트 배포파일로 만들기  .jar
+	1. spring boot
+	2. pom.xml 수정
+	3. maven install
+2) filezilla
+	https://filezilla-project.org/download.php?platform=win64
+3) putty  - key
+	https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+	검색 : rsa
 
+
+4. aws ec2
+https://console.aws.amazon.com
+1) 로그인
+2) ec2 - 대쉬보드
+3) 인스턴스
+	- 이름 : myEc2
+	- Quick Start : ubuntu - Ubuntu Server 22.04
+	- 키페어 : Ec2_key rsa/pem
+	- 네트워크 설정 : 보안그룹 / ssh트래픽허용 - 위치무관 0.0.0.0/0
+	- 스토리지 구성 : 8Gib
+	- 인스턴스 개수 : 1
+
+4) jdk11 + tomcat9 + mysql8 설정
+4-1)jdk11
+	1. 설치할 수 있는 jdk 버젼
+		sudo apt-cache search jdk
+	2. apt 업데이트
+		sudo apt-get update
+	3. java 설치 - openjdk-11-jdk
+		sudo apt-get install openjdk-11-jdk
+	4. java 확인
+		java -version
+	5. 자바경로확인
+		which javac
+		readlink -f /usr/bin/javac
+	6. vi 경로등록
+		vi /etc/profile
+		export   JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+		export   PATH=$JAVA_HOME/bin:$PATH
+		export   CLASSPATH=$CLASSPATH:$JAVA_HOME/jre/lib/ext:$JAVA_HOME/lib/tools.jar
+	7. 경로반영
+		source /etc/profile
+	8. 환경변수 확인
+		echo $JAVA_HOME
+		echo $PATH
+		echo $CLASSPATH
+
+	※ java 지우기
+	sudo apt-get remove --purge openjdk-11-jdk
+	sudo apt-get autoremove
+	sudo apt-get clean	
+
+4-2)tomcat9
+	1. 설치할 수 있는 tomcat 버젼
+		sudo apt-cache search tomcat
+
+	2. apt 업데이트
+		sudo apt-get update
+
+	3. tomcat9 설치
+		sudo apt-get install tomcat9
+
+		※ 원하는 버젼이 없으면
+		tomcat.apache.org - [tomcat9.0] - [tar.gz] 오른쪽마우스 링크 주소 복사
+		
+		cd / tmp
+		wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.104/src/apache-tomcat-9.0.104-src.tar.gz
+		sudo mkdir /opt/tomcat
+		sudo tar -xvf /tmp/apach  tab키 누르기  /opt/tomcat
+		sudo chown -R ubuntu: /opt/tomcat
+
+	4. tomcat9 확인
+		sudo /usr/share/tomcat9/bin/version.sh
+
+		※  /opt/tomcat
+		cd  /opt/tomcat/apache-tomcat-9
+		./bin/version.sh
+
+	5. 방화벽
+		sudo ufw allow 8080/tcp
+
+	6. 톰캣시작
+		sudo service tomcat9 start
+
+	7. 톰캣시작확인
+		systemctl status tomcat9
+
+	8. ip 확인
+		sudo apt-get install net-tools
+		ifconfig
+		netstat -plnt | grep ':8080'
+		
+		p 프로세스
+		|  현재 열려있는 포트만 표시
+		n 주소와 포트
+		t  tcp만 연결
+
+	9. ec2  8080 포트허용
+	[보안그룹] - 인바운드규칙 - 규칙추가  tcp 8080
+
+	10. ec2 인스턴스 퍼블릭 ipv4 주소
+		>  주소:8080
+		>  43.200.4.16:8080
+
+4-3)mysql8
+	1. 설치할 수 있는 mysql-server 버젼
+		sudo apt-cache search mysql-server
+
+	2. apt 업데이트
+		sudo apt-get update
+
+	3. mysql8 설치
+		sudo apt-get install mysql-server-8.0	
+
+	4. mysql 접속
+		sudo mysql -uroot  비번없음
+
+	5. 인증 확인
+		select user,host,plugin from mysql.user;
+
+	6. 인증업데이트
+		use mysql
+		UPDATE user SET plugin='caching_sha2_password' WHERE user='root';
+		flush privileges;
+
+	7. 비번바꾸기
+		SET password for 'root'@'localhost'='1234';
+
+	8. 확인
+		mysql -uroot -p
+		1234
+
+5) putty  키
+	1.  ssh   private key
+	2. load - all files
+	3.  pem  파일선택
+	4.  비번체크
+	5.  save  private key  - ppk 이름적고 저장
+	6.  키설정만들기
+	---------------------
+	#cloud-config
+	ssh_deletekeys: false
+	ssh_authorized_keys:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5FEl4cTOOp8WPZwGD2WUf5YQBGrXtxbcthfkFLEr6IJVAjyibes8iQdFzawE4mTO+TH5hrzw02GeaZBis008EUFp57N1OoETjs8NGkHIE997BHhako7a7x06Ad8iaGobEatEMZ2hX1J3zRtcEo8bRXb46nk/jsiIdmk3WwxEQtYnJivzo9iDiZ0zrXn9UHuh5uu4feo7gquaePb9qN+OPd12pkE9W/jz/W6nuZcXelO5JDWf88+dVAIygQ/tqhug6ouXY7BNrCQCbAvZHz9ULGWSLey1OoRySAJZKce4IbL8tjK7u/KP7I+g2OODhWYXDEMN8R9WMlynjzeamOdgh imported-openssh-key
+	cloud_final_modules:
+ 	 - [ssh, always] 
+	---------------------
+
+	7.  ec2에 키설정 붙여넣기 - 인스턴스중지 - 사용자데이터편집 - 인스턴스시작
+
+6) filezilla
+	1)file zilla 열기
+	2) 사이트관리자열기 - 새사이트 - 이름 myEc2
+	[일반] - 프로토콜(SFTP) / 호스트 : 퍼블릭 IPv4 주소
+	------------------------------------------------------
+	[로그인유형] - 키파일
+	------------------------------------------------------
+
+	3) 접속시 디렉토리가 안나오면
+	4) ec2 > sudo apt-get update
+	5) [ubuntu] - .jar 파일넣기
+	6) ec2 > mysql db만들기
+		create database myboot;
+	7) ec2 >  jar 파일실행
+		cd /home/ubuntu/boot1
+		nohup  java  -jar  파일명.jar  &
+		jobs
+
+5. aws ec2 관리
+1) https 접속
+2) 백그라운드로 실행

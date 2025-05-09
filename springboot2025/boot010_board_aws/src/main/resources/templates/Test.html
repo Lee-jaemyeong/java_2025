@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" 
+				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+				layout:decorate="~{fragments/layout}"
+><!-- layout:decorate="~{fragments/layout}"  fragments폴더안에 layout 렌더링 -->
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container mt-3">
+		<h2>Board</h2>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>title</th>
+					<th>name</th>
+					<th>content</th>
+					<th>date</th>
+					<th>hit</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>title</td>
+					<td>Doe</td>
+					<td>content</td>
+					<td>2025.04.08</td>
+					<td>0</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
