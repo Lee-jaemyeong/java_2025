@@ -1,0 +1,29 @@
+정리문제
+Q1.  npm 초기화 해 back 프로젝트만들기 명령어는?
+```bash 
+```
+Q2.  express 설치 명령어와  실행명령어는?
+```bash 
+``` 
+```bash 
+``` 
+
+Q3. sequelize , sequelize-cli 설치  및  sequalize 셋팅명령어는?
+```bash  
+```
+```bash 
+``` 
+
+Q4.  [routes] 폴더안에  test.js 파일을 분리했다. 
+get 방식   /test 경로로     test 완료 라는 문구 출력
+```bash
+```
+
+
+Q5.  app.js [routes]-test.js 파일을 가져오는 app.js 를 작성하시오.
+```bash
+```
+
+Q6.  postman에서  테스트 실행방법은?
+```bash
+```
