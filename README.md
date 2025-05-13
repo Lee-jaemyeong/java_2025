@@ -1,3 +1,67 @@
+#### 58.2025-05-12
+ 1. node.js
+    - node  setting, 서버구동
+      - javascript를 이용한 프레임워크, 플랫폼
+      - 패키지 관리 npm
+      - 비동기식으로 이뤄지는 대표적인 프로그램
+    - express 라우팅
+      - 코드를 깔끔하고 구조적으로
+      - backend frontcontroller 역할
+    - model(시퀄라이즈 모델 / 관계)
+      - mysql 설치확인
+      - sequelize(데이터베이스 조작가능하게, sql을 몰라도 자바스크립트로 조작가능하게)
+      - mysql2(node, mysql 연결해주는 드라이버)
+ 2. LINUX - aws
+    - 팀 프로젝트 올리기  
+
+---
+#### 57.2025-05-09
+ 1. LINUX - 복습
+ 2. LINUX - aws
+    - ubuntu 셋팅
+      - jdk
+        - 설치할 수 있는 jdk 버젼
+        - apt 업데이트
+        - java 설치
+        - java 버젼확인
+        - java 경로확인
+        - java 경로설정
+        - 경로 설정반영
+        - 환경변수 설정확인
+      - tomcat9
+        - 설치할 수 있는 tomcat 버젼
+        - apt 업데이트
+        - tomcat9 설치
+        - tomcat 버젼확인
+        - 방화벽
+        - 톰캣시작
+        - 톰캣시작확인
+        - ip 확인
+      - mysql
+        - 설치할 수 있는 mysql-server 버젼
+        - apt 업데이트
+        - mysql8 설치
+        - mysql8 버젼확인
+        - mysql 접속
+    - aws 회원가입
+    - aws ec2 올리기 준비물
+      - 만든 프로젝트 배포파일로 만들기(.jar)
+      - filezilla
+      - putty  - key   
+    - aws ec2
+      - 로그인
+      - ec2(대쉬보드)
+      - 인스턴스 생성
+      - jdk11 + tomcat9 + mysql8 설정
+      - putty 키
+      - filezilla
+      - ec2 > mysql db만들기
+      - ec2 >  jar 파일실행
+    - aws ec2 관리
+      - https 접속
+      - 백그라운드로 실행
+
+---
 #### 56.2025-05-08
  1. LINUX
     - 실습환경구성
