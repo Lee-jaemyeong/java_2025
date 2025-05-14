@@ -219,3 +219,58 @@ npx sequelize db:create
 ```
 node app.js
 ```
+
+_________________________________________________________
+4. 필수셋팅
+- 모듈 ?
+- 특정기능을 제공하는 코드블록
+- require 코드포함시키기
+
+1. nodemon
+- 코드변경시 자동으로 서버 재시작
+```bash
+npm i -D nodemon@2
+```
+
+2. 비밀번호 암호화
+- bcrypt : 암호화, 무작위데이터 추가
+```bash
+npm i bcrypt 
+```
+
+3. cors
+- cors( cross-origin resourcec sharing ) : 다른브라우저( react )가 다른도메인( node, springboot )에 리소스를 요청할 때 보안정책
+```bash
+npm i cors
+```
+
+4. passport
+- passport : 사용자인증 프레임워크 
+- passport-local : 사용자이름, 비밀번호를 사용해서 사용자정보확인
+```bash
+npm i passport passport-local
+```
+
+5. session, cookie
+- session 서버측에 데이터 저장, cookie 클라이언트측 데이터 저장
+```bash
+npm i express-session cookie-parser
+```
+
+6. 환경변수로드
+- .env 저장된 환경변수 로드
+```bash
+npm i dotenv
+```
+
+7. 파일업로드
+- 파일업로드 미들웨어
+```bash
+npm i multer
+```
+
+8. 모니터링
+- 서버로부터 들어오는 요청의 정보 디버깅, 모니터링
+```bash
+npm i morgan
+```

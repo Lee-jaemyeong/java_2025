@@ -1,0 +1,120 @@
+정리문제
+Q1.  npm 초기화 해 back 프로젝트만들기 명령어는?
+```bash
+npm init
+back 
+```
+Q2. express 기능은?  
+  express 설치 명령어와  실행명령어는?
+```bash 
+npm install express
+``` 
+```bash
+node app.js 
+``` 
+Q3. sequelize , sequelize-cli 설치  및  sequalize 기능은? 
+   sequelize , sequelize-cli 설치  및  sequalize 셋팅명령어는?
+```bash  
+npm install sequelize sequelize-cli mysql2
+```
+```bash
+npx sequelize init 
+``` 
+
+Q4.  [routes] 폴더안에  test.js 파일을 분리했다. 
+get 방식   /test 경로로     test 완료 라는 문구 출력
+```bash
+const express = require('express');
+const router = express.Router();
+
+router.get('/' , (req,res) => {
+ res.send('test 완료');
+});
+
+module.exports = router;
+```
+
+
+Q5.  app.js [routes]-test.js 파일을 가져오는 app.js 를 작성하시오.
+```bash
+const express = require('express');
+const app = express();
+const test = require('./routes/test');
+
+app.use('/test' , test);
+
+app.listen(3065 , ()=>{ console.log('server.....') });
+```
+
+Q6.  [models] - user.js  에서 다음기능을 설정하려고 한다. 
+다음과 같이 테이블을 만들과 관계설정을 하시오.
+> 기본테이블값
+    id   기본값
+    email        varchar(30)    필수, unique
+    nickname  varchar(30)    필수, unique
+    password  varchar(30)    필수, unique
+    createdAt , updatedAt   --
+   
+> 관계설정	
+    관계설정
+    - 유저는 많은 post를 가진다.  1:다      hasMany
+    - 유저는 많은 comment를 가진다.  1:다     hasMany
+    - 좋아요 :  User객체와 Post 객체사이에  다:다    belongsToMany  / 테이블명 :like / 별칭: liked  
+    - 팔로우 : 내가 올린게시물을 보는 사람  
+    - 팔로잉 : 내가 팔로우한사람의 게시물을 볼수 있는 상태
+```bash
+module.exports = ( sequelize , DataTypes ) => {
+//기본테이블값   
+const User = sequelize.define('User' , {
+ email{
+  type : DataTypes.STRING(30),
+  allowNull : false,
+  unique : true,
+ },
+ nickname{
+  type : DataTypes.STRING(30),
+  allowNull : false,
+  unique : true,
+ },
+ password{
+  type : DateTypes.STRING(30),
+  allowNull : false,
+  unique : true,
+ },
+},{
+ charset : 'utf8',
+ collate : 'utf8_general_ci'
+});
+//관계설정
+User.associate = (db) => {
+ db.User.hasMany(db.Post);
+ db.User.hasMany(db.Comment);
+ db.User.belongsToMany( db.Post , { through: 'Like' , as: 'Liked' });
+ db.User.belongsToMany( db.User , { through: 'Follow', as: 'Followers' foreignKey: 'FollowingId' });
+ db.User.belongsToMany( db.User , { through: 'Follow', as: 'Followings' foreignKey: 'FollowerId' });
+};
+ return User;
+};
+```
+
+
+Q7.  [models] - index.js
+//1.   Sequelize -  Users객체의 모델을 정의하시오.
+db.User = require('./user')( sequelize , Sequelize );
+//2.   모델 관계설정을 하시오.
+Object.Keys(db).forEach( modelName => { 
+ if (db[modelName].associate) {
+  db[modelName].associate(db);
+ }
+});
+
+Q8.  app.js
+models 을 가져와서 시퀄라이즈를 실행하는 코드를 작성하시오.
+const db = require('./models');
+db.sequelize
+    .sync()
+    .then(() => {console.log('db.....'); })
+    .catch( console.error );
+
+
+
