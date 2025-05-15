@@ -51,12 +51,178 @@ router.post('/login', isNotLoggedIn, async (req, res, next) => { // res.send('..
         where:{ id: user.id } , // 아이디를 이용해서 정보조회
         attributes: { exclude: ['password'] }, // password 제외하고 조회
         include: [{ model: Post, attributes: ['id'] }, 
-                  { model: User, as:'Followings', attributes: ['id'] }, // 사용자가 팔로우한 다른 유저 id 
-                  { model: User, as:'Followers', attributes: ['id'] }], // 사용자를 팔로우하는 다른 유저 id
+                  { model: User, as:'Followers', attributes: ['id'] }, // 사용자가 팔로우한 다른 유저 id 
+                  { model: User, as:'Followings', attributes: ['id'] }], // 사용자를 팔로우하는 다른 유저 id
       });
       return res.status(200).json(fullUser);
     });
   })(req, res, next);  // passport.authenticate()의 반환값을 즉시실행
 });
 
+//3. 로그인한 경우 사용자의 정보가져오기
+//  GET: localhost:3065/user
+// 설정1 : Header Cookie: connect.sid=Cookie 값으로 설정된 값
+// 로그인 후에 Cookie에 id값
+
+/*
+3-1. router.get 이용해서 - 사용자정보페이지  출력
+3-2. 1) 로그인사용자확인, 로그인한 유저 정보반환 
+*/
+router.get('/', isLoggedIn, async (req, res, next) => { //res.send('사용자 정보 조회');
+  try {
+    //1) 로그인사용자확인
+    //2) 로그인한 유저 정보반환 
+    if(req.user) {
+      const fullUser = await User.findOne({
+        // 조건: id로 검색
+        where:{ id: req.user.id },
+        // 비밀번호 제외 결과 가져오기
+        attributes: {exclude: ['password']},
+        // Post, Followers, Followings
+        include: [{ model: Post, attributes: ['id'] },
+                  { model: User, as:'Followers', attributes: ['id'] },
+                  { model: User, as:'Followings', attributes: ['id'] }]
+      });
+      res.status(200).json(fullUser);
+    } else {
+      res.status(200).json(null);  // 로그인안되면 null 반환
+    }
+  } catch(error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+//4. 로그아웃
+// POST: localhost:3065/user/logout  로그아웃기능입니다. 출력
+router.post('/logout', isLoggedIn, (req, res, next) => {
+  //res.send('로그아웃기능입니다.');
+  req.logout(function(err) {
+    if(err) { return next(err); }
+    res.redirect('/'); // 로그아웃 후 리다이렉션
+  });
+  req.session.destroy();  // 현재 세션 삭제
+  res.send('로그아웃 성공!'); // 로그아웃이 되면 문자열 반환
+});
+
+//5. 닉네임변경
+// POST: localhost:3065/user/nickname  닉네임변경 출력
+// 1. 로그인
+// 2. Header 쿠키설정
+// 3. Body - [Raw] - [Json] { "nickname":"4444" }
+router.post('/nickname', isLoggedIn, async (req, res, next) => {
+  //res.send('닉네임변경');
+  // update users set nickname=? where id=?
+  try{
+    await User.update({
+      nickname: req.body.nickname,
+    } , {
+      where: { id: req.user.id }
+    });
+    res.status(200).json({});
+  } catch(error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+//////////////////////////////////////////////
+//6. 팔로우
+// PATCH: localhost:3065/users/:userId/follow  팔로우기능추가
+//        localhost:3065/users/2/follow
+//1. 위의 경로로 router 작성
+//2. 넘겨받은 아이디로 유저인지 select 구문확인 / User.findOne
+//3. 유저에 추가 user.addFollowers
+//4. 상태표시
+router.patch('/:userId/follow', isLoggedIn, async ( req, res, next ) => {
+  try {
+    const user = await User.findOne({ where: { id:req.params.userId } });
+    if (!user) { res.status(403).send('유저를 확인해주세요'); }
+
+    await user.addFollowers(req.user.id);
+    res.status(200).json({ UserId: parseInt(req.params.userId , 10) }); //10진수
+
+  } catch(error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+
+//7. 팔로잉찾기 ( 내가 찾아보는 친구들 )
+// GET: localhost:3065/users/followings
+//1. 위의 경로로 router 작성
+//2. 넘겨받은 아이디로 유저찾기
+//3. 해당유저의 팔로잉찾기 user.getFollowings()
+router.get('/followings', isLoggedIn, async ( req, res, next ) => {
+  try{
+    const user = await User.findOne({ where: { id: req.user.id } });
+    if (!user) { res.status(403).send('유저를 확인해주세요'); } // 403 금지된.없는 유저
+
+    const followings = await user.getFollowings();
+    res.status(200).json(followings);
+  } catch(error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+//8. 팔로우찾기
+// GET: localhost:3065/users/followers
+//1. 위의 경로로 router 작성
+//2. 넘겨받은 아이디로 유저찾기
+//3. 해당유저의 팔로워찾기 user.getFollowers()
+router.get('/followers', isLoggedIn, async ( req, res, next ) => {
+  try{
+    const user = await User.findOne({ where: { id: req.user.id } });
+    if (!user) { res.status(403).send('유저를 확인해주세요'); }
+
+    const followers = await user.getFollowers();
+    res.status(200).json(followers);    
+  } catch(error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+//9. 언팔로우
+// DELETE: localhost:3065/users/:userId/follow
+//         localhost:3065/users/2/follow  (친구번호)
+//1. 위의 경로로 router 작성
+//2. 언팔로우할 친구찾기
+//3. 팔로우 삭제 - removeFollowers
+//4. 상태표시
+router.delete('/:userId/follow', isLoggedIn, async (req, res, next) => {
+  try {
+    const user = await User.findOne( {where: {id: req.params.userId}});
+    if (!user) { res.status(403).send('유저를 확인해주세요'); }
+    
+    await user.removeFollowers( req.user.id );
+    res.status(200).json({ UserId: parseInt( req.params.userId, 10 )});
+  } catch(error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+//10. 나를 팔로워한 사람 차단
+// DELETE: localhost:3065/users/follower/:userId
+//1. 위의 경로로 router 작성
+//2. 언팔로우할 친구찾기
+//3. 팔로우 삭제 - removeFollowers
+//4. 상태표시
+router.delete('/follower/:userId', isLoggedIn, async (req, res, next) => {
+  try {
+    const user = await User.findOne({ where: { id: req.params.userId } });
+    if (!user) { res.status(403).send('유저를 확인해주세요'); }
+
+    await user.removeFollowings(req.user.id);
+    res.status(200).json({ UserId: parseInt( req.params.userId, 10 )})
+  } catch(error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+//////////////////////////////////////////////
 module.exports = router;

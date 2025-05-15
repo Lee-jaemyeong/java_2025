@@ -1,0 +1,187 @@
+정리문제
+Q1. 다음 node에서 모듈을 설치하려고한다.  왜 필요한지 이유를 적으시오. 
+```bash
+npm  i  -D  nodemon@2 : 코드변경시 자동으로 서버 재시작 
+npm  i  bcrypt : 비밀번호 암호화 
+npm  i cors : 다른 브라우저가 다른 도메인에 리소스를 요청할 때 보안정책
+npm  i  passport  passport-local : 사용자 인증 프레임워크 / username, password 사용자정보확인
+npm  i  express-session     cookie-parser : session 서버측에 데이터저장, cookie 클라이언트측 데이터저장
+npm  i dotenv : 저장된 환경변수 로드 
+npm  i  multer : 파일업로드 미들웨어 
+npm  i morgan : 서버로부터 들어오는 요청의 정보디버깅, 모니터링 
+```
+
+Q2.  .env 환경설정파일을 다음과 같이 만들었다. 
+``` bash
+DB_PASSPORT=1234
+COOKIE_SECRET=appsecret
+```
+[config]- config.js  파일에서  사용하는방법은?
+``` bash
+#### const dotenv = require('dotenv');
+#### dotenv.config();
+
+module.exports = {
+  "development": {
+    "username": "root",
+    "password": #### process.env.DB_PASSPORT,
+    "database": "node_react",
+    "host": "127.0.0.1",
+    "dialect": "mysql", 
+    "timezone":"+09:00",
+  }, 
+}
+```
+
+Q3.  [password] - index.js / local.js
+#### 안에 들어갈 코드는?
+
+```index.js
+module.exports = ()=>{
+  //1. 세션저장 (Set)- 로그인한 사용자의 정보를 저장
+  passport.#### serializeUser((user, done) => {    //#### 여기에 들어갈 코드는?
+    done(null, user.id);  // 세션에는 사용자 id만 저장됨. {  id:1 ,  cookie:'123123' }
+  });
+  //2. 세션조회 (Get)- 세션에 저장된 사용자 id를 기반으로 데이터 베이스에서 사용자 조회
+  // select * from users  where id=? limit 1;
+  passport.#### deserializeUser(async (id, done) => {   // 비동기처리    //#### 여기에 들어갈 코드는?
+    try {
+      const user = await User.findOne({ where: { id } });  // id로 사용자 조회
+      done(null, user);  // 조회된 정보 session 저장
+    } catch (error) {  // 에러출력
+      console.error(error);
+      done(error);
+    }
+  });
+  //3. id , passpoort 인증
+  local();  //#### 여기에 들어갈 코드는?
+};
+
+```
+
+
+``` local.js
+const passport = require('passport'); 
+const { Strategy: LocalStrategy } = require('passport-local');// passport-local 인증전략:-이메일, 비밀번호
+const bcrypt = require('bcrypt');// 암호화비교
+const { User } = require('../models');// User 객체 - users 테이블가져오기
+
+module.exports = () => { 
+  passport.use(
+    new LocalStrategy({         //   1단계 :    email, password
+      usernameField : 'email', 
+      passwordField : 'password'
+    } , async (email, password, done) => {     //   2단계 :  db에서 유저찾아서 있는지 확인
+    try {
+      //1. 이메일 이용해서 사용자 찾기 -  select * from users  where email='email'
+      const user = await User.findOne({where: {email}});    //#### 
+      //2. 없다면  존재하지 않는 이메일
+      if (!user) { return done( null,  false,  {reason : '존재하지 않는 이메일입니다. '} ); }
+      //3. 비밀번호와 암호화된 비밀번호 비교하기 - 사용자정보저장 / 아니라면 비밀번호가 틀렸습니다.
+      const result = await bcrypt.compare(password, user.password);   //####
+      if (result) { return done(null, user); }
+      return done( null,  false,  {reason : '비밀번호가 틀렸습니다.'} );  // 실패메시지
+    } catch (error) { 
+      console.error(error);
+      return done(error);
+    }
+  }));
+};
+
+```
+ 
+
+
+Q4.  [routes] -middlewares.js / users.js
+```middlewares.js
+// # middlewares.js
+module.exports = {
+  isLoggedIn: (req, res, next) => { 
+    if ( #### req.isAuthenticated() ) {  //####
+      next();
+    } else { 
+      res.status(401).send('로그인이 필요합니다.');
+    }
+  }, 
+  isNotLoggedIn: (req, res, next) => { 
+    if ( #### !req.isAuthenticated() ) {    //####
+      next();
+    } else { 
+      res.status(401).send('로그인하지 않은 사용자만 접근 가능합니다.');
+    }
+  },
+};
+
+
+```
+```users.js
+const express = require('express');
+const router = express.Router();
+const bcrypt = require('bcrypt');
+const passport = require('passport');
+const { User , Post } = require('../models');
+const { isLoggedIn , isNotLoggedIn } = require('./middlewares');
+
+
+// 1. 회원가입
+// post :  localhost:3065/user/
+// 설정1 :  Header   Content-Type : application/json
+// 설정2 :  Body     -[Raw]   -[JSON]
+// {  "email": "test@test.com",  "nickname": "test",  "password": "test" }
+router.post('/', isNotLoggedIn, async (req, res, next) => {   //res.send('..... join');
+  try {
+    //1. 이메일중복확인  sql - select :  객체.findOne
+    const user = await User.findOne({where: {email: req.body?.email}}); //####
+    //2. 결과확인 - 존재하면 이미사용중인 아이디입니다.
+    if (user) { return res.status(403).send('이미사용중인 아이디입니다.'); }
+    //3. 비밀번호 암호화
+    const hashPassword = await bcrypt.hash(req.body.password, 12);  //####
+    //4. 사용자 생성  객체.create - insert       email , nickname , password
+  //#### await User.create({
+    email: req.body.email,
+    nickname: req.body.nickname,
+    password: req.body.hashPassword
+  });
+    //5. 응답 - 회원가입 성공 ok
+    res.status(201).send('회원가입완료!');
+  } catch (error) {
+    console.error(error);
+    next(error);  
+  }
+});
+
+//2. 로그인
+// localhost:3065/user/login
+router.post('/login', isNotLoggedIn, async (req, res, next) => {   
+  passport.authenticate('local', (err, user, info) => { 
+    //1. err 오류처리
+    if (err) { console.error(err); return next(err); }
+    
+    //2. 인증정보있다면 -  세션 401상태코드 ( 인증필요 )
+    if (info) { return res.status(401).send(info.reason); }
+
+    //3. 사용자세션에 등록
+    return req.login(user, async (loginErr) => { 
+      // 3-1. 로그인시 에러발생
+      if (loginErr) { console.error(loginErr); return next(loginErr); }
+      // 3-2. 사용자정보조회  ( sql - join )
+      const fullUser = await User.findOne({
+        where: {id: User.id},
+        attribute: { exclude: ['password'] },
+        include: [{ model: Post, attributes: ['id'] },
+                  { model: User, as: 'Followers', attributes: ['id'] },
+                  { model: User, as: 'Followings', attributes: ['id'] }],
+      }); //####
+      return res.status(200).json(fullUser);
+    });    
+  })(req, res, next);   // passport.authenticate() 의 반환값을 즉시실행
+});
+
+
+module.exports = router;
+
+```
+
+
+Q5.  node 애플리케이션이 로딩되는 순서는?
+app.js   >  passport - index.js  >  routers  - users.js

@@ -32,7 +32,7 @@ passportConfig();
 app.use(morgan('dev')); // http 요청로그기록
 app.use('/' , express.static( path.join(__dirname,'uploads') ) ); // mac: /Users/ , window: C:\
 app.use( cors({
-  origin: 'hrrp://localhost:3000', //3000 react 요청허용
+  origin: 'http://localhost:3000', //3000 react 요청허용
   credentials: true, // 쿠키와 같은 인증정보를 포함한 요청도 허용
 }));
 app.use(express.json()); // 요청 본문파싱 - 클라이언트로부터 json 데이터받을때 사용
