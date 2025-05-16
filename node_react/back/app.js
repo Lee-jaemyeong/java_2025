@@ -14,6 +14,8 @@ const morgan = require('morgan'); // 요청상태 모니터
 const basicRouter = require('./routes/basic');
 const testRouter = require('./routes/test');
 const user = require('./routes/user');
+const post = require('./routes/post');
+const posts = require('./routes/posts');
 
 //2. 환경설정
 dotenv.config(); // 환경설정 .env 로드
@@ -52,5 +54,8 @@ app.get('/' , (req, res) => { res.send('hello express'); });
 app.use('/api' , basicRouter);
 app.use('/test' , testRouter);
 app.use('/user' , user);
+app.use('/post' , post);
+app.use('/posts' , posts);
+
 //6. 서버설정 및 실행
 app.listen(3065 , () => { console.log('server....'); });
