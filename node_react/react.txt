@@ -1,0 +1,198 @@
+React
+
+■1. react 설치
+■2. 디자인적용 - antd / 반응형 / 최적화 렌더링
+■3. redux
+■4. saga
+■5. etc - 스크롤링, faker dummy ,,,,,
+
+________________________________________________________________________
+■1. react 설치
+1) node, npm
+- node: 자바스크립트를 실행할 수 있게 해주는 런타임도구
+           비동기식으로 이뤄지는 대표적인 프로그램
+- npm: 노드 패키지 매니저
+
+```bash
+node -v
+npm -v
+```
+```bash
+mkdir front
+cd front
+```
+
+2) npmtrends
+https://npmtrends.com/
+사용법) 검색 'react-vs-vue' , 'react-next'
+
+- react vs vue 차이점
+react -  데이터 연동시 단방향
+vue - 양방향
+
+3) next
+1. npm 초기화
+```bash
+cd front
+npm init
+   front
+```
+
+2. next, react 설치
+2-1. next
+```bash
+npm i next@13.4.13
+```
+2-2. react
+```bash
+npm i react@18.3.1  react-dom@18.3.1
+```
+※ npm i next 최신버젼....
+
+2-3. package.json 실행
+```bash
+"author":"jmlee",
+"scripts":{"dev":"next"}
+```
+[full source]
+```bash
+{
+  "name": "front",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": { "dev": "next" },
+  "author": "jmlee",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "next": "^13.4.13",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
+```
+```bash
+npm run dev
+```
+
+2-4. [pages] - index.js
+```bash
+import React from 'react';
+
+const Home = () => { return(<div>Hello, next</div>) };
+export default Home;
+```
+```bash
+npm run dev
+```
+
+연습문제1) [pages] - profile.js   내 프로필 출력
+연습문제2) [pages] - signup.js   회원가입 출력
+
+localhost:3000/profile
+localhost:3000/signup
+
+2-5. chrome 확장프로그램
+검색 : react  'React Develop Tools'
+검색 : redux  'Redux Dev Tools'
+
+________________________________________________________________________
+■2. 디자인적용 - antd / 반응형 / 최적화 렌더링
+
+1. 구조확인
+[Node_React]
+  ㄴ [back]
+  ㄴ [front]
+      ㄴ package.json
+      ㄴ [pages] - index.js, profile.js, signup.js  ★pages 폴더명필수
+      ㄴ [components] - 부품들
+      ㄴ [hooks] 
+      ㄴ [store]
+      ㄴ [reducers]
+      ㄴ [sagas]
+
+2. [front] - [components] - AppLayout.js 부품들
+
+3. [front] - [pages] - index.js, profile.js, signup.js - AppLayout 사용
+
+
+- error ./components/AppLayout.js:2:0
+Module not found: Can't resolve 'prop-types'
+```bash
+npm i --save prop-types
+```
+
+4. 디자인적용- antd / styled-components
+- https://4x.ant.design/
+- react, vue에서 다 사용가능한 컴포넌트
+- styled-components : 내가 만든 컴포넌트에 자체 css 입혀서 컴포넌트 만들기
+- @ant-design/icons : 아이콘이미지
+
+```bash
+npm install --save antd@4
+npm install --save styled-components@5
+npm install --save @ant-design/icons@5
+```
+=================================================
+5. menu 디자인 고르기
+
+6. [front] - [components] - AppLayout.js  menu 적용 / 
+7. [pages] - index.js  css적용
+
+=================================================
+8. 웹팩?
+- 모듈번들러, 웹애플리케이션을 구성하는 여러파일을 하나의 번들로 묶어주는 역할
+(html, css, js, 이미지 등)
+- 로더: css, 이미지,,,
+- 코드분할,,,
+- 코드 최적화
+
+- nextjs 기본적인 웹팩이 들어 있음.
+- 웹팩이 css를 찾아서 style 태그로 바꿔서 html에 넣어줌.
+
+9. [pages] - _app.js  
+- 공통 css  import
+- 모든페이지 공통
+
+=================================================
+10. 공통레이아웃 , 검색폼
+[front] - [components] - AppLayout.js
+
+https://4x.ant.design/components/grid/
+
+- 컬럼 24개
+- 각 디바이스 사이즈별로 디자인 가능
+   xs: 모바일, sm: 태블릿, md: 작은 데스크탑
+- gutter : grid layout 컬럼간격사이 간격주기
+- <a href="http://thejoa.com"
+            target="_blank"
+            rel="noreferrer noopener">TheJoa</a>
+   noreferrer - 다른페이지 이동시 링크를 건 페이지의 주소정보를 브라우저가 header로 송신하지 않음.
+   noopener - 다른페이지 이동시 링크를 건 페이지를 참조할 수 없게 됨.
+   
+=================================================
+11. 왼쪽메뉴 : LoginForm / UserProfile
+1. 부품만들기  [front] - [components] - LoginForm.js / UserProfile.js
+2. 사용  [front] - [components] - AppLayout.js
+
+☆ 훅 (Hook) : React의 상태를 관리, 컴포넌트 내부에서 값이 변할 수 있도록 해주는 역할
+☆ 비구조화할당문법
+let arr = [1,2];  // 배열
+let a = arr[0];
+let b = arr[1];
+let [c,d] = arr;
+
+
+________________________________________________________________________
+■3. redux
+
+
+
+________________________________________________________________________
+■4. saga
+
+
+
+
+________________________________________________________________________
+■5. etc - 스크롤링, faker dummy ,,,,,
