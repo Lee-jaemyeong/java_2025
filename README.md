@@ -1,3 +1,43 @@
+#### 60.2025-05-14
+ 1. node.js - 복습
+ 2. node.js - 필수셋팅
+    - 모듈
+      - 특정기능을 제공하는 코드블록
+      - require 코드포함시키기
+    - nodemon
+      - 코드변경시 자동으로 서버 재시작
+    - 비밀번호 암호화
+      - bcrypt(암호화, 무작위데이터 추가)
+    - cors
+      - cors(cross-origin resource sharing)
+      - 다른 브라우저(react)가 다른 도메인(node, spring boot)에 리소스를 요청할 때 보안정책
+    - passport
+      - passport(사용자인증 프레임워크)
+      - passport-local(사용자이름, 비밀번호를 사용해서 사용자 정보확인)
+    - session, cookie
+      - session(서버측에 데이터 저장)
+      - cookie(클라이언트측 데이터 저장)
+    - 환경변수로드
+      - .env 저장된 환경변수 로드
+    - 파일업로드
+      - 파일업로드 미들웨어
+    - 모니터링
+      - 서버로부터 들어오는 요청의 정보 디버깅, 모니터링
+ 3. node.js - 회원가입, 로그인
+ 4. 2차 팀프로젝트 - 주제선정 및 기능선정
+
+---
+#### 59.2025-05-13
+ 1. node.js - 복습
+ 2. node.js - sequelize
+    - sequelize(데이터베이스 조작가능하게, sql을 몰라도 자바스크립트로 조작가능하게)
+    - mysql2(node, mysql 연결해주는 드라이버)
+    - 시퀄라이즈 이용해서 table 만들기
+      > 기본 테이블값
+      > 관계설정
+ 3. 2차 팀프로젝트 - 주제선정
+
+---
 #### 58.2025-05-12
  1. node.js
     - node  setting, 서버구동
