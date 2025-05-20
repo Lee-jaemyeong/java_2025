@@ -1,0 +1,161 @@
+Q1. react에서  node, npm 가 필요한 이유는?
+- node  :  자바스크립트를 실행할 수 있게 해주는 런타임 도구
+- npm   :  노드 패키지 매니저
+
+Q2. react 프로젝트 초기화하는 방법은?
+```bash
+npm init
+```
+
+Q3. next, react 설치방법은? 
+```bash
+npm i next@13.4.13
+npm i react@18.3.1  react-dom@18.3.1
+```
+ 
+
+Q4. npm run dev로 실행하려고한다. 설정방법은?
+[package.json]
+```bash
+"scripts" : { "dev":"next" }
+```
+ 
+Q5. localhost:3000으로 실행했을때 기본으로 실행되는 파일은  [ index.js ] 이고 
+hello next 를 띄울려고한다.    파일을 작성하시오. 
+
+```bash
+import React from 'react'; 
+const Test = () => {
+  return(<div>hello next</div>);
+};
+export default Test;
+```
+  
+
+Q6. ant design을 적용하려고한다.  설치3개파일은?   
+```bash
+npm install --save antd@4
+npm install --save styled-components@5
+npm install --save @ant-design/icons@5
+```
+ 
+Q7. next에는 기본적으로 웹펙이 있어서 , 
+웹팩이 css를 찾아서 style 태그로 바꿔서 html에 넣어주는 역할을 한다. 
+- 공통 css import
+- 모든페이지 공통 으로 처리해주는 파일은?
+[pages] - _app.js     ★ pages 
+
+
+ 
+Q8. 공통레이아웃 ,  검색폼
+-- 반응형레이아웃을 작성하려고한다.   mobile- xs (24) / md (6-12-6)
+모바일버젼에서는 한칸으로, 작은 pc버젼에서는 1-2-1 로 작성하려고한다.
+아래칸을 채우시오.
+
+
+Q9. login 기본상태를 false로 놓고  login이라면  UserProfile, 아니라면 LoginForm으로 체크하시오. 
+
+[front] - [components] -    AppLayout.js  
+```bash
+import React, { useState}  from 'react';   // react 불러오기
+import PropTypes from 'prop-types'; // props 타입검사하는 역할
+import Link from 'next/Link';
+import { Menu, Input, Row, Col  } from 'antd';
+import UserProfile from './UserProfile';
+import LoginForm from './LoginForm';
+
+const AppLayout = ({ children }) => { 
+  ///////////////////////////////////////////// code
+  const items = [
+     { label: <Link href="/">LOGO</Link>, key: '/' } 
+    ,{ label: <Link href="/profile">프로필</Link>, key: '/profile' } 
+    ,{ label: <Link href="/signup">회원가입</Link>, key: '/signup' } 
+    ,{ label: <Input.Search 
+                placeholder="input search text" 
+                enterButton
+                style={{ verticalAlign:'middle'}}  />, key: '/search'
+    }
+  ];
+
+  /// 1. 변수 vs  useState
+  // 단순대입시 state값의 변경점을 reactDom 알지 못함. 
+  // login상태
+  const [ isLogin, setIsLogin ] = useState(false); //## 
+
+  ///////////////////////////////////////////// view
+  return ( 
+    <div> 
+      <Menu  mode="horizontal"   items={items} />
+      <Row gutter={8}>
+        <Col  ###### xs={24} md={6}>
+          {/*<h3 onClick={() => { console.log('....'); }} >{logo}</h3> */}
+          {/* <h3 onClick={changeLogo} >{logo}</h3>*/}
+            ###### { isLogin? <UserProfile/> : <LoginForm/> }
+        </Col>
+        <Col     ###### xs={24} md={12} style={{backgroundColor:'#efefef'}} > {children}  </Col>   
+        <Col     ###### xs={24} md={6} > <div>
+          <a href="https://thejoa.com"
+             target="_blank"
+             rel="noreferrer  noopener">TheJoa</a> copyrights. all reserved. </div> </Col>
+      </Row>
+      </div>        
+  );
+}; 
+
+AppLayout.propTypes = {
+  children : PropTypes.node.isRequired
+};
+export default AppLayout;
+``` 
+
+
+Q10. LoginForm 에서 다음과 같이 설정하시오.
+아이디부분의 값을 id로 설정하고 사용자가 아이디를 입력할때 마다 변경될때마다 값이 변경이되고 콘솔창에 출력하는코드를 작성하시오.
+
+```bash
+import React , {useState , useCallback} from 'react'
+import { Input, Button, Form, Row, Col } from 'antd'; 
+import Link from 'next/Link';
+
+const LoginForm = () => { 
+  ///////////////////////////////////////////// code
+ 
+#####   
+  const [id, setId] = useState('');
+  const onChangeId = useCallback((e) => {
+     setId( e.target.value );
+  });
+
+  const [password, setPassword] = useState(''); 
+  const onChangePassword = useCallback((e) => { 
+    console.log(e.target.value);
+    setPassword(e.target.value);
+  });
+
+  ///////////////////////////////////////////// view
+  return (
+    <>
+      <Form layout="vertical"  style={{ padding:'3%'}}>
+        <Form.Item  label="아이디"    >
+          <Input placeholder="user@gmail.com 형식으로 입력"
+                 name="id"    #####value={id} onChange={onChangeId}   required  />
+        </Form.Item>     
+        <Form.Item  label="비밀번호"    >
+          <Input.Password placeholder="비밀번호 입력"
+                name="password" value={password}   onChange={onChangePassword}    required />
+        </Form.Item>
+        <Form.Item  style={{textAlign:'center'}}>
+          {/*<Button type="primary" style={{ marginRight: '2%' }} onClick={onCount} >로그인 {count}</Button> */}
+          <Button type="primary" style={{ marginRight: '2%' }}>로그인</Button> 
+          <Link  href="/signup"  legacyBehavior ><a><Button>회원가입</Button></a></Link>
+        </Form.Item>
+      </Form>
+    </>  
+  );
+};
+export default LoginForm;
+```
+
+
+
+ 

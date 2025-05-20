@@ -34,8 +34,9 @@ const AppLayout = ({children}) => {
       <Row gutter={8}>
         <Col xs={24} md={6}> 
           {/*<h3 onClick={ ()=>{ console.log('....'); } }>{logo}</h3>*/}
-          <h3 onClick={ changeLogo } >{logo}</h3>
-          { isLogin? <UserProfile /> : <LoginForm /> } 
+          {/* <h3 onClick={ changeLogo } >{logo}</h3> */}
+          { isLogin? <UserProfile setIsLogin={setIsLogin} /> : 
+                     <LoginForm setIsLogin={setIsLogin} /> } 
         </Col>
         <Col xs={24} md={12} style={{backgroundColor:'#efefef'}}> {children} </Col>   
         <Col xs={24} md={6}> <div> 
