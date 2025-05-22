@@ -35,7 +35,7 @@ const AppLayout = ({children}) => {
   //2. login상태 
   //const [ isLogin , setIsLogin ] = useState(false);
   // 실수주의!
-  const {isLogin} = useSelector( (state) => state.user ); //##redux 2
+  const { user } = useSelector( state => state.user ); //##redux 2
 
   const stylebg = useMemo( () => ({backgroundColor:'#efefef'}) , []);
   //////////////////////////////////////////////////// # view
@@ -46,7 +46,7 @@ const AppLayout = ({children}) => {
         <Col xs={24} md={6}> 
           {/*<h3 onClick={ ()=>{ console.log('....'); } }>{logo}</h3>*/}
           {/* <h3 onClick={ changeLogo } >{logo}</h3> */}
-          { isLogin? <UserProfile /> : <LoginForm /> }   {/* ##redux 3 */}
+          { user? <UserProfile /> : <LoginForm /> }   {/* ##redux 3 */}
 
         </Col>
         <Col xs={24} md={12} style={stylebg} > {children} </Col>   

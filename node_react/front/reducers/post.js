@@ -4,10 +4,10 @@ export const initalState = {
     User: { id:1, nickname:'JMlee' },
     content: '첫번째 게시글  #node #react',
     Images: [
-      {src:'https://mblogthumb-phinf.pstatic.net/MjAxNzAzMjBfNzEg/MDAxNDkwMDE2OTA3NjI5.-p_6mhq3cUq7Nl4byOoEndBx1nij6GemuKNyxkK3xCIg.l5TMzs9JrL9YtmLZUXwkS3RV2w0OM22iUNsb9xWhOeIg.PNG.wizpet1756/1.PNG?type=w800'}, 
-      {src:'https://mblogthumb-phinf.pstatic.net/MjAxNzAzMjBfNzEg/MDAxNDkwMDE2OTA3NjI5.-p_6mhq3cUq7Nl4byOoEndBx1nij6GemuKNyxkK3xCIg.l5TMzs9JrL9YtmLZUXwkS3RV2w0OM22iUNsb9xWhOeIg.PNG.wizpet1756/1.PNG?type=w800'}, 
-      {src:'https://mblogthumb-phinf.pstatic.net/MjAxNzAzMjBfNzEg/MDAxNDkwMDE2OTA3NjI5.-p_6mhq3cUq7Nl4byOoEndBx1nij6GemuKNyxkK3xCIg.l5TMzs9JrL9YtmLZUXwkS3RV2w0OM22iUNsb9xWhOeIg.PNG.wizpet1756/1.PNG?type=w800'},],
-    Comment: [{
+      {src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT73XrVgkLQtIqmkflhAeZZXdxh7JYCnknRw&s'},
+      {src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT73XrVgkLQtIqmkflhAeZZXdxh7JYCnknRw&s'}, 
+      {src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT73XrVgkLQtIqmkflhAeZZXdxh7JYCnknRw&s'},],
+    Comments: [{
       User: {nickname:'one'}, content:'hello'
     }, {
       User: {nickname:'two'}, content:'hi'
@@ -25,7 +25,7 @@ const dummyPost = {
   content: 'dummy',
   User: { id:1, nickname: 'JMlee' },
   Images: [],
-  Comment: []
+  Comments: []
 };
 ////////
 

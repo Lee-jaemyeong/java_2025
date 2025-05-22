@@ -3,13 +3,16 @@ import { Card, Avatar, Button } from 'antd';
 import styled from 'styled-components';
 
 import { logoutAction } from '../reducers/user';  //## 1. redux
-import { useDispatch } from 'react-redux';  //## 2. redux
+import { useDispatch , useSelector } from 'react-redux';  //## 2. redux
 
 const ButtonWrapper = styled.div`
    margin-top:5%;
 `;
 
 const UserProfile = () => {      //## 3. redux
+
+  const {logOutLoading , user } = useSelector( state => state.user );
+
   ///////////////////////////// code
   const dispatch = useDispatch();  //## 4. redux
   // 로그아웃 버튼을 누르면 로그아웃되게 만들기
@@ -27,7 +30,7 @@ const UserProfile = () => {      //## 3. redux
     <Card.Meta avatar={<Avatar>TheJoA</Avatar>} 
                title='TheJoA'/> 
     <ButtonWrapper>
-      <Button onClick={onLogout} >로그아웃</Button>
+      <Button onClick={onLogout} loading={logOutLoading} >로그아웃</Button>
     </ButtonWrapper>
   </Card>);
 };

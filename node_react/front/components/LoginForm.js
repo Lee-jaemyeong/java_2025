@@ -4,9 +4,12 @@ import Link from 'next/Link';
 import UserInput from '../hooks/UserInput';
 
 import {loginAction} from '../reducers/user';  //#1. redux
-import {useDispatch} from 'react-redux';  //#2. redux - useDispatch
+import {useDispatch, useSelector} from 'react-redux';  //#2. redux - useDispatch
 
 const LoginForm = () => { //#3 redux
+
+  const { logInLoading } = useSelector( state => state.user );
+
   ////////////////////////////////////////// code
   const [id, onChangeId] = UserInput('');   
   const [password, onChangePassword] = UserInput('');
@@ -38,7 +41,7 @@ const LoginForm = () => { //#3 redux
                           name="password" value={password} onChange={onChangePassword} required />
         </Form.Item>
         <Form.Item style={{textAlign:'center'}}>
-          <Button type="primary" style={{ marginRight: '2%' }} htmlType='submit' loading={false} >로그인</Button>
+          <Button type="primary" style={{ marginRight: '2%' }} htmlType='submit' loading={logInLoading} >로그인</Button>
           <Link href="/signup" legacyBehavior ><a><Button>회원가입</Button></a></Link>
         </Form.Item>
       </Form>
