@@ -5,9 +5,19 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import UserInput from '../hooks/UserInput';
 import styled from 'styled-components';
 
+// 1. SIGN_UP_REQUEST
+import { SIGN_UP_REQUEST } from '../reducers/user';
+// 2. dispatch, useSelector
+import {useDispatch, useSelector} from 'react-redux';
+
 const ErrorMessage = styled.div`color:red;`;  // style.div( color:red; )
 
 const Signup = () => {
+  // 3. useSelector 이용해서 - signUpLoading 가져오기
+  const { signUpLoading } = useSelector( state => state.user );
+  // 4. dispatch 선언
+  const dispatch = useDispatch();
+
   /////////////////////////////////////////////////////////// code
   const [id, onChangeId] = UserInput('');
   const [nickname, onChangeNickname] = UserInput('');
@@ -30,6 +40,13 @@ const Signup = () => {
   const onSubmitForm = useCallback(() => {
     if (password !== passwordRe) { return setPasswordError(ture); }
     if (!check) { setCheckError(true); }
+
+    // 5. dispatch
+    return dispatch({
+      type: SIGN_UP_REQUEST,
+      data:{ id, password, nickname }
+    });
+
   }, [id, password, passwordRe, check]);
 
   /////////////////////////////////////////////////////////// view
@@ -64,7 +81,7 @@ const Signup = () => {
             {checkError && <ErrorMessage>약관에 동의하셔야 합니다.</ErrorMessage>}
           </Form.Item>
           <Form.Item>
-            <Button type='primary' htmlType='submit'>회원가입</Button>
+            <Button type='primary' htmlType='submit' loading={signUpLoading} >회원가입</Button>
           </Form.Item>
         </Form>
       </AppLayout>

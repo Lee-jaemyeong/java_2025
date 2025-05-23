@@ -1,14 +1,18 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Card, Avatar, Button, List, Comment, Popover } from 'antd';
 import { EllipsisOutlined, HeartOutlined, HeartTwoTone, MessageOutlined, RetweetOutlined } from '@ant-design/icons';
 import CommentForm from './CommentForm';
 import PostImages from './PostImages';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'; //2. useDispatch
+//1. REMOVE_POST_REQUEST
+import { REMOVE_POST_REQUEST } from '../reducers/post';
 
 const PostCard = ({post}) => {
-  /////////////////////////////////////////////////////// code
   const id = useSelector( state => state.user.user?.id );
+  /////////////////////////////////////////////////////// code
+  const {removePostLoading , removePostDone} = useSelector( state => state.post ) // 3.
   // console.log(id);
+  const dispatch = useDispatch(); // 4.
 
   //1. 좋아요 - false
   const [like, setLike] = useState(false);
@@ -17,6 +21,17 @@ const PostCard = ({post}) => {
   //2. 댓글 - 댓글의 상태체크 / 댓글처음에는 안보이게, 클릭하면 토글기능
   const [comment, setComment] = useState(false);
   const onClickComment = useCallback(() => { setComment(prev => !prev); }, []);
+
+  //3. 삭제버튼
+  // useEffect(() => {
+  //   if(removePostDone) { console.log('....removePostDone'); alert('게시글을 삭제했습니다.'); }
+  // }, [removePostDone]);
+  const onRemovePost = useCallback(() => {
+    dispatch({ 
+      type: REMOVE_POST_REQUEST,
+      data: post.id 
+    })
+  }, []);  
 
   /////////////////////////////////////////////////////// view
   return(
@@ -36,7 +51,7 @@ const PostCard = ({post}) => {
               ?(
                 <>
                 <Button>수정</Button>
-                <Button type="primary">삭제</Button>
+                <Button type="danger" onClick={onRemovePost} loading={removePostLoading}>삭제</Button>
                 </>
                )
               : <Button style={{backgroundColor:'red', color:'white'}}>신고</Button>
