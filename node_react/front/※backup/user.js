@@ -1,5 +1,3 @@
-import produce from 'immer';
-
 // step1) 초기값
 export const initialState = {
     logInLoading: false,  // 로그인 시도중  -  로딩창
@@ -79,69 +77,91 @@ const dummyUser = (data) => ({
 });
 
 // step3) 이전 + 상태 = 다음상태
-const reducer = ( state=initialState, action ) => produce(state,(draft) => {
+export default ( state=initialState, action ) => {
   switch (action.type) {
   case LOG_IN_REQUEST:
-    draft.logInLoading = true;
-    draft.logInDone = false;
-    draft.logInError = null;
-    break;
+    return {
+      ...state,   // 이전
+      logInLoading: true,  // 로그인 시도중  -  로딩창
+      logInDone: false,
+      logInError: null,
+    }
   case LOG_IN_SUCCESS:
-    draft.user = dummyUser(action.data);  //action.data
-    draft.logInLoading = false;
-    draft.logInDone = true;
-    break;    
+    return {
+      ...state,   // 이전
+      logInLoading: false,  // 로그인 시도중  -  로딩창
+      logInDone: true,
+      user : dummyUser(action.data)
+    }    
   case LOG_IN_FAILURE:
-    draft.logInLoading = false;
-    draft.logInError= action.error;
-    break;      
+    return {
+      ...state,   // 이전
+      logInLoading: false,  // 로그인 시도중  -  로딩창
+      logInError: action.error,
+    }       
   case LOG_OUT_REQUEST:
-    draft.logOutLoading = true;
-    draft.logOutDone = false;
-    draft.logOutError = null;
-    break;
+    return {
+      ...state,   // 이전
+      logOutLoading: true,  // 로그아웃 시도중  -  로딩창
+      logOutDone: false,
+      logOutError: null,
+    }
   case LOG_OUT_SUCCESS:
-    draft.user = null;
-    draft.logOutLoading = false;
-    draft.logOutDone = true;
-    break;   
+    return {
+      ...state,   // 이전
+      logOutLoading: false,  // 로그아웃 시도중  -  로딩창
+      logOutDone: true,
+      user: null
+    }    
   case LOG_OUT_FAILURE:
-    draft.logOutLoading = false;
-    logOutError = action.error;
-    break;
+    return {
+      ...state,   // 이전
+      logOutLoading: false,
+      logOutError: action.error
+    }  
   ////////////////////////////////
   case SIGN_UP_REQUEST:
-    draft.signUpLoading = true;
-    draft.signUpDone = false;
-    draft.signUpError = null;
-    break;
+    return {
+      ...state,   // 이전
+      signUpLoading: true, // 회원가입 시도중
+      signUpDone: false,
+      signUpError: null,
+    }
   case SIGN_UP_SUCCESS:
-    draft.signUpLoading = false;
-    draft.signUpDone = true;
-    break;   
+    return {
+      ...state,   // 이전
+      signUpLoading: false, // 회원가입 시도중
+      signUpDone: true,
+    }    
   case SIGN_UP_FAILURE:
-    draft.signUpLoading = false;
-    draft.signUpError = action.error;
-    break;
+    return {
+      ...state,   // 이전
+      signUpLoading: false, // 회원가입 시도중
+      signUpError: action.error,
+    }  
   ////////////////////////////////
   case CHANGE_NICKNAME_REQUEST:
-    draft.changeNicknameLoading = true;
-    draft.changeNicknameDone = false;
-    draft.changeNicknameError = null;
-    break;
+    return {
+      ...state,   // 이전
+      changeNicknameLoading: true, // 닉네임 변경 시도중
+      changeNicknameDone: false,
+      changeNicknameError: null,
+    }
   case CHANGE_NICKNAME_SUCCESS:
-    draft.user.nickname = action.data.nickname;
-    draft.changeNicknameLoading = false;
-    draft.changeNicknameDone = true
-    break;
+    return {
+      ...state,   // 이전
+      user: { ...state.user, nickname: action.data.nickname },
+      changeNicknameLoading: false,
+      changeNicknameDone: true,
+    }    
   case CHANGE_NICKNAME_FAILURE:
-    draft.changeNicknameLoading = false;
-    draft.changeNicknameError = action.error;
-    break;
+    return {
+      ...state,   // 이전
+      changeNicknameLoading: false,
+      changeNicknameError: action.error,
+    }  
   ////////////////////////////////     
   default:
-    break;
+    return { ...state }
   }
-});
-
-export default reducer;
+};

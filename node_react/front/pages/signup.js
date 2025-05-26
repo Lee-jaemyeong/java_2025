@@ -1,9 +1,10 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import AppLayout from '../components/AppLayout';
 import Head from 'next/head';
 import { Form, Input, Button, Checkbox } from 'antd';
 import UserInput from '../hooks/UserInput';
 import styled from 'styled-components';
+import Router from 'next/router';
 
 // 1. SIGN_UP_REQUEST
 import { SIGN_UP_REQUEST } from '../reducers/user';
@@ -12,14 +13,27 @@ import {useDispatch, useSelector} from 'react-redux';
 
 const ErrorMessage = styled.div`color:red;`;  // style.div( color:red; )
 
+//--
 const Signup = () => {
   // 3. useSelector 이용해서 - signUpLoading 가져오기
-  const { signUpLoading } = useSelector( state => state.user );
+  const { signUpLoading, signUpDone, signUpError, user } = useSelector( state => state.user );
   // 4. dispatch 선언
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (user && user.id) { Router.replace('/'); }
+  }, [user && user.id]);
+
+  useEffect(() => {
+    if (signUpDone) { Router.replace('/'); } 
+  }, [signUpDone]);
+
+  useEffect(() => {
+    if (signUpError) { alert(signUpError); } 
+  }, [signUpError]);
+
   /////////////////////////////////////////////////////////// code
-  const [id, onChangeId] = UserInput('');
+  const [email, onChangeemail] = UserInput('');
   const [nickname, onChangeNickname] = UserInput('');
   const [password, onChangePassword] = UserInput('');
 
@@ -30,24 +44,24 @@ const Signup = () => {
     setPasswordError(e.target.value !== password);
   }, [password]);
 
-  const [check, setCheck] = useState('');
+  const [check, setCheck] = useState(false);
   const [checkError, setCheckError] = useState(false);
   const onChangeCheck = useCallback((e) => { // console.log(e.target.checked);
-    setCheck(e.target.checked);  //ture
+    setCheck(e.target.checked);  //true
     setCheckError(false);
   }, []);
 
   const onSubmitForm = useCallback(() => {
-    if (password !== passwordRe) { return setPasswordError(ture); }
+    if (password !== passwordRe) { return setPasswordError(true); }
     if (!check) { setCheckError(true); }
 
     // 5. dispatch
     return dispatch({
       type: SIGN_UP_REQUEST,
-      data:{ id, password, nickname }
+      data:{ email, password, nickname }
     });
 
-  }, [id, password, passwordRe, check]);
+  }, [email, password, passwordRe, check]);
 
   /////////////////////////////////////////////////////////// view
   return(
@@ -59,8 +73,8 @@ const Signup = () => {
       <AppLayout>
         <Form layout='vertical' style={{ margin:'2%' }} onFinish={onSubmitForm}>
           <Form.Item>
-            <label htmlFor='id'>이메일</label>
-            <Input placeholder='user@email.com' id='id' value={id} onChange={onChangeId} name='id' required />
+            <label htmlFor='email'>이메일</label>
+            <Input placeholder='user@email.com' id='email' value={email} onChange={onChangeemail} name='email' required />
           </Form.Item>
           <Form.Item>
             <label htmlFor='nickname'>닉네임</label>

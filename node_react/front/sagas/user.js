@@ -1,4 +1,5 @@
-import {all, put, delay, fork, takeLatest} from 'redux-saga/effects';
+import {all, put, delay, fork, takeLatest, call} from 'redux-saga/effects';
+import axios from 'axios';
 
 import {
   LOG_IN_REQUEST,
@@ -29,15 +30,15 @@ import {
 
 ///// step3) 
 function loginApi(data) {  // *  function* (X)
-  return axios.POST('/user/login' , data);
+  return axios.post('/user/login' , data);
 }
 function* login( action ) {
-  //const result = yield call( loginApi, action.data ); 처리함수, 처리파라미터
   try {
-    yield delay(1000);
+  const result = yield call( loginApi, action.data );// 처리함수, 처리파라미터  
+    //yield delay(1000);
     yield put({
       type: LOG_IN_SUCCESS,
-      data: action.data   // result.data
+      data: result.data // action.data
     })
   } catch (error) {
     yield put({
@@ -48,15 +49,14 @@ function* login( action ) {
 }
 // --
 function logoutApi() {  // *  function* (X)
-  return axios.POST('/user/logout');
+  return axios.post('/user/logout');
 }
-function* logout( action ) {
-  //const result = yield call( logoutApi ); 처리함수, 처리파라미터
+function* logout() {
   try {
-    yield delay(1000);
+  const result = yield call( logoutApi ); // 처리함수, 처리파라미터
+    //yield delay(1000);
     yield put({
       type: LOG_OUT_SUCCESS,
-      data: action.data   // result.data
     })
   } catch (error) {
     yield put({
@@ -66,16 +66,15 @@ function* logout( action ) {
   }
 }
 // --
-function signUpApi() {  // *  function* (X)
-  return axios.POST('/user/');
+function signUpApi(data) {  // *  function* (X)
+  return axios.post('/user', data);
 }
-function* signUp( action ) {
-  //const result = yield call( logoutApi ); 처리함수, 처리파라미터
+function* signUp(action) {
   try {
-    yield delay(1000);
+  const result = yield call( signUpApi, action.data ); //처리함수, 처리파라미터
+    //yield delay(1000);
     yield put({
       type: SIGN_UP_SUCCESS,
-      data: action.data   // result.data
     })
   } catch (error) {
     yield put({
