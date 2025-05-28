@@ -5,7 +5,7 @@ import PostForm from '../components/PostForm';
 import PostCard from '../components/PostCard';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { LOAD_POST_REQUEST } from '../reducers/post';
+import { LOAD_POSTS_REQUEST } from '../reducers/post';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const Home = () => {
     if( hasMorePosts && !loadPostsLoading ) {
       const lastId = mainPosts[mainPosts.length-1]?.id;  //맨 마지막으로 쓴 게시글
       dispatch({
-        type: LOAD_POST_REQUEST,
+        type: LOAD_POSTS_REQUEST,
         lastId,
       })
     }
@@ -30,7 +30,7 @@ const Home = () => {
       if(window.screenY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 200) {
         if( hasMorePosts && !loadPostsLoading ) {
           dispatch({
-            type: LOAD_POST_REQUEST,
+            type: LOAD_POSTS_REQUEST,
             data: mainPosts[mainPosts.length-1]?.id,
           })
         }

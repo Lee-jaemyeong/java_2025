@@ -8,6 +8,7 @@ const fs = require('fs');  // file system
 const { Post, User, Image, Comment, Hashtag } = require('../models');
 const { isLoggedIn } = require('./middlewares');
 
+//// c(Create) r/u(findOne, findAll) d(destroy)
 
 ///// 폴더 존재여부확인
 try{
@@ -145,10 +146,8 @@ router.patch('/:postId/like', isLoggedIn, async (req, res, next) => {
     const post = await Post.findOne({ where: {id: req.params.postId} });
     if(!post) {return res.status(403).send('게시글을 확인해주세요');}
 
-    await post.addLikers(req.user.id);
-
-    res.json({ UserId: req.user.id , Post: post.id });
-
+    await post.addLikers(req.user.id)
+    res.json({ UserId: req.user.id , PostId: post.id })
   } catch(error) {
     console.error(error);
     next(error);
@@ -165,10 +164,8 @@ router.delete('/:postId/like', isLoggedIn, async (req, res, next) => {
     const post = await Post.findOne({ where: {id: req.params.postId} });
     if(!post) {return res.status(403).send('게시글을 확인해주세요');}
 
-    await post.removeLikers(req.user.id);
-
-    res.json({ UserId: req.user.id , Post: post.id });
-
+    await post.removeLikers(req.user.id)
+    res.json({ UserId: req.user.id , PostId: post.id })
   } catch(error) {
     console.error(error);
     next(error);

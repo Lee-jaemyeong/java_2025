@@ -2,7 +2,9 @@ import React , {useMemo} from "react";
 import {List, Button, Card} from 'antd';
 import { UserDeleteOutlined } from '@ant-design/icons';
 
-const FollowList = ({header, data}) => {
+
+
+const FollowList = ({header, data, onClickMore, loading}) => {
   //////////////////////////////// code
   const style = useMemo(() => ({margin:'3%', backgroundColor:'white', padding:'3%'}) ,[]);
   //////////////////////////////// view
