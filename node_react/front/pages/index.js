@@ -21,13 +21,14 @@ const Home = () => {
       })
     }
   }, [mainPosts, hasMorePosts, loadPostsLoading]);
+
   // 스크롤내려서 맨끝에서 다시 로딩
   useEffect(() => {
     function onScroll() {
       //          내가 내린길이   + 화면에 보이는 높이                    = 브라우저 길이
-      console.log( window.screenY, document.documentElement.clientHeight, document.documentElement.scrollHeight )
+      console.log( window.scrollY, document.documentElement.clientHeight, document.documentElement.scrollHeight )
       //          내가 내린길이   + 화면에 보이는 높이   >  브라우저길이-200px 아래정도로 오면
-      if(window.screenY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 200) {
+      if(window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 200) {
         if( hasMorePosts && !loadPostsLoading ) {
           dispatch({
             type: LOAD_POSTS_REQUEST,
@@ -36,7 +37,6 @@ const Home = () => {
         }
       }
     }
-
     window.addEventListener('scroll', onScroll);
     return () => {
       window.removeEventListener('scroll', onScroll);  // 스크롤했다면 스크롤했던 거 remove, 메모리에 쌓임
