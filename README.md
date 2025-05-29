@@ -1,3 +1,31 @@
+#### 65.2025-05-21
+ 1. react.js - css최적화 렌더링
+ 2. react.js - redux
+    - 중앙데이터 저장소
+    - 로그인한 정보
+    - 에러추적이 됨
+ 3. react.js - redux 사용
+    - react-redux(react와 연결)
+    - next-redux-wrapper(next에서 redux 사용)
+    - redux-devtools-extension(브라우저에서 개발자 연동)
+ 4. react.js - redux 사용하여 로그인/로그아웃
+ 5. 2차 팀프로젝트
+
+---
+#### 64.2025-05-20
+ 1. react.js - 더미데이터 로그인/로그아웃
+ 2. react.js - Hooks
+    - 훅(Hook)
+      - React의 상태를 관리, 컴포넌트 내부에서 값이 변할 수 있도록 해주는 역할
+      - 비구조화 할당문법
+    - 화살표 함수
+      - ()=>{} return 필요
+      - ()=>() 자동반환
+ 3. react.js - NicknameForm
+ 4. react.js - 팔로워리스트
+ 5. 2차 팀프로젝트
+
+---
 #### 63.2025-05-19
  1. react.js - 리액트 설치
     - node(자바스크립트를 실행할 수 있게 해주는 런타임도구)
@@ -15,8 +43,6 @@
       - 모듈번들러, 웹애플리케이션을 구성하는 여러파일을 하나의 번들로 묶어주는 역할
       - nextjs 기본적인 웹팩이 들어 있음
       - 웹팩이 css를 찾아서 style 태그로 바꿔서 html에 넣어줌
-    - 훅(Hook)
-      - React의 상태를 관리, 컴포넌트 내부에서 값이 변할 수 있도록 해주는 역할
  4. react.js - 로그인폼
 
 ---
