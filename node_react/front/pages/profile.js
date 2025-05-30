@@ -43,6 +43,7 @@ const Profile = () => {
     };
     fetchData();
   },[followingsLimit, followersLimit]);
+  
   //3. 3명씩 followingsData 추가 - 3,6,9,,,,
   const loadMoreFollowings = useCallback(() => { setFollowingsLimit( prev=>prev+3 ); },[]);
   //4. 3명씩 followersData 추가 - 3,6,9,,,,

@@ -21,6 +21,7 @@ const Home = () => {
       })
     }
   }, [mainPosts, hasMorePosts, loadPostsLoading]);
+
   // 스크롤내려서 맨끝에서 다시 로딩
   useEffect(() => {
     function onScroll() {
@@ -36,7 +37,6 @@ const Home = () => {
         }
       }
     }
-
     window.addEventListener('scroll', onScroll);
     return () => {
       window.removeEventListener('scroll', onScroll);  // 스크롤했다면 스크롤했던 거 remove, 메모리에 쌓임
