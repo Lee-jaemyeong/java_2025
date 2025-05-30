@@ -364,3 +364,10 @@ npm i immer@9.0.19 --legacy-peer-deps
 ```bash
 npm install --save-dev @faker-js/faker --legacy-peer-deps
 ```
+
+※ link버젼 오류
+next  @next/codemod   new-link   .   --force
+
+
+link / Link  대소문자
+<Link><a></a></Link> a태그지우기
