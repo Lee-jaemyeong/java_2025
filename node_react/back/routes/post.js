@@ -50,6 +50,7 @@ router.post('/', isLoggedIn, upload.none(), async (req, res, next) => {
   try{
     // 1. 해시태그 추출
     // /#[^\s#]+/g   1) []+ []안에 있는 거 1개 이상   2) ^\s#  ^=부정 \s=공백 #
+    //    /#[^\s#]+/g
     const hashtags = req.body.content.match(/#[^\s#]+/g) //   /#/g    #찾아
     // 2. 게시글저장
     const post = await Post.create({
@@ -133,6 +134,37 @@ router.delete('/:postId', isLoggedIn, async (req, res, next) => {
   }
 });
 
+// 글수정
+router.patch( '/:postId', isLoggedIn, async (req, res, next) => {
+  const hashtags = req.body.content.match(/#[^\s#]+/g);
+  try {
+    // 글수정 update
+    await Post.update({
+      content: req.body.content,
+    }, {
+      where: {
+        id: req.params.postId,
+        UserId: req.user.id,
+      }
+    });
+    // 해쉬태그  findOrCreate
+    const post = await Post.findOne({where:{id:req.params.postId}}); // 게시글 찾아오기
+    if (hashtags) { // 해쉬태그가 존재한다면
+      const result = await Promise.all( hashtags.map( // 해쉬태그들 다시 조립
+        (tag) => Hashtag.findOrCreate({  // DB : 찾거나 생성하거나
+          where: { name: tag.slice(1).toLowerCase()}, 
+        })
+      ));
+      await post.setHashtags(result.map( (v) => v[0] ));
+    }
+
+    res.status(200).json({ PostId: parseInt(req.params.postId, 10), content: req.body.content });
+
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
 
 
 ////////////////////////////////////////////////
