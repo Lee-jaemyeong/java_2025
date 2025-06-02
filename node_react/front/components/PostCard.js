@@ -5,9 +5,10 @@ import CommentForm from './CommentForm';
 import PostImages from './PostImages';
 import { useSelector, useDispatch } from 'react-redux'; //2. useDispatch
 //1. REMOVE_POST_REQUEST
-import { REMOVE_POST_REQUEST, LIKE_POST_REQUEST, UNLIKE_POST_REQUEST } from '../reducers/post';
+import { REMOVE_POST_REQUEST, LIKE_POST_REQUEST, UNLIKE_POST_REQUEST, UPDATE_POST_REQUEST } from '../reducers/post';
 import { finishDraft } from 'immer';
 import FollowButton from './FollowButton';
+import PostCardContent from './PostCardContent';
 
 const PostCard = ({post}) => {
   const id = useSelector( state => state.user.user?.id );
@@ -41,15 +42,28 @@ const PostCard = ({post}) => {
   const onClickComment = useCallback(() => { setComment(prev => !prev); }, []);
 
   //3. 삭제버튼
-  // useEffect(() => {
-  //   if(removePostDone) { console.log('....removePostDone'); alert('게시글을 삭제했습니다.'); }
-  // }, [removePostDone]);
+  useEffect(() => {
+     if(removePostDone) { console.log('....removePostDone'); alert('게시글을 삭제했습니다.'); }
+   }, []);
   const onRemovePost = useCallback(() => {
     dispatch({ 
       type: REMOVE_POST_REQUEST,
       data: post.id 
     })
   }, []);  
+
+  //4. 수정
+  const [editMode, setEditMode] = useState(false);
+  const onClickUpdate = useCallback(() => { setEditMode(true); },[]);
+  const onCancelUpdate = useCallback(() => { setEditMode(false); },[]);
+  const onEditPost = useCallback((editText) => () => {
+    dispatch({
+      type: UPDATE_POST_REQUEST,
+      data: { PostId:post.id, content:editText }
+    });
+  },[post]);
+
+  //5. 리게시물
 
   /////////////////////////////////////////////////////// view
   return(
@@ -68,7 +82,7 @@ const PostCard = ({post}) => {
               { id && id === post.User.id
               ?(
                 <>
-                <Button>수정</Button>
+                <Button onClick={onClickUpdate} >수정</Button>
                 <Button type="danger" onClick={onRemovePost} loading={removePostLoading}>삭제</Button>
                 </>
                )
@@ -81,9 +95,19 @@ const PostCard = ({post}) => {
         ]}
         extra={<>{id && id !== post.User.id && <FollowButton post={post} />}</>}
       >
-        <Card.Meta avatar={<Avatar>{post.User.nickname[0]}</Avatar>} 
-                   title={post.User.nickname}
-                   description={post.content} />
+
+        <Card.Meta
+          avatar={<Avatar>{post.User.nickname[0]}</Avatar>} 
+          title={post.User.nickname}
+          description={
+            <PostCardContent 
+              editMode={editMode}
+              onEditPost={onEditPost}
+              onCancelUpdate={onCancelUpdate}
+              postData={post.content}
+            />} 
+        />
+
       </Card>
     { comment && (
       <>
