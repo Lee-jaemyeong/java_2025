@@ -34,7 +34,7 @@ const PostCardContent = ({ postData, editMode, onEditPost, onCancelUpdate }) => 
     }
   </div>);
 };
-PostCardContent.PropTypes = {
+PostCardContent.propTypes = {
   postData : PropTypes.string.isRequired,
   editMode : PropTypes.bool,
   onEditPost: PropTypes.func.isRequired,

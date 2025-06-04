@@ -17,6 +17,7 @@ const user = require('./routes/user');
 const post = require('./routes/post');
 const posts = require('./routes/posts');
 const hashtag = require('./routes/hashtag');
+const api = require('./routes/api');
 
 //2. 환경설정
 dotenv.config(); // 환경설정 .env 로드
@@ -53,12 +54,11 @@ app.use(passport.session()); // 사용자 인증상태를 세션에 저장
 //5. 라우팅
 //////////// Router
 app.get('/' , (req, res) => { res.send('hello express'); });
-app.use('/api' , basicRouter);
-app.use('/test' , testRouter);
 app.use('/user' , user);
 app.use('/post' , post);
 app.use('/posts' , posts);
 app.use('/hashtag' , hashtag);
+app.use('/api' , api);
 
 //6. 서버설정 및 실행
 app.listen(3065 , () => { console.log('server....'); });

@@ -1,16 +1,20 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 import { Card, Avatar, Button, List, Comment, Popover } from 'antd';
 import { EllipsisOutlined, HeartOutlined, HeartTwoTone, MessageOutlined, RetweetOutlined } from '@ant-design/icons';
 import CommentForm from './CommentForm';
 import PostImages from './PostImages';
-import { useSelector, useDispatch } from 'react-redux'; //2. useDispatch
-//1. REMOVE_POST_REQUEST
-import { REMOVE_POST_REQUEST, LIKE_POST_REQUEST, UNLIKE_POST_REQUEST, UPDATE_POST_REQUEST } from '../reducers/post';
-import { finishDraft } from 'immer';
 import FollowButton from './FollowButton';
 import PostCardContent from './PostCardContent';
 
+import { useSelector, useDispatch } from 'react-redux'; //2. useDispatch
+//1. REMOVE_POST_REQUEST
+import { REMOVE_POST_REQUEST, LIKE_POST_REQUEST, UNLIKE_POST_REQUEST, UPDATE_POST_REQUEST,RETWEET_REQUEST } from '../reducers/post';
+import Link from 'next/Link';
+
 const PostCard = ({post}) => {
+  if (!post || !post.User) {return null;}
   const id = useSelector( state => state.user.user?.id );
   /////////////////////////////////////////////////////// code
   const {removePostLoading , removePostDone} = useSelector( state => state.post ) // 3.
@@ -64,6 +68,13 @@ const PostCard = ({post}) => {
   },[post]);
 
   //5. 리게시물
+  const onRetweet = useCallback(() => {
+    if (!id) { return alert('로그인 후 리트윗이 가능합니다.'); }
+    return dispatch({
+      type: RETWEET_REQUEST,
+      data: post.id
+    });
+  });
 
   /////////////////////////////////////////////////////// view
   return(
@@ -71,7 +82,7 @@ const PostCard = ({post}) => {
       <Card
         cover={ post.Images && post.Images.length > 0 && <PostImages images={post.Images}/> }
         actions={[
-          <RetweetOutlined key="retweet" />,
+          <RetweetOutlined key="retweet" onClick={onRetweet} />,
           like
             ? <HeartTwoTone twoToneColor="#f00" key="heart" onClick={onClickunLike} />
             : <HeartOutlined key="heart" onClick={onClickLike} />,
@@ -93,11 +104,27 @@ const PostCard = ({post}) => {
             <EllipsisOutlined />
           </Popover>
         ]}
+        title={post.RetweetId ? `${post.User.nickname}님이 리트윗하셨습니다.` : null}
         extra={<>{id && id !== post.User.id && <FollowButton post={post} />}</>}
       >
-
+      { post.RetweetId && post.Retweet ? (
+        <Card cover={post.Retweet.Images[0] && <PostImages images={post.Retweet.Images} />}>
+          <Card.Meta
+            avatar={<Link href={`/user/${post.Retweet.User.id}`} prefetch={false}>
+                    <Avatar>{post.Retweet.User.nickname[0]}</Avatar></Link>} 
+            title={post.Retweet.User.nickname}
+            description={
+              <PostCardContent 
+                editMode={editMode}
+                onEditPost={onEditPost}
+                onCancelUpdate={onCancelUpdate}
+                postData={post.Retweet.content}
+              />} 
+          />
+        </Card>
+      ) : (
         <Card.Meta
-          avatar={<Avatar>{post.User.nickname[0]}</Avatar>} 
+          avatar={<Link href={`/user/${post.User.id}`} prefetch={false}><Avatar>{post.User.nickname[0]}</Avatar></Link>} 
           title={post.User.nickname}
           description={
             <PostCardContent 
@@ -107,7 +134,7 @@ const PostCard = ({post}) => {
               postData={post.content}
             />} 
         />
-
+      )}
       </Card>
     { comment && (
       <>
@@ -134,5 +161,7 @@ const PostCard = ({post}) => {
     </div>
   );
 };
+
+PostCard.propTypes = { post: PropTypes.object.isRequired };
 
 export default PostCard;
