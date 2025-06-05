@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {Avatar, Card} from 'antd';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
@@ -7,19 +7,27 @@ import axios from 'axios';
 import AppLayout from '../../components/AppLayout';
 import PostCard from '../../components/PostCard';
 
+import { LOAD_USER_POSTS_REQUEST } from '../../reducers/post';
+import { LOAD_MY_INFO_REQUEST, LOAD_USER_REQUEST } from '../../reducers/user';
+import wrapper from '../../store/configureStore';
+import {END} from 'redux-saga';
+
 const User = () => {
   //////////////////////// code
   // 유저정보
+  const dispatch = useDispatch();
   const router = useRouter();
-  const {id} = router.query; console.log('.......' , id);
-  const { user } = useSelector( state => state.user );
-  const [userInfo, setUserInfo] = useState(null);
-  const [mainPosts, setMainPosts] = useState([]);
-  const [hasMorePosts, setHasMorePosts] = useState(true);  
-  const [loading, setLoading] = useState(true);  
-  const [error, setError] = useState(null);  
+  const {id} = router.query; // console.log('.......' , id);
+  const { user, userInfo } = useSelector( state => state.user );
+  const { mainPosts, hasMorePosts, loadPostsLoading, postsError } = useSelector(state => state.post);
+  // const [userInfo, setUserInfo] = useState(null);
+  // const [mainPosts, setMainPosts] = useState([]);
+  // const [hasMorePosts, setHasMorePosts] = useState(true);  
+  // const [loading, setLoading] = useState(true);  
+  // const [error, setError] = useState(null);  
 
   // 유저정보 불러오기
+  /*
   useEffect(() => {
     ///////// axios
     const fetchData = async () => {
@@ -42,20 +50,29 @@ const User = () => {
     };
     if(id) { fetchData() };
   },[id]);
+  */
+
   //스크롤처리
   useEffect(() => {
     function onScroll() {
       //          내가 내린길이   + 화면에 보이는 높이                    = 브라우저 길이
-      console.log( window.scrollY, document.documentElement.clientHeight, document.documentElement.scrollHeight )
+      console.log( window.pageYOffset, document.documentElement.clientHeight, document.documentElement.scrollHeight )
       //          내가 내린길이   + 화면에 보이는 높이   >  브라우저길이-200px 아래정도로 오면
-      if(window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 200) {
-        if( hasMorePosts && !loading ) {
+      if(window.pageYOffset + document.documentElement.clientHeight > document.documentElement.scrollHeight - 200) {
+        if( hasMorePosts && !loadPostsLoading ) {
+          dispatch({
+            type: LOAD_USER_POSTS_REQUEST,
+            lastId: mainPosts[mainPosts.length-1] && mainPosts[mainPosts.length-1].id,
+            data: id
+          })
+          /*
           axios.get( `http://localhost:3065/user/${id}/posts?lastId=${mainPosts[mainPosts.length-1]?.id}`, {withCredentials:true} )
           .then( response => {
             setMainPosts(prev => [ ...prev, ...response.data]);
             setHasMorePosts(response.data.length > 0);
           })
           .catch(err => setError(err));
+          */
         }
       }
     }
@@ -63,10 +80,10 @@ const User = () => {
     return () => {
       window.removeEventListener('scroll', onScroll);  // 스크롤했다면 스크롤했던 거 remove, 메모리에 쌓임
     }
-  },[mainPosts, hasMorePosts, id, loading]);
+  },[mainPosts.length, hasMorePosts, id, loadPostsLoading]);
 
-  if(loading) {return <div>정보 ing....</div>}
-  if(error) {return <div>error</div>}
+  if(loadPostsLoading) {return <div>정보 ing....</div>}
+  if(postsError) {return <div>error</div>}
 
   //////////////////////// view
   return (
@@ -89,5 +106,24 @@ const User = () => {
     {mainPosts.map( post => <PostCard key={post.id} post={post}/> )}
   </AppLayout>);
 };
+
+////////////////////////////////////////////////////////
+export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
+  //1. cookie 설정
+  const cookie = context.req? context.req.headers.cookie : '';
+  axios.defaults.headers.Cookie = '';
+
+  if (context.req && cookie) { axios.defaults.headers.Cookie = cookie; }
+
+  //2. redux 액션
+  context.store.dispatch({ type:LOAD_MY_INFO_REQUEST });
+  context.store.dispatch({ type:LOAD_USER_POSTS_REQUEST, data: context.params.id });
+  context.store.dispatch({ type:LOAD_USER_REQUEST, data: context.params.id });
+  context.store.dispatch(END);  
+
+  await context.store.sagaTask.toPromise();
+
+});
+////////////////////////////////////////////////////////
 
 export default User;

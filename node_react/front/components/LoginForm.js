@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import {Input, Button, Form, Row, Col} from 'antd';
-import Link from 'next/Link';
+import Link from 'next/link';
 import UserInput from '../hooks/UserInput';
 
 import {LOG_IN_REQUEST} from '../reducers/user';  //#1. redux

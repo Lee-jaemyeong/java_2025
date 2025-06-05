@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { Card, Avatar, Button, List, Comment, Popover } from 'antd';
-import { EllipsisOutlined, HeartOutlined, HeartTwoTone, MessageOutlined, RetweetOutlined } from '@ant-design/icons';
+import { EllipsisOutlined, HeartOutlined, HeartTwoTone, MessageOutlined, RetweetOutlined, ShareAltOutlined } from '@ant-design/icons';
 import CommentForm from './CommentForm';
 import PostImages from './PostImages';
 import FollowButton from './FollowButton';
@@ -11,7 +11,7 @@ import PostCardContent from './PostCardContent';
 import { useSelector, useDispatch } from 'react-redux'; //2. useDispatch
 //1. REMOVE_POST_REQUEST
 import { REMOVE_POST_REQUEST, LIKE_POST_REQUEST, UNLIKE_POST_REQUEST, UPDATE_POST_REQUEST,RETWEET_REQUEST } from '../reducers/post';
-import Link from 'next/Link';
+import Link from 'next/link';
 
 const PostCard = ({post}) => {
   if (!post || !post.User) {return null;}
@@ -76,6 +76,30 @@ const PostCard = ({post}) => {
     });
   });
 
+  ///////////////////////////
+  const loadKakaoSDK= () => {
+    const script = document.createElement("script");  // script 태그만들기
+    script.src = "https://developers.kakao.com/sdk/js/kakao.js";
+    script.async = true;
+    script.onload = () => {
+      if (window.Kakao) { window.Kakao.init("75091682b75aa23bbfb4b9c8e7ad6b2a"); } // js 앱키
+    };
+    document.head.appendChild(script);
+  };
+
+  useEffect(() => { loadKakaoSDK(); }, []);
+
+  const shareToKakao = (postId) => {
+    window.Kakao.Link.sendDefault({
+      objectType: "text",
+      text: "이 링크를 확인해보세요!",
+      link: {
+        mobileWebUrl: `http://localhost:3000/post/${postId}`,
+        webUrl: `http://localhost:3000/post/${postId}`,
+      },
+    });
+  };
+
   /////////////////////////////////////////////////////// view
   return(
     <div style={{margin:'3%'}}>
@@ -102,7 +126,8 @@ const PostCard = ({post}) => {
             </Button.Group>
           )}>
             <EllipsisOutlined />
-          </Popover>
+          </Popover>,
+          <ShareAltOutlined key="share" onClick={() => shareToKakao(post.id)} />
         ]}
         title={post.RetweetId ? `${post.User.nickname}님이 리트윗하셨습니다.` : null}
         extra={<>{id && id !== post.User.id && <FollowButton post={post} />}</>}

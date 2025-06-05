@@ -2,7 +2,7 @@ import React, {useState, useCallback, useEffect} from "react";
 import PropTypes from "prop-types";    // 넘겨받은 데이터 확인
 import { Button, Input } from "antd";  // 화면디자인
 import { useSelector } from "react-redux";  // 중앙저장소
-import Link from 'next/Link';
+import Link from 'next/link';
 
                            //게시글, 편집모드-false/true,수정, 삭제
 const PostCardContent = ({ postData, editMode, onEditPost, onCancelUpdate }) => {
