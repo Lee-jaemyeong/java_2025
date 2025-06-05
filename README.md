@@ -1,3 +1,16 @@
+#### 66.2025-05-22
+ 1. react.js - redux-saga
+    - redux의 미들웨어
+    - 미들웨어: 기능향상
+    - 비동기액션을 디스패치할 수 있게 해주는 역할
+ 2. react.js - axios
+    - 웹요청 비동기 라이브러리
+ 3. react.js - generator 함수
+    - function*
+    - yield에서 멈춤, 중간지점이 있는 함수
+ 4. 2차 팀프로젝트
+
+---
 #### 65.2025-05-21
  1. react.js - css최적화 렌더링
  2. react.js - redux
