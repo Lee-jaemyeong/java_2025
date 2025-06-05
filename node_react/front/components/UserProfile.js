@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // import { logoutAction } from '../reducers/user';  //## 1. redux
 import { useDispatch , useSelector } from 'react-redux';  //## 2. redux
 import { LOG_OUT_REQUEST } from '../reducers/user';
-import Link from 'next/Link';
+import Link from 'next/link';
 
 const ButtonWrapper = styled.div`
    margin-top:5%;
