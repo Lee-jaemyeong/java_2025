@@ -1,3 +1,31 @@
+#### 70.2025-05-28
+ 1. react.js - 댓글
+    - /:postId/comment
+    - 게시물 존재확인
+    - 댓글 생성
+    - 댓글 조회
+    - 응답 코드
+ 2. react.js - 글삭제
+ 3. react.js - 닉네임 변경
+    - /nickname
+    - 로그인
+    - Header 쿠키설정
+    - Body - [Raw] - [Json]
+ 4. react.js - 좋아요
+    - /:postId/like
+    - 게시글 존재여부 확인
+    - 좋아요 추가
+    - 응답
+ 5. 2차 팀프로젝트
+
+---
+#### 69.2025-05-27
+ 1. react.js - 서버 연동(글쓰기)
+ 2. react.js - 이미지 삽입
+ 3. react.js - 댓글
+ 4. 2차 팀프로젝트
+
+---
 #### 68.2025-05-26
  1. react.js - 닉네임 변경
  2. react.js - immer(코드줄이기)
