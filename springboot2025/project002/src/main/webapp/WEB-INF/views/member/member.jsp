@@ -9,7 +9,7 @@
 			<tbody>
 				<tr>
 					<td	colspan="2">
-						<img src="${dto.image}" alt="프로필이미지" class="rounded-circle" style="width:100%"/>
+						<img src="${dto.image}" alt="프로필이미지" class="rounded-circle" style="width:10%"/>
 					</td>
 				</tr>
 				<tr><th scope="row">닉네임</th><td>${dto.nickname}</td></tr>

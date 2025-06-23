@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import com.thejoa.project001.domain.Member;
 
 public class MemberUserDetails implements UserDetails , OAuth2User {
+	
 	private static final long serialVersionUID = 1L;
 	private Member member;
 	public MemberUserDetails(Member member) { super(); this.member = member; }
@@ -34,8 +35,20 @@ public class MemberUserDetails implements UserDetails , OAuth2User {
 	@Override public boolean isCredentialsNonExpired() { return true; }
 	// 계정 활성화(사용가능) - true 활성화
 	@Override public boolean isEnabled() { return true; }
+	
 	/////////////////////////////////////////////////////
-	@Override public Map<String, Object> getAttributes() { return null; }
-	@Override public String getName() { return null; }
+	
+	private Map<String, Object> attributes;
+	
+	public MemberUserDetails(Member member, Map<String, Object> getAttributes) {
+		super();
+		this.member = member;
+		this.attributes = getAttributes;
+	}
+
+	@Override public Map<String, Object> getAttributes() { return attributes; }
+	@Override public String getName() { return member.getUsername(); }
+	public String getNickname() { return member.getNickname(); }
+	public String getEmail() { return member.getEmail(); }
 	
 }

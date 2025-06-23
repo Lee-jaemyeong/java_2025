@@ -18,7 +18,29 @@
 			</div>
 			<div class="my-3 text-center">
 				<button type="submit" class="btn btn-primary form-control">로그인</button>
-			</div>												
+			</div>	
+			
+			<hr/>
+			<div class="container my-5 social text-center">
+				<div class="row">
+					<div class="col-sm-4">
+						<a href="${pageContext.request.contextPath}/oauth2/authorization/kakao" class="w-auto p-3">
+							<img src="${pageContext.request.contextPath}/images/kakao.png" alt="kakao login"/>
+						</a>
+					</div>
+					<div class="col-sm-4">
+						<a href="${pageContext.request.contextPath}/oauth2/authorization/naver" class="w-auto p-3">
+							<img src="${pageContext.request.contextPath}/images/naver.png" alt="naver login"/>
+						</a>
+					</div>
+					<div class="col-sm-4">
+						<a href="${pageContext.request.contextPath}/oauth2/authorization/google" class="w-auto p-3">
+							<img src="${pageContext.request.contextPath}/images/google.png" alt="google login"/>
+						</a>
+					</div>	
+				</div>							
+			</div>
+														
 		</form:form>
 	</div>
 <!-- footer -->

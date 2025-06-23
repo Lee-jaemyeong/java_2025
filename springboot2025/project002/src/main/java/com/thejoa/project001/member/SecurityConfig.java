@@ -2,6 +2,7 @@ package com.thejoa.project001.member;
 
 import javax.annotation.security.PermitAll;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,9 +14,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.thejoa.project001.oauth.PrincipalOauth2UserService;
+
 @Configuration   // 스프링부트 설정파일
 @EnableWebSecurity // url 스프링시큐리티 제어 - SecurityFilterChain
 public class SecurityConfig {
+	
+	@Autowired PrincipalOauth2UserService principalOauth2UserService;
+	
 	//1. url
 	@Bean SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
@@ -32,6 +38,13 @@ public class SecurityConfig {
 			.logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")) // 로그아웃 경로
 			.logoutSuccessUrl("/member/login") // 로그아웃 성공 경로
 			.invalidateHttpSession(true) // 로그아웃시 세션 무효
+		.and()
+		.oauth2Login()
+			.loginPage("/member/login")
+			.defaultSuccessUrl("/member/member")
+			.userInfoEndpoint()
+			.userService(principalOauth2UserService)
+		.and()
 		.and()
 		//.csrf().disable()  // [개발용] (보호기능 비활성화) - csrf: 사용자 인증정보를 웹페이지에서 보내기
 		.csrf(
