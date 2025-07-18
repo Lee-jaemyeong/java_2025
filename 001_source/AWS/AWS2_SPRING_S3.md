@@ -38,8 +38,8 @@
 
 > application.properties
 ```bash
-  cloud.aws.credentials.access-key=AKIAYPPLQIR74M2JYDH2
-  cloud.aws.credentials.secret-key=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
+#   cloud.aws.credentials.access-key=AKIAYPPLQIR74M2JYDH2
+#   cloud.aws.credentials.secret-key=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
   cloud.aws.region.static=ap-northeast-2
   cloud.aws.s3.bucket=jaemyeong1025
   cloud.aws.stack.auto=false
