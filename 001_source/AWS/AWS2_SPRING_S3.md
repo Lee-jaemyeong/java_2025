@@ -16,7 +16,7 @@
                 "s3:GetObject",
                 "s3:PutObject"
             ],
-            "Resource": "arn:aws:s3:::jaemyeong1025/*"
+            "Resource": "arn:aws:s3:::본인버킷이름/*"
         }
     ]
 }

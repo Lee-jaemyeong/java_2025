@@ -107,6 +107,11 @@ sudo npm i pm2  cross-env  helmet hpp
 <br/>
 <br/>
 
+
+```bash
+vi app.js
+```
+
 ##### 7. 코드확인
 
 **[full source]**
@@ -229,6 +234,10 @@ app.listen(3065, () => {
 ##### 1. 코드변경
 
 1. [front]- [config]-config.js
+
+```bash
+vi config/config.js
+```
 
 - back public ip로 변경
 
@@ -395,7 +404,15 @@ sudo service nginx restart
 ##### 2.
 
 ```bash
+cd ~
+cd nodeReact/back
+
 sudo npm start && sudo npx pm2
+curl http://localhost:3065
+
+cd ../front
+sudo npm start && sudo npx pm2
+curl http://localhost:3000
 
 npx pm2 logs
 npx pm2 kill
@@ -410,4 +427,111 @@ sudo lsof -i tcp:80
 ```bash
 sudo chown ubuntu:ubuntu uploads
 sudo chmod 755 uploads
+```
+
+#### ■ PART004. S3
+
+##### 1. [EC2-S3]
+
+1. 네비게이션 - 서비스 - S3
+  버킷만들기 : jaemyeong1025 , 리전설정 , ACL 비활성화 - 내가 접속한 계정에서만 소유하도록 , 동의 □ 모든 퍼블릭 액세스 차단 풀기
+2. [권한]탭
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AddPerm",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::본인버킷이름/*"
+        }
+    ]
+}
+
+3. 내이름탭 클릭 - 보안자격증명 -  새 액세스키만들기 - 키 다운로드
+
+##### 2. [EC2]
+1. [back]  - .env 파일
+
+```bash
+COOKIE_SECRET=appsecret
+DB_PASSWORD=1234
+S3_ACCESS_KEY_ID=다운로드받은값
+S3_SECRET_ACCESS_KEY=다운로드받은값
+```
+
+```bash
+back 경로까지 가기
+vi .env
+esc :%d
+COOKIE_SECRET=appsecret
+DB_PASSWORD=1234
+S3_ACCESS_KEY_ID=다운로드받은값
+S3_SECRET_ACCESS_KEY=다운로드받은값
+esc :wq!
+```
+
+2. [back] - [routes] - post.js
+```bash
+vi post.js
+
+수정1
+const multerS3 = require('multer-s3');
+const AWS = require('aws-sdk');
+
+수정2 
+AWS.config.update({
+  accessKeyId: process.env.S3_ACCESS_KEY_ID,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  region: 'ap-northeast-2',
+});
+const upload = multer({
+  storage: multerS3({
+    s3: new AWS.S3(),
+    bucket: '본인버킷이름',
+    key(req, file, cb) {
+      cb(null, `original/${Date.now()}_${path.basename(file.originalname)}`)
+    }
+  }),
+  limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
+});
+
+수정3
+router.post('/images', isLoggedIn, upload.array('image'), (req, res, next) => {
+    // POST /post/images
+    console.log(req.files)  // 업로드된 파일은 업로드된 파일들은 req.files에 저장
+    res.json(req.files.map((v) => v.location))
+})
+```
+
+3. [front] - [components] - PostForm.js / PostImages.js / [ImagesZoom] - index.js 
+```bash
+ - backUrl 빼기
+ - <img src={v} style={{ width: '200px' }} alt={v} />
+```
+
+4. [nginx] - s3 처리하므로 -  images 경로빼기
+```bash
+cd /etc/nginx/sites-available
+sudo vi proxy.conf
+i
+image 경로지우기
+esc
+:wq!
+```
+
+```bash
+cd ~
+cd nodeReact/front
+sudo npm run build
+sudo service nginx restart
+sudo npx pm2 reload all
+sudo npm start && sudo npx pm2
+sudo lsof -i tcp:3065
+sudo lsof -i tcp:3000
+sudo lsof -i tcp:80
 ```
