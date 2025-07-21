@@ -4,9 +4,9 @@
 
 ```bash
 1. [vs code] - ssh로 접속
-3.39.192.161
+54.180.83.19
 
-ssh -i "project1.pem" ubuntu@ec2-3-39-192-161.ap-northeast-2.compute.amazonaws.com
+ssh -i "project2.pem" ubuntu@ec2-54-180-83-19.ap-northeast-2.compute.amazonaws.com
   yes
 
 2. github에서 clone
@@ -153,7 +153,7 @@ if (process.env.NODE_ENV === 'production') { //// 배포용
     app.use(helmet({ contentSecurityPolicy: false }));
     app.use(cors({
         //origin: 'http://d2big.com',
-        origin: 'http://13.209.81.237',  // 요청허용  ###########
+        origin: 'http://54.180.83.19',  // 요청허용  ###########
         credentials: true,
     }));
 } else {  //// 개발용
