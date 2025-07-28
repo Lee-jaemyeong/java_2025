@@ -98,7 +98,11 @@
 		</dependency>
 		<!-- img upload end -->
 		<!-- img upload end -->			
-		
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-aws</artifactId>
+		    <version>2.2.1.RELEASE</version>
+		</dependency>
 		
 	</dependencies>
 

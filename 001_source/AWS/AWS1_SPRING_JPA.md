@@ -13,9 +13,11 @@
 
 ip주소
 43.201.105.198
+54.180.96.140
 
 연결 ssh 클라이언트 
 ssh -i "project1.pem" ubuntu@ec2-43-201-105-198.ap-northeast-2.compute.amazonaws.com
+ssh -i "project1.pem" ubuntu@ec2-54-180-96-140.ap-northeast-2.compute.amazonaws.com
 
 
 ##### 4. RAM -SWAPFILE
@@ -90,3 +92,5 @@ jobs
 
 네트워크 : port 8080 열기
 http:// ec2 주소: 8080
+
+##### 10. S3 올라갔는지 확인

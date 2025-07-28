@@ -38,7 +38,7 @@
 				<div class="">
 					<span><i class="bi bi-book-half"></i> 이미지</span>
 					<p>  
-						<img th:src="@{'/upload/'+${dto.bfile}}"  
+						<img th:src="${dto.bfile}"  
 						     th:alt="${dto.btitle}" 
 						     style="width:200px"/>
 					</p>
