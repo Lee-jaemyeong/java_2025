@@ -30,30 +30,30 @@
 ---
 #### 81.2025-06-18
  1. react.js - 능력단위 시험
-   - NODE
-    - Q1. node 프로젝트만들기 - [back]
-    - Q2. setting - setting 파일 확인
-    - Q3. [express] - controller
-    - Q4. [sequelize] - model
-    - Q5. [미들웨어] - passport
-    - Q6. [router] - user.js / post.js
-    - Q7. postman이용해서 rest api 기능확인 - 회원가입
-    - Q8. postman이용해서 rest api 기능확인 - 로그인
-    - Q9. postman이용해서 rest api 기능확인 - 파일업로드
-    - Q10. postman이용해서 rest api 기능확인 - 글쓰기기능
-   - REACT
-    - Q1. react 프로젝트만들기 - [front]
-    - Q2. react 셋팅 - package.json (npm i)
-    - Q3. [pages] - index.js / signup.js / profile.js / _app.js(공통) , _document.js
-    - Q4. [components] - AppLayout.js / PostForm / PostCard / LoginForm.js / UserProfile.js
-    - Q5. [hooks] - userInput.js
-    - Q6. [reducer] - index.js / user.js, post.js
-    - Q7. [store] - configureStore.js
-    - Q8. [sagas] - index.js / user.js, post.js
-    - Q9. 회원가입 - restful api 이용해서 서버와 연동
-    - Q10. 로그인 - restful api 이용해서 서버와 연동
-    - Q11. 이미지업로드 - restful api 이용해서 서버와 연동
-    - Q12. 글쓰기 - restful api 이용해서 서버와 연동
+    - NODE
+     - Q1. node 프로젝트만들기 - [back]
+     - Q2. setting - setting 파일 확인
+     - Q3. [express] - controller
+     - Q4. [sequelize] - model
+     - Q5. [미들웨어] - passport
+     - Q6. [router] - user.js / post.js
+     - Q7. postman이용해서 rest api 기능확인 - 회원가입
+     - Q8. postman이용해서 rest api 기능확인 - 로그인
+     - Q9. postman이용해서 rest api 기능확인 - 파일업로드
+     - Q10. postman이용해서 rest api 기능확인 - 글쓰기기능
+    - REACT
+     - Q1. react 프로젝트만들기 - [front]
+     - Q2. react 셋팅 - package.json (npm i)
+     - Q3. [pages] - index.js / signup.js / profile.js / _app.js(공통) , _document.js
+     - Q4. [components] - AppLayout.js / PostForm / PostCard / LoginForm.js / UserProfile.js
+     - Q5. [hooks] - userInput.js
+     - Q6. [reducer] - index.js / user.js, post.js
+     - Q7. [store] - configureStore.js
+     - Q8. [sagas] - index.js / user.js, post.js
+     - Q9. 회원가입 - restful api 이용해서 서버와 연동
+     - Q10. 로그인 - restful api 이용해서 서버와 연동
+     - Q11. 이미지업로드 - restful api 이용해서 서버와 연동
+     - Q12. 글쓰기 - restful api 이용해서 서버와 연동
       
 ---
 #### 80.2025-06-17
