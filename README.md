@@ -1,9 +1,9 @@
 #### 84.2025-06-23
  1. Spring + MyBatis - OAuth2(kakao, google, naver)
-   - MemberUserDetails 상속 클래스 생성
-   - OAuth2 인터페이스 클래스 생성
-   - kakao, google, naver 상속 클래스 생성
-   - 개발자 센터 - RESTful API 키,시크릿 키 삽입
+    - MemberUserDetails 상속 클래스 생성
+    - OAuth2 인터페이스 클래스 생성
+    - kakao, google, naver 상속 클래스 생성
+    - 개발자 센터 - RESTful API 키,시크릿 키 삽입
  2. 3차 팀프로젝트
 
 ---
