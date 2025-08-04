@@ -5,23 +5,23 @@
 ---
 #### 83.2025-06-20
  1. Spring + MyBatis - Security
-    - url
-      - 로그인 세션 처리
-      - 로그아웃 세션 처리
-      - csrf: 사용자 인증정보를 웹페이지에서 보내기
-    - AuthenticationManager
-      - 사용자 인증시 Service와 PasswordEncoder를 사용
-    - PasswordEncoder
+  - url
+   - 로그인 세션 처리
+   - 로그아웃 세션 처리
+   - csrf: 사용자 인증정보를 웹페이지에서 보내기
+  - AuthenticationManager
+   - 사용자 인증시 Service와 PasswordEncoder를 사용
+  - PasswordEncoder
 
 ---
 #### 82.2025-06-19
  1. Spring + MyBatis - Spring 보안
-  - 1. 보안 : security
-  - 2. 폼 검사 : validation
-  - 3. 카카오, 네이버, 구글로그인 : oauth2-client
+   1. 보안 : security
+   2. 폼 검사 : validation
+   3. 카카오, 네이버, 구글로그인 : oauth2-client
  2. Spring + MyBatis - 연동
-    - @Mapper 인터페이스 , Mapper XML 파일 생성
-    - XML 파일 안에 SQL 구문 작성
+   - @Mapper 인터페이스 , Mapper XML 파일 생성
+   - XML 파일 안에 SQL 구문 작성
 
 ---
 #### 81.2025-06-18
