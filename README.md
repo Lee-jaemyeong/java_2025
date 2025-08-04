@@ -1,3 +1,152 @@
+#### 84.2025-06-23
+ 1. Spring + MyBatis - OAuth2(kakao, google, naver)
+    - MemberUserDetails 상속 클래스 생성
+    - OAuth2 인터페이스 클래스 생성
+    - kakao, google, naver 상속 클래스 생성
+    - 개발자 센터 - RESTful API 키,시크릿 키 삽입
+ 2. 3차 팀프로젝트
+
+---
+#### 83.2025-06-20
+ 1. Spring + MyBatis - Security
+    - url
+     - 로그인 세션 처리
+     - 로그아웃 세션 처리
+     - csrf: 사용자 인증정보를 웹페이지에서 보내기
+    - AuthenticationManager
+     - 사용자 인증시 Service와 PasswordEncoder를 사용
+    - PasswordEncoder
+
+---
+#### 82.2025-06-19
+ 1. Spring + MyBatis - Spring 보안
+   1. 보안 : security
+   2. 폼 검사 : validation
+   3. 카카오, 네이버, 구글로그인 : oauth2-client
+ 2. Spring + MyBatis - 연동
+    - @Mapper 인터페이스 , Mapper XML 파일 생성
+    - XML 파일 안에 SQL 구문 작성
+
+---
+#### 81.2025-06-18
+ 1. react.js - 능력단위 시험
+    - NODE
+      - Q1. node 프로젝트만들기 - [back]
+      - Q2. setting - setting 파일 확인
+      - Q3. [express] - controller
+      - Q4. [sequelize] - model
+      - Q5. [미들웨어] - passport
+      - Q6. [router] - user.js / post.js
+      - Q7. postman이용해서 rest api 기능확인 - 회원가입
+      - Q8. postman이용해서 rest api 기능확인 - 로그인
+      - Q9. postman이용해서 rest api 기능확인 - 파일업로드
+      - Q10. postman이용해서 rest api 기능확인 - 글쓰기기능
+    - REACT
+      - Q1. react 프로젝트만들기 - [front]
+      - Q2. react 셋팅 - package.json (npm i)
+      - Q3. [pages] - index.js / signup.js / profile.js / _app.js(공통) , _document.js
+      - Q4. [components] - AppLayout.js / PostForm / PostCard / LoginForm.js / UserProfile.js
+      - Q5. [hooks] - userInput.js
+      - Q6. [reducer] - index.js / user.js, post.js
+      - Q7. [store] - configureStore.js
+      - Q8. [sagas] - index.js / user.js, post.js
+      - Q9. 회원가입 - restful api 이용해서 서버와 연동
+      - Q10. 로그인 - restful api 이용해서 서버와 연동
+      - Q11. 이미지업로드 - restful api 이용해서 서버와 연동
+      - Q12. 글쓰기 - restful api 이용해서 서버와 연동
+      
+---
+#### 80.2025-06-17
+ 1. 2차 팀프로젝트 - 시연회
+
+---
+#### 79.2025-06-16
+ 1. 2차 팀프로젝트 - 디버깅, 결과보고서, 시연회 준비
+
+---
+#### 78.2025-06-11~13
+ 1. 2차 팀프로젝트 - 구현
+
+---
+#### 77.2025-06-10
+ 1. 2차 팀프로젝트 - 요구사항정의서(ERD,Figma 설계)
+
+---
+#### 76.2025-06-09
+ 1. 2차 팀프로젝트 - 요구사항정의서(기획)
+
+---
+#### 75.2025-06-05
+ 1. react.js - SDK
+    - 컴포넌트에 js스크립트
+    - 개발자 센터 - JavaScript키
+ 2. react.js - SSR(서버사이드렌더링)
+    - 서버 사이드 렌더링은 웹 페이지의 HTML을 서버에서 미리 생성하여 클라이언트에 전달하는 렌더링 방식
+    - React나 Vue 같은 프레임워크에서는 Next.js나 Nuxt.js 같은 SSR을 지원하는 라이브러리를 사용해서 구현
+    - React Hooks 기반의 데이터 페칭 라이브러리
+ 3. react.js - 날짜와 시간파싱, 검증, 조작, 포맷
+    - https://momentjs.com/
+    - date-fns, luxon, dayjs ,,,
+ 4. react.js - Webpack 번들 분석
+    - npm i @next/bundle-analyzer는 Next.js 프로젝트에서 Webpack 번들 분석을 위한 패키지를 설치하는 명령어
+ 5. react.js - 다른 환경에서도 동작하게 만들기
+    - npm i cross-env
+    - npx @next/codemod new-link . --force    
+
+---
+#### 74.2025-06-04
+ 1. react.js - api - 리트윗
+    - 기존 게시글 확인
+      - findOne
+    - 리트윗 - 조건확인
+      - req.user.id ===post.UserId
+    - 리트윗한 게시글 번호
+      - post.RetweetId || post.id
+    - 중복 리트윗 여부
+      - findOne으로 리트윗 글 찾기
+      - 403 오류가 뜨면 '리트윗한 게시물' 메세지 띄우기
+    - 리트윗 생성
+      - create
+    - 리트윗 상세조회
+      - findOne - include[model]
+    - res 응답
+      - res.status(201).json(상세조회 변수명)
+ 2. react.js - api - back
+    - axios 설치
+    - app.js - api_url 삽입
+
+---
+#### 73.2025-06-02
+ 1. react.js - Back (글수정)
+    - Patch - update
+ 2. react.js - Front (글수정)
+    - disPatch - UPDATE_POST_REQUEST - data: post.id, editText
+    - useState - 중앙저장소 상태관리
+    - description - PostCardContent 값 적용
+    - editMode - data, hashtag 분리
+    - useEffect - 수정 리렌더링
+ 3. 2차 팀프로젝트
+
+---
+#### 72.2025-05-30
+ 1. react.js - 해쉬태그
+   - back - routes - hashtag.js
+     - include - [{name: decodeURIComponent(req.params.hashtag)}]
+   - back - app.js
+     - require(./routes/hashtag)
+     - app.use('/hashtag',hashtag)
+ 2. react.js - 페이지 무한로딩
+   - screenY vs pageYOffset
+     - screenY : 현재창에서 마우스 커서 기준 Y
+     - pageYOffset : 페이지 스크롤을 측정 Y
+
+---
+#### 71.2025-05-29
+ 1. react.js - 유저 프로필
+    - user - [id].js
+ 2. 2차 팀프로젝트
+
+---
 #### 70.2025-05-28
  1. react.js - 댓글
     - /:postId/comment
