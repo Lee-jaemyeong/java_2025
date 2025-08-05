@@ -1,4 +1,5 @@
 class Todo{
+  //1. table + entity 매칭
   final int id;
   final String title;
   final bool completed;
@@ -11,6 +12,25 @@ class Todo{
       id: json['id'],
       title: json['title'],
       completed: json['completed'],
+    );
+  }
+
+  ////// 
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'completed': completed,
+    };
+  }
+
+  ////// 
+  Todo copyWith ({ int?id, String? title, bool? completed }){  // 전달된 값
+    // 객체복사해서 일부값만 변경시
+    return Todo( 
+      // 기존의 값을 기반
+      id: id?? this.id,  // 전달되지 않으면 (null) 기존값으로 대체
+      title: title ?? this.title, // title이 null이면 기존의 title유지
+      completed: completed ?? this.completed,
     );
   }
 }
