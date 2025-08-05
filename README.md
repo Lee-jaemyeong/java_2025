@@ -1,3 +1,21 @@
+#### 85.2025-06-24
+ 1. Spring + MyBatis + Security - JWT Token
+    - Security?
+      - 애플리케이션의 보안(인증, 인가)을 담당
+      - Filter의 흐름에 따라 처리
+    - 인증 vs 인가
+      - 인증 Authentication - [본인]이 맞는지 확인
+      - 인가 Authorization - 인증된 사용자가 [접근가능]
+    - Security 아키텍쳐
+=====================
+        2️⃣[UsernamePasswordAuthentication Token]
+          ↓
+1️⃣Http Request  →     [AuthenticationFilter]3️⃣ ...  →  [Authentication  Manager]
+         ↓⑩               ⑨     ←
+          [SecurityContextHolder]
+=====================
+
+---
 #### 84.2025-06-23
  1. Spring + MyBatis - OAuth2(kakao, google, naver)
     - MemberUserDetails 상속 클래스 생성
