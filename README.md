@@ -38,6 +38,10 @@
  UserDetailsService<br/>
  ★ DB에 있는 [사용자정보]가져오기
 
+> pc(jstl / 타임리프), 모바일(react + jwt)
+> 1. jwt?
+> json web token
+
 ---
 #### 84.2025-06-23
  1. Spring + MyBatis - OAuth2(kakao, google, naver)
