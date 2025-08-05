@@ -11,9 +11,32 @@
         2️⃣[UsernamePasswordAuthentication Token]
           ↓
 1️⃣Http Request  →     [AuthenticationFilter]3️⃣ ...  →  [Authentication  Manager]
-         ↓⑩               ⑨     ←
+         ↓🔟               9️⃣    ←
           [SecurityContextHolder]
 ```
+ 1. 사용자가 로그인 폼태그 시도 (username + password 전달)
+ 2. UsernamePasswordAuthentication 요청정보  Authentication 를 생성
+ 3. Authentication 인증처리
+ ★UsernamePasswordAuthentication
+
+ 10. 인증 완료가 [사용자정보]   SecurityContextHolder 담기	
+    - AuthenticationSuccessHandler 를 실행( 성공 )
+    - AuthenticationFailureHandler   를 실행( 실패 )
+```
+[AuthenticationFilter]3️⃣   → [Authentication  Manager] → 4️⃣[AuthenticationProvider(s)]
+                     ←9️⃣       					                                                    		     ↑   ↓5️⃣  
+                                                                   								 ↑         		 [ UserDetailsService ]    
+                                                                  	ProviderManager                ↑   ↓6️⃣
+                                                                                 									  [ UserDetails ]   
+```
+ 4. Authentication  Manager  인증담당
+ ★UsernamePasswordAuthentication  Token은 Provider를 찾는데 사용
+ 
+ AuthenticationProvider
+ ★ 로그인정보 DB정보와 비교
+
+ UserDetailsService
+ ★ DB에 있는 [사용자정보]가져오기
 
 ---
 #### 84.2025-06-23
