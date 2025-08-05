@@ -16,7 +16,7 @@
 ```
  1. 사용자가 로그인 폼태그 시도 (username + password 전달)
  2. UsernamePasswordAuthentication 요청정보  Authentication 를 생성
- 3. Authentication 인증처리
+ 3. Authentication 인증처리<br/>
  ★UsernamePasswordAuthentication
 
  10. 인증 완료가 [사용자정보]   SecurityContextHolder 담기	
@@ -29,13 +29,13 @@
                                                                   	ProviderManager                ↑   ↓6️⃣
                                                                                  									  [ UserDetails ]   
 ```
- 4. Authentication  Manager  인증담당
+ 4. Authentication  Manager  인증담당<br/>
  ★UsernamePasswordAuthentication  Token은 Provider를 찾는데 사용
  
- AuthenticationProvider
+ AuthenticationProvider<br/>
  ★ 로그인정보 DB정보와 비교
 
- UserDetailsService
+ UserDetailsService<br/>
  ★ DB에 있는 [사용자정보]가져오기
 
 ---
