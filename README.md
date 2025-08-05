@@ -7,13 +7,13 @@
       - 인증 Authentication - [본인]이 맞는지 확인
       - 인가 Authorization - 인증된 사용자가 [접근가능]
     - Security 아키텍쳐
-=====================
+```
         2️⃣[UsernamePasswordAuthentication Token]
           ↓
 1️⃣Http Request  →     [AuthenticationFilter]3️⃣ ...  →  [Authentication  Manager]
          ↓⑩               ⑨     ←
           [SecurityContextHolder]
-=====================
+```
 
 ---
 #### 84.2025-06-23
