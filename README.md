@@ -40,7 +40,7 @@
 
 > pc(jstl / 타임리프), 모바일(react + jwt)
 > 1. jwt?
-> json web token
+> - json web token
 
 ---
 #### 84.2025-06-23
